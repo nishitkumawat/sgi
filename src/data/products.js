@@ -1,4 +1,6 @@
-// ─── Product image URLs from old SGI website (IndiaMART CDN) ─────────────────
+import machineVector from '../assets/machine_vector.png'
+
+// ─── Product image URLs from old Shree Gayatri Industries website (IndiaMART CDN) ─────────────────
 const BASE = 'https://5.imimg.com/data5'
 
 export const PRODUCT_IMAGES = {
@@ -26,7 +28,7 @@ export const PRODUCT_IMAGES = {
 }
 
 // fallback placeholder if image fails
-export const PLACEHOLDER = 'https://placehold.co/500x500/1e3a5f/ffffff?text=SGI+Machine'
+export const PLACEHOLDER = machineVector
 
 // ─── Category definitions ─────────────────────────────────────────────────────
 export const CATEGORIES = [

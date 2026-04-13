@@ -18,7 +18,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-10 mb-14">
           {/* Brand */}
           <div className="md:col-span-1">
-            <img src={logo} alt="Shree Gayatri Industries" className="h-14 w-auto mb-4 brightness-110" />
+            <img src={logo} alt="Shree Gayatri Industries" className="h-14 w-auto mb-4 brightness-110 rounded-md" />
             <p className="text-sm leading-relaxed mb-5">
               Ahmedabad-based manufacturer of roll forming machines and rolling shutter motors since 2005. Trusted across 20+ Indian states.
             </p>
@@ -72,8 +72,8 @@ export default function Footer() {
               </div>
               <div>
                 <p className="text-xs text-blue-300 font-semibold mb-1">Phone</p>
-                <a href="tel:+919825435437" className="text-sm hover:text-white transition-colors block">+91 98254 35437</a>
-                <a href="tel:08045802320" className="text-sm hover:text-white transition-colors block">080-4580-2320</a>
+                <a href="tel:+918154935437" className="text-sm hover:text-white transition-colors block">+91 81549 35437</a>
+                <a href="tel:+919712905437" className="text-sm hover:text-white transition-colors block">+91 97129 05437</a>
               </div>
               <div>
                 <p className="text-xs text-blue-300 font-semibold mb-1">Email</p>
@@ -95,13 +95,13 @@ export default function Footer() {
             © {new Date().getFullYear()} Shree Gayatri Industries. All rights reserved.
           </p>
           <div className="flex gap-4">
-            <a href="tel:+919825435437"
-              className="px-4 py-2 rounded-sm bg-blue-700 hover:bg-blue-600 text-white text-xs font-semibold transition-colors uppercase tracking-widest"
+            <a href="tel:+918154935437"
+              className="px-5 py-2.5 rounded-full bg-blue-700 text-white text-xs font-bold transition-all duration-300 hover:scale-105 shadow-md hover:shadow-xl uppercase tracking-widest"
             >
               📞 Call Now
             </a>
-            <a href="https://wa.me/919825435437" target="_blank" rel="noreferrer"
-              className="px-4 py-2 rounded-sm bg-green-700 hover:bg-green-600 text-white text-xs font-semibold transition-colors uppercase tracking-widest"
+            <a href="https://wa.me/918154935437" target="_blank" rel="noreferrer"
+              className="px-5 py-2.5 rounded-full bg-green-600 text-white text-xs font-bold transition-all duration-300 hover:scale-105 shadow-md hover:shadow-xl uppercase tracking-widest"
             >
               💬 WhatsApp
             </a>

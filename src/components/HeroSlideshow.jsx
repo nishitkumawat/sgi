@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import rollFormingBg from '../assets/roll-forming-machines.jpg';
-import { FlipButton } from './ui/flip-button';
+import solarStructureImg from '../assets/solar-strucutre.jpg';
+import motorImg from '../assets/motor.jpeg';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const slides = [
   {
@@ -9,30 +11,42 @@ const slides = [
     src: rollFormingBg,
     title: 'Roll Forming Machines',
     subtitle: 'Precision engineering for global infrastructure.',
+    ctaText: 'Explore Machines',
+    ctaLink: '/machines'
   },
   {
     type: 'image',
-    src: 'https://images.unsplash.com/photo-1565439389-f2c90c52bb88?q=80&w=2000&auto=format&fit=crop',
+    src: solarStructureImg,
     title: 'Solar Structure',
     subtitle: 'State-of-the-art facilities for robust manufacturing.',
+    ctaText: 'Solar Solutions',
+    ctaLink: '/solar-structure'
   },
   {
     type: 'image',
-    src: 'https://images.unsplash.com/photo-1580983568864-7585ab11aadc?q=80&w=2000&auto=format&fit=crop',
+    src: motorImg,
     title: 'Rolling Shutter Motors',
     subtitle: 'Driving the shutter industry with reliable automation.',
+    ctaText: 'View Motors',
+    ctaLink: '/motors'
   }
 ];
 
 export default function HeroSlideshow() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000); // 6 second per slide
-    return () => clearInterval(timer);
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
   }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 10000); // 10 seconds per slide
+    return () => clearInterval(timer);
+  }, [nextSlide]);
 
   return (
     <section className="relative w-full h-[90vh] bg-slate-900 overflow-hidden flex items-center pt-20">
@@ -62,15 +76,32 @@ export default function HeroSlideshow() {
               />
             )}
             
-            {/* Overlay Gradient for readability */}
-            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent w-full md:w-2/3" />
-            <div className="absolute inset-0 bg-white/20" /> {/* Slight overall lightening if needed, or keep dark text over white gradient */}
+            {/* Plain overlay layer to decrease background visibility slightly */}
+            <div className="absolute inset-0 bg-white/10" />
           </div>
         );
       })}
 
+      {/* Navigation Arrows */}
+      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-30 px-6 flex justify-between pointer-events-none">
+        <button 
+          onClick={(e) => { e.preventDefault(); prevSlide(); }}
+          className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-blue-600 hover:border-blue-600 transition-all pointer-events-auto group"
+          aria-label="Previous Slide"
+        >
+          <ChevronLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
+        </button>
+        <button 
+          onClick={(e) => { e.preventDefault(); nextSlide(); }}
+          className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-blue-600 hover:border-blue-600 transition-all pointer-events-auto group"
+          aria-label="Next Slide"
+        >
+          <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+        </button>
+      </div>
+
       <div className="relative z-20 max-w-7xl mx-auto px-6 w-full">
-        <div className="max-w-2xl bg-white/90 backdrop-blur-sm p-10 md:p-14 border-l-8 border-blue-700 shadow-2xl animate-fadeup">
+        <div className="max-w-2xl bg-white/90 backdrop-blur-sm p-10 md:p-14 border-l-8 border-blue-700 shadow-2xl animate-fadeup transition-all">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 border border-slate-300 text-slate-800 text-xs font-bold tracking-wider uppercase mb-6">
             <span className="w-2 h-2 bg-blue-600 block" />
             Heavy Machinery Manufacturing
@@ -82,24 +113,30 @@ export default function HeroSlideshow() {
             {slides[currentSlide].subtitle}
           </p>
           <div className="flex flex-wrap items-center gap-4">
-            <Link to="/products" className="px-8 py-4 bg-blue-700 text-white font-bold hover:bg-blue-800 transition-colors uppercase tracking-widest text-sm shadow-xl shadow-blue-200">
-              View Catalog
+            <Link 
+              to={slides[currentSlide].ctaLink} 
+              className="px-8 py-4 bg-blue-700 text-white font-black hover:bg-blue-800 transition-all duration-300 hover:scale-105 rounded-full uppercase tracking-widest text-[11px] shadow-xl shadow-blue-200"
+            >
+              {slides[currentSlide].ctaText}
             </Link>
-            <Link to="/contact">
-              <FlipButton text1="Contact Us" text2="Get a Quote" />
+            <Link 
+              to="/contact" 
+              className="px-8 py-4 bg-white border-2 border-slate-200 text-slate-800 font-black hover:border-blue-700 hover:text-blue-700 transition-all duration-300 hover:scale-105 rounded-full uppercase tracking-widest text-[11px] shadow-lg"
+            >
+              Contact Us
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Navigation Controls */}
+      {/* Pagination Indicators */}
       <div className="absolute bottom-10 left-10 md:left-auto md:right-10 z-20 flex gap-2">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-12 h-2 transition-all ${
-              currentSlide === index ? 'bg-blue-600' : 'bg-slate-300 hover:bg-slate-400'
+            className={`w-12 h-1.5 transition-all ${
+              currentSlide === index ? 'bg-blue-600' : 'bg-white/30 hover:bg-white/50'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />

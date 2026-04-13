@@ -7,6 +7,7 @@ import { Tabs } from './ui/vercel-tabs'
 const NAV = [
   { label: 'Home',     to: '/' },
   { label: 'Products', to: '/products' },
+  { label: 'Blog',     to: '/blog' },
   { label: 'About',    to: '/about' },
   { label: 'Contact',  to: '/contact' },
 ]
@@ -34,17 +35,17 @@ export default function Navbar() {
     <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
       scrolled
         ? 'bg-white/90 backdrop-blur-xl shadow-lg border-b border-slate-200'
-        : 'bg-transparent'
+        : 'bg-white/30 backdrop-blur-md'
     }`}>
       {/* Top info bar */}
       <div className="bg-[#1e3a8a] text-blue-50 text-[11px] py-1.5 px-6 text-center hidden md:block font-medium">
-        📞 +91 98254 35437 &nbsp;|&nbsp; ✉️ info@shreegayatriindustries.co.in &nbsp;|&nbsp; 📍 Bakrol, Ahmedabad – 382 430, Gujarat
+        📞 +91 81549 35437 &nbsp;|&nbsp; ✉️ info@shreegayatriindustries.co.in &nbsp;|&nbsp; 📍 Bakrol, Ahmedabad – 382 430, Gujarat
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="Shree Gayatri Industries" className="h-12 w-auto" />
+          <img src={logo} alt="Shree Gayatri Industries" className="h-12 w-auto rounded-md" />
         </Link>
 
         {/* Desktop menu */}
@@ -63,14 +64,14 @@ export default function Navbar() {
         {/* CTA */}
         <div className="hidden md:flex items-center gap-4">
           <a
-            href="tel:+919825435437"
+            href="tel:+918154935437"
             className="text-xs text-slate-500 hover:text-blue-700 transition-colors font-bold uppercase tracking-wider"
           >
-            📞 +91 98254 35437
+            📞 +91 81549 35437
           </a>
           <Link
             to="/contact"
-            className="px-6 py-2.5 rounded-sm text-sm font-bold bg-blue-700 hover:bg-blue-800 text-white transition-all hover:-translate-y-0.5 uppercase tracking-widest"
+            className="px-6 py-2.5 rounded-full text-sm font-bold bg-blue-700 text-white transition-all duration-300 hover:scale-105 shadow-md hover:shadow-xl uppercase tracking-widest"
           >
             Get a Quote
           </Link>
@@ -114,7 +115,7 @@ export default function Navbar() {
           </div>
           <Link
             to="/contact"
-            className="mt-4 px-6 py-3.5 rounded-sm text-sm font-bold bg-blue-700 text-white text-center uppercase tracking-widest"
+            className="mt-4 px-6 py-3.5 rounded-full text-sm font-bold bg-blue-700 text-white text-center shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 uppercase tracking-widest"
           >
             Request Inquiry
           </Link>

@@ -94,8 +94,8 @@ const Tabs = React.forwardRef(
                 className={cn(
                   "px-3 py-2 cursor-pointer transition-colors duration-300 h-[30px]",
                   index === activeIndex 
-                    ? "text-blue-700 font-bold" 
-                    : "text-slate-600 font-semibold"
+                    ? "text-blue-700 font-extrabold" 
+                    : "font-bold opacity-80 hover:opacity-100"
                 )}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}

@@ -35,12 +35,12 @@ export default function ProductCard({ product }) {
       className="group bg-white border border-slate-200 rounded-sm overflow-hidden hover:border-blue-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1.5 flex flex-col h-full"
     >
       {/* Image area */}
-      <Link to={`/product/${product.slug}`} className="relative bg-[#f8fafc] h-52 flex items-center justify-center overflow-hidden border-b border-slate-50 block">
+      <Link to={`/product/${product.slug}`} className="relative bg-[#f8fafc] h-52 overflow-hidden border-b border-slate-50 block">
         <img
           src={src}
           alt={product.name}
           onError={() => setImgErr(true)}
-          className="max-h-[80%] max-w-[80%] object-contain p-2 group-hover:scale-110 transition-transform duration-700 ease-out"
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-out"
         />
         {product.badge && (
           <span className="absolute top-4 left-4 bg-blue-700 text-white text-[10px] font-bold px-3 py-1 rounded-sm uppercase tracking-wider shadow-sm z-10">
@@ -61,20 +61,13 @@ export default function ProductCard({ product }) {
           {product.tagline}
         </p>
 
-        <div className="flex gap-2 pt-4 border-t border-slate-50 mt-auto">
+        <div className="pt-4 border-t border-slate-50 mt-auto">
           <Link 
             to={`/product/${product.slug}`} 
-            className="flex-1 bg-blue-700 hover:bg-slate-900 text-white text-center py-2.5 text-[10px] sm:text-xs font-black uppercase tracking-widest transition-colors rounded-sm"
+            className="w-full bg-blue-700 hover:bg-blue-800 text-white text-center py-3 text-[10px] sm:text-xs font-black uppercase tracking-widest transition-all duration-300 rounded-full hover:scale-[1.03] shadow-md hover:shadow-xl block"
           >
-            Inquiry
+            Send Inquiry
           </Link>
-          <a 
-            href={`https://wa.me/919825435437?text=Hello,%20I'm%20interested%20in%20${encodeURIComponent(product.name)}`}
-            target="_blank" rel="noreferrer"
-            className="flex-1 bg-green-600 hover:bg-green-700 text-white text-center py-2.5 text-[10px] sm:text-xs font-black uppercase tracking-widest transition-colors rounded-sm"
-          >
-            WhatsApp
-          </a>
         </div>
       </div>
     </div>

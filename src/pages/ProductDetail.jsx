@@ -31,7 +31,7 @@ function InquiryModal({ product, isOpen, onClose }) {
             <label className="block text-[11px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1">Requirements / Message</label>
             <textarea className="w-full px-5 py-4 rounded-sm bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:bg-white text-sm font-medium transition-all h-32" placeholder="Describe your requirement..."></textarea>
           </div>
-          <button type="submit" className="w-full py-4.5 rounded-sm bg-blue-700 text-white font-black uppercase tracking-widest text-sm hover:bg-slate-900 transition-all">
+          <button type="submit" className="w-full py-4.5 rounded-full bg-blue-700 text-white font-black uppercase tracking-widest text-sm hover:scale-105 transition-all duration-300 shadow-md hover:shadow-xl">
             Submit Inquiry
           </button>
         </form>
@@ -69,12 +69,12 @@ export default function ProductDetail() {
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Gallery area */}
-          <div className="sticky top-40 bg-slate-50 border border-slate-200 rounded-sm p-12 flex items-center justify-center min-h-[500px] shadow-sm">
+          <div className="sticky top-40 bg-slate-50 border border-slate-200 rounded-sm flex items-center justify-center min-h-[500px] shadow-sm overflow-hidden group/detail">
             <img 
                src={imgErr ? PLACEHOLDER : `https://5.imimg.com/data5/SELLER/Default/2021/3/GO/ZH/MG/10097291/${product.id}-500x500.jpg`} 
                alt={product.name}
                onError={() => setImgErr(true)}
-               className="max-h-[400px] w-auto drop-shadow-2xl hover:scale-105 transition-transform duration-700" 
+               className="w-full h-full object-cover group-hover/detail:scale-105 transition-transform duration-1000" 
             />
              {product.badge && (
               <span className="absolute top-8 left-8 bg-blue-700 text-white text-[11px] font-black px-4 py-1.5 rounded-sm uppercase tracking-widest shadow-sm">
@@ -99,14 +99,14 @@ export default function ProductDetail() {
             <div className="flex flex-wrap items-center gap-4 mb-12">
               <button 
                 onClick={() => setIsInquiryOpen(true)}
-                className="px-10 py-4.5 rounded-sm bg-blue-700 text-white font-black uppercase tracking-widest text-sm hover:bg-slate-900 transition-all border border-blue-700"
+                className="px-10 py-4.5 rounded-full bg-blue-700 text-white font-black uppercase tracking-widest text-sm hover:scale-105 hover:bg-blue-800 transition-all duration-300 shadow-md hover:shadow-xl"
               >
                 Send Inquiry
               </button>
               <a 
-                href={`https://wa.me/919825435437?text=Hello,%20I%20am%20interested%20in%20your%20${encodeURIComponent(product.name)}`}
+                href={`https://wa.me/918154935437?text=Hello,%20I%20am%20interested%20in%20your%20${encodeURIComponent(product.name)}`}
                 target="_blank" rel="noreferrer"
-                className="px-10 py-4.5 rounded-sm bg-green-600 text-white font-black uppercase tracking-widest text-sm hover:bg-green-700 transition-all border border-green-600 flex items-center gap-2"
+                className="px-10 py-4.5 rounded-full bg-green-600 text-white font-black uppercase tracking-widest text-sm hover:scale-105 hover:bg-green-700 transition-all duration-300 shadow-md hover:shadow-xl flex items-center gap-2"
               >
                 WhatsApp Inquiry
               </a>

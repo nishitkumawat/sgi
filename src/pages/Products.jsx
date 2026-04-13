@@ -34,9 +34,9 @@ export default function Products() {
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setSearchParams({})}
-              className={`px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${
+              className={`px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
                 categoryId === 'all' 
-                ? 'bg-blue-600 text-white shadow-lg shadow-blue-200' 
+                ? 'bg-blue-700 text-white shadow-lg shadow-blue-200 hover:scale-105' 
                 : 'bg-white border border-slate-200 text-slate-500 hover:bg-slate-50'
               }`}
             >
@@ -46,9 +46,9 @@ export default function Products() {
               <button
                 key={cat.id}
                 onClick={() => setSearchParams({ category: cat.id })}
-                className={`px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${
+                className={`px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
                   categoryId === cat.id 
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-200' 
+                  ? 'bg-blue-700 text-white shadow-lg shadow-blue-200 hover:scale-105' 
                   : 'bg-white border border-slate-200 text-slate-500 hover:bg-slate-50'
                 }`}
               >
@@ -63,7 +63,7 @@ export default function Products() {
               placeholder="Search products..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-12 pr-6 py-4 rounded-2xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:bg-white focus:border-blue-400 text-sm font-medium transition-all"
+              className="w-full pl-12 pr-6 py-4 rounded-sm bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:bg-white text-sm font-medium transition-all"
             />
             <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-blue-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -79,9 +79,9 @@ export default function Products() {
             ))}
           </div>
         ) : (
-          <div className="py-32 text-center rounded-[3rem] bg-slate-50 border border-dashed border-slate-200">
+          <div className="py-32 text-center rounded-sm bg-slate-50 border border-dashed border-slate-200">
             <p className="text-3xl mb-4">🔍</p>
-            <h3 className="text-xl font-black text-slate-900 mb-2">No products found</h3>
+            <h3 className="text-xl font-black text-slate-900 mb-2 uppercase tracking-tight">No products found</h3>
             <p className="text-slate-500 font-medium italic">Try adjusting your search or category filter.</p>
           </div>
         )}

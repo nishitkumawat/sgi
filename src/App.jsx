@@ -6,6 +6,12 @@ import Products from './pages/Products'
 import ProductDetail from './pages/ProductDetail'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import Blogs from './pages/Blogs'
+import BlogDetail from './pages/BlogDetail'
+import CategoryLanding from './pages/CategoryLanding'
+import machinesImg from './assets/machines_hero.png'
+import solarImg from './assets/solar_hero.png'
+import motorImg from './assets/motors_hero.png'
 import './index.css'
 
 function App() {
@@ -20,6 +26,37 @@ function App() {
             <Route path="/product/:slug" element={<ProductDetail />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/blog" element={<Blogs />} />
+            <Route path="/blog/:slug" element={<BlogDetail />} />
+            
+            {/* Specialized Pillars */}
+            <Route path="/machines" element={
+              <CategoryLanding 
+                title="Roll Forming Machines" 
+                description="Heavy-duty profile engineering and custom machinery designed for high-throughput industrial manufacturing."
+                filterType="category"
+                filterValue="roll-forming"
+                image={machinesImg}
+              />
+            } />
+            <Route path="/solar-structure" element={
+              <CategoryLanding 
+                title="Solar Structure solutions" 
+                description="Specialized mounting rails, bracket systems, and solar panel frame machinery for the renewable energy sector."
+                filterType="solar"
+                image={solarImg}
+              />
+            } />
+            <Route path="/motors" element={
+              <CategoryLanding 
+                title="Rolling Shutter Motors" 
+                description="Next-generation automation and high-torque motors for secure and reliable industrial shutter operation."
+                filterType="category"
+                filterValue="shutter-motors"
+                image={motorImg}
+              />
+            } />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
