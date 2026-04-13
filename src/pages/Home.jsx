@@ -54,7 +54,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
             {topProducts.map(p => <ProductCard key={p.id} product={p} />)}
           </div>
 
@@ -63,7 +63,7 @@ export default function Home() {
                <h3 className="text-2xl font-black text-slate-900 shrink-0">Shutter Motors</h3>
                <div className="h-px bg-slate-200 w-full" />
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
               {motors.map(p => <ProductCard key={p.id} product={p} />)}
             </div>
           </div>
