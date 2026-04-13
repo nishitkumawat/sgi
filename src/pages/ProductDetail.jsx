@@ -69,7 +69,7 @@ export default function ProductDetail() {
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Gallery area */}
-          <div className="sticky top-40 bg-slate-50 border border-slate-200 rounded-sm flex items-center justify-center min-h-[500px] shadow-sm overflow-hidden group/detail">
+          <div className="bg-slate-50 border border-slate-200 rounded-sm flex items-center justify-center min-h-[500px] shadow-sm overflow-hidden group/detail">
             <img 
                src={imgErr ? PLACEHOLDER : `https://5.imimg.com/data5/SELLER/Default/2021/3/GO/ZH/MG/10097291/${product.id}-500x500.jpg`} 
                alt={product.name}
