@@ -37,7 +37,7 @@ const CITIES = [
 
 export default function IndiaNetworkMap() {
   return (
-    <div className="relative w-full aspect-[611/695] max-w-4xl mx-auto bg-white rounded-2xl p-4 md:p-8 shadow-2xl border border-slate-100 overflow-hidden group">
+    <div className="relative w-full aspect-[611/695] max-w-2xl md:max-w-4xl mx-auto bg-white rounded-xl md:rounded-2xl p-2 md:p-4 lg:p-8 shadow-xl md:shadow-2xl border border-slate-100 overflow-hidden group">
       <style>{`
         .india-svg-map path {
           fill: #fdfdfd;
@@ -211,7 +211,7 @@ export default function IndiaNetworkMap() {
               cx={city.x}
               cy={city.y}
               initial={{ r: 0, opacity: 0 }}
-              whileInView={{ r: [3, 14, 3], opacity: [0.6, 0, 0.6] }}
+              whileInView={{ r: [2, 10, 2], opacity: [0.6, 0, 0.6] }}
               transition={{ 
                 duration: 2.5, 
                 repeat: Infinity, 
@@ -235,19 +235,19 @@ export default function IndiaNetworkMap() {
                 delay: 0.8 + index * 0.03 
               }}
               viewport={{ once: true }}
-              r={city.type === 'primary' ? 6 : 3.5}
-              className={`${city.type === 'primary' ? 'fill-blue-700' : 'fill-slate-800'} stroke-white stroke-[1.5px]`}
+              r={city.type === 'primary' ? 4 : 2.5}
+              className={`${city.type === 'primary' ? 'fill-blue-700' : 'fill-slate-800'} stroke-white stroke-[1px]`}
             />
 
             {/* Precision Label */}
             <motion.text
-              x={city.x + 10}
-              y={city.y + 4}
+              x={city.x + 8}
+              y={city.y + 3}
               initial={{ opacity: 0, x: -5 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.2 + index * 0.03 }}
               viewport={{ once: true }}
-              className="hidden md:block text-[9px] font-black uppercase tracking-tighter fill-slate-600 pointer-events-none"
+              className="hidden md:block text-[8px] font-black uppercase tracking-tighter fill-slate-600 pointer-events-none"
             >
               {city.name}
             </motion.text>
@@ -265,20 +265,20 @@ export default function IndiaNetworkMap() {
       </div>
 
       {/* Stats overlay */}
-      <div className="absolute bottom-6 right-6 flex flex-col gap-3 text-right">
+      <div className="absolute bottom-3 right-3 md:bottom-6 md:right-6 flex flex-col gap-2 md:gap-3 text-right">
          <motion.div 
            initial={{ y: 20, opacity: 0 }}
            whileInView={{ y: 0, opacity: 1 }}
-           className="bg-white/80 backdrop-blur-md p-5 border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-xl"
+           className="bg-white/80 backdrop-blur-md p-3 md:p-5 border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-lg md:rounded-xl"
          >
-            <p className="text-3xl md:text-5xl font-black text-slate-900 leading-none tracking-tighter">20+</p>
-            <p className="text-[11px] font-black text-blue-600 uppercase tracking-[0.2em] mt-2">Nations States</p>
+            <p className="text-xl md:text-3xl lg:text-5xl font-black text-slate-900 leading-none tracking-tighter">20+</p>
+            <p className="text-[9px] md:text-[11px] font-black text-blue-600 uppercase tracking-[0.2em] mt-1 md:mt-2">Nations States</p>
          </motion.div>
          <motion.div 
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="bg-blue-600 p-5 border border-blue-500 shadow-2xl rounded-xl"
+            className="bg-blue-600 p-3 md:p-5 border border-blue-500 shadow-2xl rounded-lg md:rounded-xl"
          >
             <p className="text-3xl md:text-5xl font-black text-white leading-none tracking-tighter">1000+</p>
             <p className="text-[11px] font-black text-blue-100 uppercase tracking-[0.2em] mt-2">Installations</p>

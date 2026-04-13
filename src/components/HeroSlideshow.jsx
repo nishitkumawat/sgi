@@ -83,45 +83,45 @@ export default function HeroSlideshow() {
       })}
 
       {/* Navigation Arrows */}
-      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-30 px-6 flex justify-between pointer-events-none">
+      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-30 px-2 md:px-6 flex justify-between pointer-events-none">
         <button 
           onClick={(e) => { e.preventDefault(); prevSlide(); }}
-          className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-blue-600 hover:border-blue-600 transition-all pointer-events-auto group"
+          className="w-8 h-8 md:w-14 md:h-14 rounded-full bg-white/5 md:bg-white/10 backdrop-blur-md border border-white/10 md:border-white/20 flex items-center justify-center text-white hover:bg-blue-600 hover:border-blue-600 transition-all pointer-events-auto group"
           aria-label="Previous Slide"
         >
-          <ChevronLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
+          <ChevronLeft className="w-3 h-3 md:w-6 md:h-6 group-hover:-translate-x-1 transition-transform" />
         </button>
         <button 
           onClick={(e) => { e.preventDefault(); nextSlide(); }}
-          className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-blue-600 hover:border-blue-600 transition-all pointer-events-auto group"
+          className="w-8 h-8 md:w-14 md:h-14 rounded-full bg-white/5 md:bg-white/10 backdrop-blur-md border border-white/10 md:border-white/20 flex items-center justify-center text-white hover:bg-blue-600 hover:border-blue-600 transition-all pointer-events-auto group"
           aria-label="Next Slide"
         >
-          <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+          <ChevronRight className="w-3 h-3 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
 
-      <div className="relative z-20 max-w-7xl mx-auto px-6 w-full">
-        <div className="max-w-2xl bg-white/90 backdrop-blur-sm p-10 md:p-14 border-l-8 border-blue-700 shadow-2xl animate-fadeup transition-all">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 md:px-6 w-full">
+        <div className="max-w-2xl bg-white/90 backdrop-blur-sm p-6 md:p-10 lg:p-14 border-l-4 md:border-l-8 border-blue-700 shadow-2xl animate-fadeup transition-all">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 border border-slate-300 text-slate-800 text-xs font-bold tracking-wider uppercase mb-6">
             <span className="w-2 h-2 bg-blue-600 block" />
             Heavy Machinery Manufacturing
           </div>
-          <h1 className="text-4xl md:text-6xl font-black text-slate-900 leading-[1.1] mb-6 uppercase tracking-tight">
+          <h1 className="text-2xl md:text-4xl lg:text-6xl font-black text-slate-900 leading-[1.1] mb-4 md:mb-6 uppercase tracking-tight">
             {slides[currentSlide].title}
           </h1>
-          <p className="text-lg text-slate-600 mb-8 font-medium border-l-2 border-slate-300 pl-4">
+          <p className="text-sm md:text-lg text-slate-600 mb-4 md:mb-8 font-medium border-l-2 border-slate-300 pl-4">
             {slides[currentSlide].subtitle}
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <Link 
               to={slides[currentSlide].ctaLink} 
-              className="px-8 py-4 bg-blue-700 text-white font-black hover:bg-blue-800 transition-all duration-300 hover:scale-105 rounded-full uppercase tracking-widest text-[11px] shadow-xl shadow-blue-200"
+              className="px-4 py-2 md:px-8 md:py-4 bg-blue-700 text-white font-black hover:bg-blue-800 transition-all duration-300 hover:scale-105 rounded-full uppercase tracking-widest text-[9px] md:text-[11px] shadow-xl shadow-blue-200"
             >
               {slides[currentSlide].ctaText}
             </Link>
             <Link 
               to="/contact" 
-              className="px-8 py-4 bg-white border-2 border-slate-200 text-slate-800 font-black hover:border-blue-700 hover:text-blue-700 transition-all duration-300 hover:scale-105 rounded-full uppercase tracking-widest text-[11px] shadow-lg"
+              className="px-4 py-2 md:px-8 md:py-4 bg-white border-2 border-slate-200 text-slate-800 font-black hover:border-blue-700 hover:text-blue-700 transition-all duration-300 hover:scale-105 rounded-full uppercase tracking-widest text-[9px] md:text-[11px] shadow-lg"
             >
               Contact Us
             </Link>
@@ -130,7 +130,7 @@ export default function HeroSlideshow() {
       </div>
 
       {/* Pagination Indicators */}
-      <div className="absolute bottom-10 left-10 md:left-auto md:right-10 z-20 flex gap-2">
+      <div className="absolute bottom-6 left-4 md:left-10 md:left-auto md:right-10 z-20 flex gap-2">
         {slides.map((_, index) => (
           <button
             key={index}
