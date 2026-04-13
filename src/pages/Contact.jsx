@@ -1,0 +1,111 @@
+import { useEffect } from 'react'
+
+export default function Contact() {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  return (
+    <div className="bg-white min-h-screen pt-32 pb-24">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="mb-20">
+          <h2 className="text-blue-600 text-[11px] font-black tracking-[0.2em] uppercase mb-4">Connect With Us</h2>
+          <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight">Let's Discuss Your Project</h1>
+          <p className="text-slate-500 text-lg font-medium leading-relaxed max-w-2xl">
+            Our technical engineers are ready to help you optimize your production line with the right machine configurations.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-16">
+          {/* Contact Details */}
+          <div className="lg:col-span-1 space-y-12">
+            <div>
+              <h4 className="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-6">Physical Address</h4>
+              <p className="text-slate-900 font-bold leading-relaxed text-lg">
+                Plot No. 43, Satvabhumi Industrial Estate,<br />
+                Near Kathvada G.I.D.C., Bakrol,<br />
+                Ahmedabad – 382 430,<br />
+                Gujarat, India
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-6">Call / WhatsApp</h4>
+              <div className="space-y-4">
+                 <div className="flex flex-col">
+                    <span className="text-xs text-slate-400 font-bold uppercase tracking-tighter">Primary Line</span>
+                    <a href="tel:+919825435437" className="text-xl font-black text-slate-900 hover:text-blue-600 transition-colors tracking-tight">+91 98254 35437</a>
+                 </div>
+                 <div className="flex flex-col">
+                    <span className="text-xs text-slate-400 font-bold uppercase tracking-tighter">Support Line</span>
+                    <a href="tel:08045802320" className="text-xl font-black text-slate-900 hover:text-blue-600 transition-colors tracking-tight">080-4580-2320</a>
+                 </div>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-6">Official Email</h4>
+              <a href="mailto:info@shreegayatriindustries.co.in" className="text-lg font-bold text-slate-900 hover:text-blue-600 transition-colors break-all">
+                info@shreegayatriindustries.co.in
+              </a>
+            </div>
+
+            <div className="pt-8 border-t border-slate-100">
+               <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Follow Us</h4>
+               <div className="flex gap-4">
+                  {['FB', 'LI', 'IG', 'IN'].map(social => (
+                     <div key={social} className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-[10px] font-black text-slate-500 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all cursor-pointer">
+                        {social}
+                     </div>
+                  ))}
+               </div>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="lg:col-span-2">
+            <div className="bg-[#f8fafc] rounded-[3rem] p-8 md:p-12 border border-slate-100 shadow-xl shadow-slate-900/5">
+              <h4 className="text-xl font-black text-slate-900 mb-8 tracking-tight">Quick Inquiry Form</h4>
+              <form className="grid md:grid-cols-2 gap-8" onSubmit={(e) => { e.preventDefault(); alert('Message Sent!'); }}>
+                <div>
+                  <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 ml-1">Full Name</label>
+                  <input required type="text" className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-100 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-400 text-sm font-medium transition-all" placeholder="John Doe" />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 ml-1">Company Name</label>
+                  <input type="text" className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-100 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-400 text-sm font-medium transition-all" placeholder="Industry Ltd." />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 ml-1">Email Address</label>
+                  <input required type="email" className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-100 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-400 text-sm font-medium transition-all" placeholder="john@example.com" />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 ml-1">Contact Number</label>
+                  <input required type="tel" className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-100 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-400 text-sm font-medium transition-all" placeholder="+91 0000 000000" />
+                </div>
+                <div className="md:col-span-2">
+                   <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 ml-1">Tell us about your requirement</label>
+                   <textarea required className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-100 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-400 text-sm font-medium transition-all h-36" placeholder="I need a customized roll forming machine for..."></textarea>
+                </div>
+                <div className="md:col-span-2">
+                   <button type="submit" className="w-full py-5 rounded-2xl bg-blue-600 text-white font-black uppercase tracking-widest text-xs shadow-2xl shadow-blue-200 hover:bg-blue-700 hover:-translate-y-1 transition-all">
+                      Dispatch Message
+                   </button>
+                </div>
+              </form>
+            </div>
+
+            {/* Google Map Placeholder */}
+            <div className="mt-12 w-full h-80 rounded-[3rem] overflow-hidden border border-slate-100 shadow-lg grayscale hover:grayscale-0 transition-all duration-700">
+               <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117511.96803273767!2d72.637209!3d23.0146051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4efdec90cca5e46c!2sBakrol%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1712999999999!5m2!1sen!2sin" 
+                  width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade">
+               </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
