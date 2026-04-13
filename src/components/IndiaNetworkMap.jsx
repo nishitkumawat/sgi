@@ -57,19 +57,7 @@ export default function IndiaNetworkMap() {
         className="w-full h-full drop-shadow-xl india-svg-map"
         xmlns="http://www.w3.org/2000/svg"
       >
-  <metadata
-     id="metadata44">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
+    <defs
      id="defs42" />
   <path
      id="IN-AN"
