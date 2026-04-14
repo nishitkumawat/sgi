@@ -1,9 +1,45 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Contact() {
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    
+    const formData = new FormData(e.target);
+    const payload = {
+      full_name: formData.get('fullName'),
+      company_name: formData.get('companyName') || "Not provided",
+      email: formData.get('email'),
+      contact_number: formData.get('contactNumber'),
+      requirement: formData.get('requirement'),
+    };
+
+    try {
+      const response = await fetch("https://api.ezrun.in/iot/sgi/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        alert("Inquiry Sent Successfully! We'll get back to you soon.");
+        e.target.reset();
+      } else {
+        alert("Failed to send inquiry. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="bg-white min-h-screen pt-32 pb-24">
@@ -33,10 +69,6 @@ export default function Contact() {
             <div>
               <h4 className="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-6">Call / WhatsApp</h4>
               <div className="space-y-6">
-                 {/* <div className="flex flex-col">
-                    <span className="text-xs text-slate-400 font-bold uppercase tracking-tighter mb-1">Proprietor Direct (Mr. Ketan Dodiya)</span>
-                    <a href="tel:08045802320" className="text-xl font-black text-slate-900 hover:text-blue-600 transition-colors tracking-tight">08045802320</a>
-                 </div> */}
                  <div className="flex flex-col">
                     <span className="text-xs text-slate-400 font-bold uppercase tracking-tighter mb-1">Sales Inquiry</span>
                     <a href="tel:+918154935437" className="text-xl font-black text-slate-900 hover:text-blue-600 transition-colors tracking-tight">+91 81549 35437</a>
@@ -71,30 +103,30 @@ export default function Contact() {
           <div className="lg:col-span-2">
             <div className="bg-[#f8fafc] rounded-sm p-8 md:p-12 border border-slate-100 shadow-xl shadow-slate-900/5">
               <h4 className="text-xl font-black text-slate-900 mb-8 tracking-tight">Quick Inquiry Form</h4>
-              <form className="grid md:grid-cols-2 gap-8" onSubmit={(e) => { e.preventDefault(); alert('Message Sent!'); }}>
+              <form className="grid md:grid-cols-2 gap-8" onSubmit={handleSubmit}>
                 <div>
                   <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 ml-1">Full Name</label>
-                  <input required type="text" className="w-full px-6 py-4 rounded-sm bg-white border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-700 text-sm font-medium transition-all" placeholder="John Doe" />
+                  <input name="fullName" required type="text" className="w-full px-6 py-4 rounded-sm bg-white border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-700 text-sm font-medium transition-all" placeholder="John Doe" />
                 </div>
                 <div>
                   <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 ml-1">Company Name</label>
-                  <input type="text" className="w-full px-6 py-4 rounded-sm bg-white border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-700 text-sm font-medium transition-all" placeholder="Industry Ltd." />
+                  <input name="companyName" type="text" className="w-full px-6 py-4 rounded-sm bg-white border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-700 text-sm font-medium transition-all" placeholder="Industry Ltd." />
                 </div>
                 <div>
                   <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 ml-1">Email Address</label>
-                  <input required type="email" className="w-full px-6 py-4 rounded-sm bg-white border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-700 text-sm font-medium transition-all" placeholder="john@example.com" />
+                  <input name="email" required type="email" className="w-full px-6 py-4 rounded-sm bg-white border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-700 text-sm font-medium transition-all" placeholder="john@example.com" />
                 </div>
                 <div>
                   <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 ml-1">Contact Number</label>
-                  <input required type="tel" className="w-full px-6 py-4 rounded-sm bg-white border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-700 text-sm font-medium transition-all" placeholder="+91 0000 000000" />
+                  <input name="contactNumber" required type="tel" className="w-full px-6 py-4 rounded-sm bg-white border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-700 text-sm font-medium transition-all" placeholder="+91 0000 000000" />
                 </div>
                 <div className="md:col-span-2">
                    <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 ml-1">Tell us about your requirement</label>
-                   <textarea required className="w-full px-6 py-4 rounded-sm bg-white border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-700 text-sm font-medium transition-all h-36" placeholder="I need a customized roll forming machine for..."></textarea>
+                   <textarea name="requirement" required className="w-full px-6 py-4 rounded-sm bg-white border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-700 text-sm font-medium transition-all h-36" placeholder="I need a customized roll forming machine for..."></textarea>
                 </div>
                  <div className="md:col-span-2">
-                    <button type="submit" className="w-full py-5 rounded-full bg-blue-700 text-white font-black uppercase tracking-widest text-xs shadow-2xl shadow-blue-200 hover:bg-blue-800 hover:scale-[1.02] transition-all duration-300">
-                       Dispatch Message
+                    <button disabled={loading} type="submit" className="w-full py-5 rounded-full bg-blue-700 text-white font-black uppercase tracking-widest text-xs shadow-2xl shadow-blue-200 hover:bg-blue-800 hover:scale-[1.02] transition-all duration-300 disabled:opacity-75 disabled:hover:scale-100 disabled:cursor-not-allowed">
+                       {loading ? 'Dispatching...' : 'Dispatch Message'}
                     </button>
                  </div>
               </form>

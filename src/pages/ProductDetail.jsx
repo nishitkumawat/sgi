@@ -4,7 +4,45 @@ import { getProductBySlug, PRODUCTS, PLACEHOLDER } from '../data/products'
 
 // Modal Component
 function InquiryModal({ product, isOpen, onClose }) {
-  if (!isOpen) return null
+  const [loading, setLoading] = useState(false);
+
+  if (!isOpen) return null;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    
+    const formData = new FormData(e.target);
+    const payload = {
+      full_name: formData.get('fullName'),
+      company_name: formData.get('companyName') || "Not provided",
+      email: formData.get('email') || "Not provided",
+      contact_number: formData.get('contactNumber'),
+      requirement: `Product Inquiry: ${product.name}\n\n${formData.get('requirement')}`,
+    };
+
+    try {
+      const response = await fetch("https://api.ezrun.in/iot/sgi/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        alert("Inquiry Sent Successfully! We'll get back to you soon.");
+        e.target.reset();
+        onClose();
+      } else {
+        alert("Failed to send inquiry. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
       <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onClick={onClose} />
@@ -18,22 +56,36 @@ function InquiryModal({ product, isOpen, onClose }) {
         <h2 className="text-2xl font-black text-slate-900 mb-2">Request Information</h2>
         <p className="text-slate-500 font-medium mb-8">Send an inquiry for <span className="text-blue-600 underline underline-offset-4 font-bold">{product.name}</span></p>
 
-        <form className="space-y-5" onSubmit={(e) => { e.preventDefault(); alert('Inquiry Sent Successfully!'); onClose(); }}>
-          <div>
-            <label className="block text-[11px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1">Your Full Name</label>
-            <input required type="text" className="w-full px-5 py-4 rounded-sm bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:bg-white text-sm font-medium transition-all" placeholder="Enter name..." />
+        <form className="space-y-4" onSubmit={handleSubmit}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-[11px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1">Your Full Name</label>
+              <input name="fullName" required type="text" className="w-full px-5 py-4 rounded-sm bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:bg-white text-[13px] font-medium transition-all" placeholder="Enter name..." />
+            </div>
+            <div>
+              <label className="block text-[11px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1">Company Name</label>
+              <input name="companyName" type="text" className="w-full px-5 py-4 rounded-sm bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:bg-white text-[13px] font-medium transition-all" placeholder="Industry Ltd." />
+            </div>
           </div>
-          <div>
-            <label className="block text-[11px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1">Mobile Number</label>
-            <input required type="tel" className="w-full px-5 py-4 rounded-sm bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:bg-white text-sm font-medium transition-all" placeholder="+91..." />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-[11px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1">Email Address</label>
+              <input name="email" type="email" className="w-full px-5 py-4 rounded-sm bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:bg-white text-[13px] font-medium transition-all" placeholder="john@example.com" />
+            </div>
+            <div>
+              <label className="block text-[11px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1">Mobile Number</label>
+              <input name="contactNumber" required type="tel" className="w-full px-5 py-4 rounded-sm bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:bg-white text-[13px] font-medium transition-all" placeholder="+91..." />
+            </div>
           </div>
           <div>
             <label className="block text-[11px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1">Requirements / Message</label>
-            <textarea className="w-full px-5 py-4 rounded-sm bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:bg-white text-sm font-medium transition-all h-32" placeholder="Describe your requirement..."></textarea>
+            <textarea name="requirement" className="w-full px-5 py-4 rounded-sm bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:bg-white text-[13px] font-medium transition-all h-28" placeholder="Describe your requirement..."></textarea>
           </div>
-          <button type="submit" className="w-full py-4.5 rounded-full bg-blue-700 text-white font-black uppercase tracking-widest text-sm hover:scale-105 transition-all duration-300 shadow-md hover:shadow-xl">
-            Submit Inquiry
-          </button>
+          <div className="pt-2">
+            <button disabled={loading} type="submit" className="w-full py-4 rounded-full bg-blue-700 text-white font-black uppercase tracking-widest text-sm hover:scale-[1.02] transition-all duration-300 shadow-md hover:shadow-xl disabled:opacity-75 disabled:hover:scale-100 disabled:cursor-not-allowed">
+              {loading ? 'Submitting...' : 'Submit Inquiry'}
+            </button>
+          </div>
         </form>
       </div>
     </div>
