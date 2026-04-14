@@ -20,7 +20,7 @@ export default function Home() {
       <HeroSlideshow />
 
       {/* ─── MARQUEE ────────────────────────────────────────────── */}
-      <div className="bg-white border-y border-slate-100 py-6 overflow-hidden">
+      <div className="bg-white border-y border-slate-100 py-5 overflow-hidden">
         <div className="flex whitespace-nowrap animate-[marquee_25s_linear_infinite]">
           {[...Array(6)].map((_, i) => (
             <div key={i} className="flex items-center mx-10 text-slate-400 font-black uppercase tracking-widest text-xs">

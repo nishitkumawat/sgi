@@ -49,7 +49,7 @@ export default function HeroSlideshow() {
   }, [nextSlide]);
 
   return (
-    <section className="relative w-full h-[90vh] bg-slate-900 overflow-hidden flex items-center pt-20">
+    <section className="relative w-full h-[92vh] bg-slate-900 overflow-hidden flex items-center pt-20">
       {slides.map((slide, index) => {
         const isActive = index === currentSlide;
         return (
