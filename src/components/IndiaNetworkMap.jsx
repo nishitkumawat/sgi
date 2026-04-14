@@ -247,7 +247,7 @@ export default function IndiaNetworkMap() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.2 + index * 0.03 }}
               viewport={{ once: true }}
-              className="hidden md:block text-[8px] font-black uppercase tracking-tighter fill-slate-600 pointer-events-none"
+              className="text-[8px] font-black uppercase tracking-tighter fill-slate-600 pointer-events-none"
             >
               {city.name}
             </motion.text>
