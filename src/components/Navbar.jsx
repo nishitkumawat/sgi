@@ -4,8 +4,46 @@ import { CATEGORIES } from '../data/products'
 import logo from '../assets/SGI logo.png'
 import { Tabs } from './ui/vercel-tabs'
 
-const NAV = [
+const CategoriesDropdown = () => (
+  <div className="group flex items-center h-full relative py-4 -my-4">
+    <span className="flex items-center gap-1">
+      Categories
+      <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+      </svg>
+    </span>
+    {/* Dropdown Menu */}
+    <div className="absolute top-[100%] pt-4 left-1/2 -translate-x-1/2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+      <div className="bg-white border border-slate-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] rounded-2xl flex flex-col overflow-hidden ring-1 ring-black/5">
+        <Link to="/machines" className="px-5 py-4 text-slate-600 hover:bg-slate-50 hover:text-blue-700 flex items-center gap-4 border-b border-slate-50 last:border-0 transition-all">
+          <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-xl shrink-0">⚙️</div>
+          <div>
+            <div className="font-bold text-sm text-slate-800">Roll Forming</div>
+            <div className="text-[11px] text-slate-500 font-medium mt-0.5">Industrial Machinery</div>
+          </div>
+        </Link>
+        <Link to="/solar-structure" className="px-5 py-4 text-slate-600 hover:bg-slate-50 hover:text-orange-600 flex items-center gap-4 border-b border-slate-50 last:border-0 transition-all">
+          <div className="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-xl shrink-0">☀️</div>
+          <div>
+            <div className="font-bold text-sm text-slate-800">Solar Structure</div>
+            <div className="text-[11px] text-slate-500 font-medium mt-0.5">Mounting Solutions</div>
+          </div>
+        </Link>
+        <Link to="/motors" className="px-5 py-4 text-slate-600 hover:bg-slate-50 hover:text-amber-600 flex items-center gap-4 transition-all">
+          <div className="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-xl shrink-0">⚡</div>
+          <div>
+            <div className="font-bold text-sm text-slate-800">Shutter Motors</div>
+            <div className="text-[11px] text-slate-500 font-medium mt-0.5">Automated Drives</div>
+          </div>
+        </Link>
+      </div>
+    </div>
+  </div>
+)
+
+const navItems = [
   { label: 'Home',     to: '/' },
+  { label: <CategoriesDropdown />, to: '#categories' },
   { label: 'Products', to: '/products' },
   { label: 'Blog',     to: '/blog' },
   { label: 'About',    to: '/about' },
@@ -17,6 +55,9 @@ export default function Navbar() {
   const [menuOpen,     setMenuOpen]     = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
+
+  // Check if we're on solar structure page
+  const isSolarPage = location.pathname === '/solar-structure'
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 30)
@@ -33,9 +74,11 @@ export default function Navbar() {
 
   return (
     <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-      scrolled
-        ? 'bg-white/90 backdrop-blur-xl shadow-lg border-b border-slate-200'
-        : 'bg-white/30 backdrop-blur-md'
+      isSolarPage
+        ? 'bg-white shadow-lg border-b border-slate-200'
+        : scrolled
+          ? 'bg-white/90 backdrop-blur-xl shadow-lg border-b border-slate-200'
+          : 'bg-white/30 backdrop-blur-md'
     }`}>
       {/* Top info bar */}
       <div className="bg-[#1e3a8a] text-blue-50 text-[11px] py-1.5 px-6 text-center hidden md:block font-medium">
@@ -51,13 +94,17 @@ export default function Navbar() {
         {/* Desktop menu */}
         <div className="hidden md:flex items-center">
           <Tabs
-            tabs={NAV.map(item => ({ id: item.to, label: item.label }))}
+            tabs={navItems.map((item) => ({ id: item.to, label: item.label }))}
             activeTab={
-              location.pathname === '/' 
-                ? '/' 
-                : NAV.find(item => item.to !== '/' && location.pathname.startsWith(item.to))?.to || '/'
+              ['/machines', '/solar-structure', '/motors'].some(p => location.pathname.startsWith(p))
+                ? '#categories'
+                : location.pathname === '/' 
+                  ? '/' 
+                  : navItems.find(item => item.to !== '/' && item.to !== '#categories' && location.pathname.startsWith(item.to))?.to || '/'
             }
-            onTabChange={(id) => navigate(id)}
+            onTabChange={(id) => {
+              if (id !== '#categories') navigate(id)
+            }}
           />
         </div>
 
@@ -92,27 +139,37 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-slate-100 px-6 py-6 flex flex-col gap-4 shadow-2xl">
-          {NAV.map((item) => (
-            <Link
-              key={item.label}
-              to={item.to}
-              className={`text-sm font-bold py-2 border-b border-slate-50 ${active(item.to) ? 'text-blue-600' : 'text-slate-700'}`}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <div className="grid grid-cols-1 gap-2 mt-2">
-            {CATEGORIES.map((cat) => (
+        <div className="md:hidden bg-white border-t border-slate-100 px-6 py-6 flex flex-col gap-4 shadow-2xl max-h-[85vh] overflow-y-auto">
+          {navItems.map((item, idx) => {
+            if (item.to === '#categories') {
+              return (
+                <div key="categories-mobile" className="text-sm font-bold py-2 border-b border-slate-50 text-slate-700">
+                  Categories
+                  <div className="grid grid-cols-1 gap-2 mt-3 ml-2">
+                    <Link to="/machines" className="text-xs text-slate-500 font-medium py-2 pl-3 hover:text-blue-600 hover:bg-blue-50 rounded-lg flex items-center gap-3 transition-colors">
+                      <span className="text-lg">⚙️</span> Roll Forming Machines
+                    </Link>
+                    <Link to="/solar-structure" className="text-xs text-slate-500 font-medium py-2 pl-3 hover:text-orange-600 hover:bg-orange-50 rounded-lg flex items-center gap-3 transition-colors">
+                      <span className="text-lg">☀️</span> Solar Structure
+                    </Link>
+                    <Link to="/motors" className="text-xs text-slate-500 font-medium py-2 pl-3 hover:text-amber-600 hover:bg-amber-50 rounded-lg flex items-center gap-3 transition-colors">
+                      <span className="text-lg">⚡</span> Shutter Motors
+                    </Link>
+                  </div>
+                </div>
+              )
+            }
+            
+            return (
               <Link
-                key={cat.id}
-                to={`/products?category=${cat.id}`}
-                className="text-xs text-slate-500 font-medium py-1.5 pl-4 hover:text-blue-600"
+                key={idx}
+                to={item.to}
+                className={`text-sm font-bold py-2 border-b border-slate-50 ${active(item.to) ? 'text-blue-600' : 'text-slate-700'}`}
               >
-                {cat.icon} {cat.label}
+                {item.label}
               </Link>
-            ))}
-          </div>
+            )
+          })}
           <Link
             to="/contact"
             className="mt-4 px-6 py-3.5 rounded-full text-sm font-bold bg-blue-700 text-white text-center shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 uppercase tracking-widest"

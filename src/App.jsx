@@ -9,6 +9,7 @@ import Contact from './pages/Contact'
 import Blogs from './pages/Blogs'
 import BlogDetail from './pages/BlogDetail'
 import CategoryLanding from './pages/CategoryLanding'
+import SolarStructure from './pages/SolarStructure'
 import machinesImg from './assets/machines_hero.png'
 import solarImg from './assets/solar_hero.png'
 import motorImg from './assets/motors_hero.png'
@@ -39,14 +40,7 @@ function App() {
                 image={machinesImg}
               />
             } />
-            <Route path="/solar-structure" element={
-              <CategoryLanding 
-                title="Solar Structure solutions" 
-                description="Specialized mounting rails, bracket systems, and solar panel frame machinery for the renewable energy sector."
-                filterType="solar"
-                image={solarImg}
-              />
-            } />
+            <Route path="/solar-structure" element={<SolarStructure />} />
             <Route path="/motors" element={
               <CategoryLanding 
                 title="Rolling Shutter Motors" 
