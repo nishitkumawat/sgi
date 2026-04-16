@@ -150,5 +150,50 @@ export const CATEGORY_CONTENT = {
       { q: 'How do I choose the right motor capacity?', a: 'Motor capacity depends on the weight and width of your shutter. Our experts can calculate this for you.' }
     ],
     industries: ['Warehousing', 'Retail', 'Residential Automation', 'Industrial Safety']
+  },
+  'motor-accessories': {
+    applications: [
+      { 
+        title: 'Wireless Operation', 
+        desc: 'Long-range remotes for heavy industrial shutters.',
+        image: 'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&q=80&w=800'
+      },
+      { 
+        title: 'Smart Phone Access', 
+        desc: 'IoT-enabled keypads controlled via mobile app.',
+        image: 'https://images.unsplash.com/photo-1558385554-4fb9401dd484?auto=format&fit=crop&q=80&w=800'
+      },
+      { 
+        title: 'Factory Automation', 
+        desc: 'Industrial-grade push button stations.',
+        image: 'https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&q=80&w=800'
+      },
+      { 
+        title: 'Secure Access', 
+        desc: 'Physical key-selector switches for high security.',
+        image: 'https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&q=80&w=800'
+      }
+    ],
+    facility: {
+      location: 'Electronics & Controllers Lab',
+      size: 'Specialized Lab',
+      equipment: ['Signal Range Tester', 'IoT Calibration Bay', 'Water Resistance Chamber'],
+      description: 'Our electronics division constantly innovates to provide the most secure and long-reaching remote controllers for the industrial automation space.',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200'
+    },
+    subsections: [
+      { title: 'Smart Controllers', icon: 'electric', image: 'https://5.imimg.com/data5/SELLER/Default/2021/3/MT/VX/ZI/10097291/single-phase-rolling-shutter-side-motor-500x500.jpg' },
+      { title: 'Remote Systems', icon: 'remote', image: 'https://5.imimg.com/data5/SELLER/Default/2021/3/RW/OZ/ZA/10097291/motorized-rolling-shutter-motor-500x500.jpg' }
+    ],
+    quality: [
+      { label: 'Technology', value: 'Smart IoT / High-Range RF' },
+      { label: 'Security', value: 'Encrypted Signals' },
+      { label: 'Integration', value: 'Plug & Play with SGI Motors' }
+    ],
+    faqs: [
+      { q: 'Can I connect the smart keypad to my existing shutter?', a: 'Yes, our controllers integrate smoothly with almost any standard AC shutter motor.' },
+      { q: 'Is the remote range sufficient for large factories?', a: 'Our remotes feature long-range RF receivers specifically tuned for large industrial spaces.' }
+    ],
+    industries: ['Smart Warehousing', 'Security Control', 'Home Automation', 'Retail']
   }
 };

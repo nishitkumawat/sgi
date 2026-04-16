@@ -20,7 +20,7 @@ export default function Footer() {
           <div className="md:col-span-1">
             <img src={logo} alt="Shree Gayatri Industries" className="h-14 w-auto mb-4 brightness-110 rounded-md" />
             <p className="text-sm leading-relaxed mb-5">
-              Ahmedabad-based manufacturer of roll forming machines and rolling shutter motors since 2005. Trusted across 20+ Indian states.
+              Ahmedabad-based manufacturer of roll forming machines and rolling shutter motors since 2007. Trusted across 20+ Indian states.
             </p>
             <div className="inline-flex items-center gap-2 bg-blue-900/30 rounded-sm px-3 py-2 border border-blue-800/40">
               <span className="text-xs text-blue-300 font-semibold">GST: 24BDMPM9420Q1ZV</span>

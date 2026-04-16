@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getProductBySlug, PRODUCTS, PLACEHOLDER } from '../data/products'
+import ProductCard from '../components/ProductCard'
 
 // Modal Component
 function InquiryModal({ product, isOpen, onClose }) {
@@ -106,12 +107,12 @@ export default function ProductDetail() {
   if (!product) return <div className="py-40 text-center font-black text-2xl text-slate-900">Product not found</div>
 
   return (
-    <div className="bg-white min-h-screen pt-32 pb-24">
+    <div className="bg-white min-h-screen pt-24 md:pt-32 pb-16 md:pb-24">
       <InquiryModal product={product} isOpen={isInquiryOpen} onClose={() => setIsInquiryOpen(false)} />
       
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest mb-10">
+        <div className="flex items-center gap-2 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 md:mb-10">
           <Link to="/" className="hover:text-blue-600">Home</Link>
           <span>/</span>
           <Link to="/products" className="hover:text-blue-600">Products</Link>
@@ -119,11 +120,11 @@ export default function ProductDetail() {
           <span className="text-slate-900">{product.name}</span>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-start">
           {/* Gallery area */}
-          <div className="bg-slate-50 border border-slate-200 rounded-sm flex items-center justify-center min-h-[500px] shadow-sm overflow-hidden group/detail">
+          <div className="bg-slate-50 border border-slate-200 rounded-sm flex items-center justify-center aspect-square max-w-[280px] mx-auto md:max-w-none md:aspect-auto md:h-[500px] shadow-sm overflow-hidden group/detail w-full">
             <img 
-               src={imgErr ? PLACEHOLDER : `https://5.imimg.com/data5/SELLER/Default/2021/3/GO/ZH/MG/10097291/${product.id}-500x500.jpg`} 
+               src={imgErr ? PLACEHOLDER : (product.image || PLACEHOLDER)} 
                alt={product.name}
                onError={() => setImgErr(true)}
                className="w-full h-full object-cover group-hover/detail:scale-105 transition-transform duration-1000" 
@@ -137,32 +138,42 @@ export default function ProductDetail() {
 
           {/* Details area */}
           <div>
-            <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 leading-tight tracking-tight">
+            <h1 className="text-3xl md:text-5xl font-black text-slate-900 mb-2 md:mb-4 leading-tight tracking-tight">
               {product.name}
             </h1>
-            <p className="text-lg text-blue-600 font-bold mb-8 uppercase tracking-widest text-[13px]">
-              {product.categoryId === 'shutter-motors' ? '⚙️ Shutter Motor' : '🏭 Roll Forming Line'}
-            </p>
-            
-            <p className="text-slate-600 text-lg font-medium leading-relaxed mb-10">
-              {product.description}
+            <p className="text-sm md:text-lg text-blue-600 font-bold mb-6 md:mb-8 uppercase tracking-widest text-[11px] md:text-[13px]">
+              {product.category === 'shutter-motors' ? '⚙️ Shutter Motor' : '🏭 Roll Forming Line'}
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 mb-12">
-              <button 
-                onClick={() => setIsInquiryOpen(true)}
-                className="px-10 py-4.5 rounded-full bg-blue-700 text-white font-black uppercase tracking-widest text-sm hover:scale-105 hover:bg-blue-800 transition-all duration-300 shadow-md hover:shadow-xl"
-              >
-                Send Inquiry
-              </button>
+            <div className="flex flex-row items-center gap-3 mb-10 w-full">
+              {product.externalLink ? (
+                <a 
+                  href={product.externalLink}
+                  target="_blank" rel="noreferrer"
+                  className="flex-1 min-w-0 px-2 py-3.5 rounded-full bg-blue-700 text-white font-black uppercase tracking-widest text-[9px] md:text-xs text-center hover:scale-[1.02] transition-all duration-300 shadow-md whitespace-nowrap overflow-hidden text-ellipsis"
+                >
+                  View on EzRun
+                </a>
+              ) : (
+                <button 
+                  onClick={() => setIsInquiryOpen(true)}
+                  className="flex-1 min-w-0 px-2 py-3.5 rounded-full bg-blue-700 text-white font-black uppercase tracking-widest text-[10px] md:text-xs text-center hover:scale-[1.02] transition-all duration-300 shadow-md whitespace-nowrap overflow-hidden text-ellipsis"
+                >
+                  Send Inquiry
+                </button>
+              )}
               <a 
                 href={`https://wa.me/918154935437?text=Hello,%20I%20am%20interested%20in%20your%20${encodeURIComponent(product.name)}`}
                 target="_blank" rel="noreferrer"
-                className="px-10 py-4.5 rounded-full bg-green-600 text-white font-black uppercase tracking-widest text-sm hover:scale-105 hover:bg-green-700 transition-all duration-300 shadow-md hover:shadow-xl flex items-center gap-2"
+                className="flex-1 min-w-0 px-2 py-3.5 rounded-full bg-green-600 text-white font-black uppercase tracking-widest text-[10px] md:text-xs text-center hover:scale-[1.02] transition-all duration-300 shadow-md whitespace-nowrap overflow-hidden text-ellipsis flex items-center justify-center gap-1"
               >
-                WhatsApp Inquiry
+                WhatsApp
               </a>
             </div>
+
+            <p className="text-slate-600 text-sm md:text-lg font-medium leading-relaxed mb-8 md:mb-10">
+              {product.description}
+            </p>
 
             {/* Tabs */}
             <div className="border-b border-slate-100 flex gap-10 mb-8">
@@ -182,11 +193,11 @@ export default function ProductDetail() {
 
             <div className="animate-fadeup">
               {activeTab === 'specs' ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-1 py-2">
                   {product.specs?.map((s, i) => (
-                    <div key={i} className="flex justify-between bg-slate-50/50 p-4 rounded-sm border border-slate-200">
-                      <span className="text-[11px] font-black text-slate-400 uppercase tracking-wider">{s.label}</span>
-                      <span className="text-sm font-bold text-slate-900">{s.value}</span>
+                    <div key={i} className="flex items-start justify-between py-2 border-b border-slate-100 last:border-0 md:last:border-b">
+                      <span className="text-[10px] font-black text-slate-500 uppercase tracking-wider shrink-0 max-w-[45%] pt-0.5 leading-tight">{s.label}</span>
+                      <span className="text-[13px] font-bold text-slate-900 text-right leading-tight">{s.value}</span>
                     </div>
                   ))}
                 </div>
@@ -216,6 +227,19 @@ export default function ProductDetail() {
           </div>
         </div>
       </div>
+
+      {/* Compatible Accessories Section */}
+      {product.category === 'shutter-motors' && (
+        <div className="max-w-7xl mx-auto px-4 md:px-6 mt-16 md:mt-24 border-t border-slate-100 pt-12 md:pt-20 mb-12 md:mb-20">
+          <h2 className="text-2xl font-black text-slate-900 uppercase tracking-tight mb-2">Motor Accessories</h2>
+          <p className="text-slate-500 font-medium mb-10">Compatible controllers and modular add-ons for this motor system.</p>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+            {PRODUCTS.filter(p => p.category === 'motor-accessories').map(accessory => (
+              <ProductCard key={accessory.id} product={accessory} />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   )
 }

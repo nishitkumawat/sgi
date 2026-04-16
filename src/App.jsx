@@ -46,7 +46,7 @@ function App() {
                 title="Rolling Shutter Motors" 
                 description="Next-generation automation and high-torque motors for secure and reliable industrial shutter operation."
                 filterType="category"
-                filterValue="shutter-motors"
+                filterValue={['shutter-motors', 'motor-accessories']}
                 image={motorImg}
               />
             } />

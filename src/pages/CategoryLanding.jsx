@@ -14,18 +14,26 @@ export default function CategoryLanding({ title, description, filterType, filter
   useEffect(() => { window.scrollTo(0, 0) }, [filterValue])
 
   const filteredProducts = PRODUCTS.filter(p => {
-    if (filterType === 'category') return p.category === filterValue
+    if (filterType === 'category') {
+      return Array.isArray(filterValue) ? filterValue.includes(p.category) : p.category === filterValue
+    }
     if (filterType === 'solar') {
       return p.badge === 'Solar Sector' || p.name.toLowerCase().includes('solar')
     }
     return true
   })
 
-  // Map route props to category data keys
+  const equipmentProducts = filteredProducts.filter(p => p.category !== 'motor-accessories')
+  const accessoryProducts = filteredProducts.filter(p => p.category === 'motor-accessories')
+
   const getCategoryKey = () => {
     if (filterType === 'solar') return 'solar'
-    if (filterValue === 'roll-forming') return 'roll-forming'
-    if (filterValue === 'shutter-motors') return 'shutter-motors'
+    
+    const primaryFilter = Array.isArray(filterValue) ? filterValue[0] : filterValue
+
+    if (primaryFilter === 'roll-forming') return 'roll-forming'
+    if (primaryFilter === 'shutter-motors') return 'shutter-motors'
+    if (primaryFilter === 'motor-accessories') return 'motor-accessories'
     return 'roll-forming'
   }
 
@@ -59,17 +67,17 @@ export default function CategoryLanding({ title, description, filterType, filter
       </div>
 
       {/* Equipment Catalog Section */}
-      <div className="max-w-7xl mx-auto px-6 mt-20 pb-24">
+      <div className="max-w-7xl mx-auto px-6 mt-20 pb-12">
         <div className="flex items-center justify-between mb-12 pb-6 border-b border-slate-100">
-            <h2 className="text-xs font-black text-slate-400 uppercase tracking-[0.2em]">Equipment Catalog ({filteredProducts.length} Items)</h2>
+            <h2 className="text-xs font-black text-slate-400 uppercase tracking-[0.2em]">Equipment Catalog ({equipmentProducts.length} Items)</h2>
             <div className="hidden md:flex gap-4">
                 <span className="text-[10px] font-bold text-slate-400 uppercase">Filters Active</span>
             </div>
         </div>
 
-        {filteredProducts.length > 0 ? (
+        {equipmentProducts.length > 0 ? (
           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8">
-            {filteredProducts.map(p => (
+            {equipmentProducts.map(p => (
               <ProductCard key={p.id} product={p} />
             ))}
           </div>
@@ -77,10 +85,25 @@ export default function CategoryLanding({ title, description, filterType, filter
           <div className="py-24 text-center bg-slate-50 border border-dashed border-slate-200">
             <p className="text-4xl mb-4">📭</p>
             <h3 className="text-xl font-black text-slate-900 mb-2 uppercase tracking-tight">Coming Soon</h3>
-            <p className="text-slate-500 font-medium">We are currently cataloging more products for this division.</p>
+            <p className="text-slate-500 font-medium">We are currently cataloging more equipment for this division.</p>
           </div>
         )}
       </div>
+
+      {/* Accessories Section */}
+      {accessoryProducts.length > 0 && (
+        <div className="max-w-7xl mx-auto px-6 mb-24">
+          <div className="flex items-center justify-between mb-12 pb-6 border-b border-slate-100">
+              <h2 className="text-xs font-black text-slate-400 uppercase tracking-[0.2em]">Accessories ({accessoryProducts.length} Items)</h2>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8">
+            {accessoryProducts.map(p => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* 1. Applications & Industries */}
       <IndustrialSection 

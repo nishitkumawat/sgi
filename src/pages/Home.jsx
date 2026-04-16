@@ -5,6 +5,8 @@ import ProductCard from '../components/ProductCard'
 import HeroSlideshow from '../components/HeroSlideshow'
 import IndiaNetworkMap from '../components/IndiaNetworkMap'
 import logo from '../assets/SGI logo.png'
+import indiamartLogo from '../assets/indiamart.png'
+import tradeindiaLogo from '../assets/tradeindia.png'
 
 export default function Home() {
   const topProducts = getProductsByCategory('roll-forming').slice(0, 4)
@@ -70,6 +72,49 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── TRUST & VERIFICATIONS ─────────────────────────────────── */}
+      <section className="py-12 px-6 bg-[#f8fafc] border-y border-slate-100">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-6">
+            
+            <div className="text-center md:text-right md:border-r border-slate-200 md:pr-8 mb-4 md:mb-0">
+                <h2 className="text-blue-600 text-[10px] font-black tracking-[0.2em] uppercase mb-1">Industry Trusted</h2>
+                <p className="text-2xl font-black text-slate-900 leading-tight">Verified Seller</p>
+            </div>
+
+            <div className="flex flex-col xl:flex-row gap-4">
+                {/* IndiaMart Card */}
+                <a href="https://www.indiamart.com/shree-gayatri-automation-anand/" target="_blank" rel="noreferrer" className="flex items-center gap-5 bg-white px-6 py-4 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-500 transition-all group min-w-[280px]">
+                    <img src={indiamartLogo} alt="IndiaMART" className="h-10 object-contain w-28 group-hover:scale-105 transition-transform" />
+                    <div className="border-l border-slate-100 pl-5">
+                        <div className="flex items-center gap-1 text-amber-500 text-sm mb-1">
+                            {'★★★★☆'.split('').map((star, i) => <span key={i}>{star}</span>)}
+                        </div>
+                        <div className="text-slate-800 font-bold text-sm">4.1 Ratings</div>
+                    </div>
+                    {/* Add Visit Us Button */}
+                    <div className="ml-auto">
+                       <span className="text-[10px] font-black uppercase tracking-widest text-blue-600 bg-blue-50 px-3 py-1.5 rounded-full flex items-center gap-1 group-hover:bg-blue-600 group-hover:text-white transition-colors">Visit <span className="text-[16px] leading-none mb-[2px]">→</span></span>
+                    </div>
+                </a>
+
+                {/* Trade India Card */}
+                <a href="https://www.tradeindia.com/shree-gayatri-industries-10097291/" target="_blank" rel="noreferrer" className="flex items-center gap-5 bg-white px-6 py-4 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-500 transition-all group min-w-[280px]">
+                    <img src={tradeindiaLogo} alt="TradeIndia" className="h-10 object-contain w-28 group-hover:scale-105 transition-transform" />
+                    <div className="border-l border-slate-100 pl-5">
+                        <div className="flex items-center gap-1 text-amber-500 text-sm mb-1">
+                            {'★★★★★'.split('').map((star, i) => <span key={i}>{star}</span>)}
+                        </div>
+                        <div className="text-slate-800 font-bold text-sm">5.0 Ratings</div>
+                    </div>
+                    {/* Add Visit Us Button */}
+                    <div className="ml-auto">
+                       <span className="text-[10px] font-black uppercase tracking-widest text-blue-600 bg-blue-50 px-3 py-1.5 rounded-full flex items-center gap-1 group-hover:bg-blue-600 group-hover:text-white transition-colors">Visit <span className="text-[16px] leading-none mb-[2px]">→</span></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+      </section>
+
       {/* ─── NATIONAL FOOTPRINT ───────────────────────────────────── */}
       <section className="py-24 px-6 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto">
@@ -99,6 +144,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+
 
       {/* ─── FEATURES ────────────────────────────────────────────── */}
       <section className="py-24 px-6 bg-white">
