@@ -26,7 +26,7 @@ export default function ProductCard({ product }) {
         <h3 className="text-slate-900 font-extrabold text-[15px] leading-tight group-hover:text-blue-700 transition-colors mb-2 line-clamp-2">
           {product.name}
         </h3>
-        <p className="text-slate-500 text-[13px] leading-relaxed flex-1 mb-5 line-clamp-2">
+        <p className="hidden md:block text-slate-500 text-[13px] leading-relaxed flex-1 mb-5 line-clamp-2">
           {product.tagline}
         </p>
 

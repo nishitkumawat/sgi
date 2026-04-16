@@ -13,6 +13,7 @@ import SolarStructure from './pages/SolarStructure'
 import machinesImg from './assets/machines_hero.png'
 import solarImg from './assets/solar_hero.png'
 import motorImg from './assets/motors_hero.png'
+import FloatingContact from './components/FloatingContact'
 import './index.css'
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <FloatingContact />
       </div>
     </BrowserRouter>
   )
