@@ -18,6 +18,7 @@ export default function Contact() {
       email: formData.get('email'),
       contact_number: formData.get('contactNumber'),
       requirement: formData.get('requirement'),
+      ezrun_api_key: import.meta.env.VITE_EZRUN_API_KEY,
     };
 
     try {

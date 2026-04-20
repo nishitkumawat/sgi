@@ -20,6 +20,7 @@ function InquiryModal({ product, isOpen, onClose }) {
       email: formData.get('email') || "Not provided",
       contact_number: formData.get('contactNumber'),
       requirement: `Product Inquiry: ${product.name}\n\n${formData.get('requirement')}`,
+      ezrun_api_key: import.meta.env.VITE_EZRUN_API_KEY,
     };
 
     try {
