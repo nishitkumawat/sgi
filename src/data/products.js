@@ -166,6 +166,33 @@ export const PRODUCTS = [
     ],
     features: ['Auto size adjustment for web & flange', '19-station precision forming', '22 KW Servo motor drive', 'Hardened EN-31 rollers with hard chrome', 'PLC automatic cutting system', 'Chain drive + 9 gear box transmission']
   },
+    {
+    id: 'hat-section-machine',
+    slug: 'hat-section-roll-forming-machine',
+    category: 'roll-forming',
+    name: 'Hat Section Roll Forming Machine',
+    tagline: 'Solar mounting hat profiles with auto PLC cutting',
+    badge: 'Popular',
+    image: PRODUCT_IMAGES['hat-section-2'],
+    images: [PRODUCT_IMAGES['hat-section-1'], PRODUCT_IMAGES['hat-section-2'], PRODUCT_IMAGES['hat-section-3'], PRODUCT_IMAGES['hat-section-4']],
+    description: 'High-productivity Hat Section Roll Forming Machine for solar mounting structures. Features 16-station forming, servo motor drive, and automatic PLC cutting. Produces 8-10 tons per day with punching.',
+    specs: [
+      { label: 'Suitable Material', value: 'G.I. Sheet' },
+      { label: 'Thickness', value: '0.80 to 1.20 mm' },
+      { label: 'Lip of Material', value: 'Max. 25 mm' },
+      { label: 'Web of Material', value: '40 mm (Fixed)' },
+      { label: 'Height', value: '60 to 120 mm (Manual Change)' },
+      { label: 'Shaft Diameter', value: '75 mm' },
+      { label: 'Roller Material', value: 'EN-31 (Hard)' },
+      { label: 'Productivity', value: '8 to 10 Ton/Day (With Punching)' },
+      { label: 'Forming Station', value: '16 Station' },
+      { label: 'Transmission', value: 'Chain / Gear Drive' },
+      { label: 'Motor Power', value: '11 to 15 KW Servo Motor' },
+      { label: 'Cutting System', value: 'Automatic on PLC' },
+      { label: 'Tolerance', value: '± 1 to 2 mm' },
+    ],
+    features: ['16-station precision forming', '8-10 ton/day productivity', 'Servo motor 11-15 KW drive', 'EN-31 hardened rollers', 'PLC automatic cutting', 'Manually adjustable height 60-120 mm']
+  },
   {
     id: 'manual-hydraulic-decoiler',
     slug: 'manual-hydraulic-decoiler',
@@ -210,33 +237,7 @@ export const PRODUCTS = [
     ],
     features: ['4-cylinder multi-punch system', 'WPS grade punch & die', '7-roller integrated straightening', '80 mm hard chrome EN-31 rollers', 'Multiple interchangeable punch sets', 'Precise hole positioning']
   },
-  {
-    id: 'hat-section-machine',
-    slug: 'hat-section-roll-forming-machine',
-    category: 'roll-forming',
-    name: 'Hat Section Roll Forming Machine',
-    tagline: 'Solar mounting hat profiles with auto PLC cutting',
-    badge: 'Popular',
-    image: PRODUCT_IMAGES['hat-section-1'],
-    images: [PRODUCT_IMAGES['hat-section-1'], PRODUCT_IMAGES['hat-section-2'], PRODUCT_IMAGES['hat-section-3'], PRODUCT_IMAGES['hat-section-4']],
-    description: 'High-productivity Hat Section Roll Forming Machine for solar mounting structures. Features 16-station forming, servo motor drive, and automatic PLC cutting. Produces 8-10 tons per day with punching.',
-    specs: [
-      { label: 'Suitable Material', value: 'G.I. Sheet' },
-      { label: 'Thickness', value: '0.80 to 1.20 mm' },
-      { label: 'Lip of Material', value: 'Max. 25 mm' },
-      { label: 'Web of Material', value: '40 mm (Fixed)' },
-      { label: 'Height', value: '60 to 120 mm (Manual Change)' },
-      { label: 'Shaft Diameter', value: '75 mm' },
-      { label: 'Roller Material', value: 'EN-31 (Hard)' },
-      { label: 'Productivity', value: '8 to 10 Ton/Day (With Punching)' },
-      { label: 'Forming Station', value: '16 Station' },
-      { label: 'Transmission', value: 'Chain / Gear Drive' },
-      { label: 'Motor Power', value: '11 to 15 KW Servo Motor' },
-      { label: 'Cutting System', value: 'Automatic on PLC' },
-      { label: 'Tolerance', value: '± 1 to 2 mm' },
-    ],
-    features: ['16-station precision forming', '8-10 ton/day productivity', 'Servo motor 11-15 KW drive', 'EN-31 hardened rollers', 'PLC automatic cutting', 'Manually adjustable height 60-120 mm']
-  },
+
   {
     id: 'automatic-cutting-system',
     slug: 'automatic-cutting-system',
