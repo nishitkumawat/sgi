@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getProductBySlug, PRODUCTS, PLACEHOLDER } from '../data/products'
 import ProductCard from '../components/ProductCard'
@@ -99,10 +99,32 @@ export default function ProductDetail() {
   const product = getProductBySlug(slug)
   const [activeTab, setActiveTab] = useState('specs')
   const [isInquiryOpen, setIsInquiryOpen] = useState(false)
-  const [imgErr, setImgErr] = useState(false)
+  const [imgErr, setImgErr] = useState({})
+
+  // Slideshow state
+  const productImages = product?.images?.length > 0 ? product.images : [product?.image || PLACEHOLDER]
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const hasMultiple = productImages.length > 1
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % productImages.length)
+  }, [productImages.length])
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev - 1 + productImages.length) % productImages.length)
+  }, [productImages.length])
+
+  // Auto-play slideshow (5 seconds)
+  useEffect(() => {
+    if (!hasMultiple) return
+    const timer = setInterval(nextSlide, 5000)
+    return () => clearInterval(timer)
+  }, [nextSlide, hasMultiple])
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    setCurrentSlide(0)
+    setImgErr({})
   }, [slug])
 
   if (!product) return <div className="py-40 text-center font-black text-2xl text-slate-900">Product not found</div>
@@ -122,18 +144,87 @@ export default function ProductDetail() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-start">
-          {/* Gallery area */}
-          <div className="bg-slate-50 border border-slate-200 rounded-sm flex items-center justify-center aspect-square max-w-[280px] mx-auto md:max-w-none md:aspect-auto md:h-[500px] shadow-sm overflow-hidden group/detail w-full">
-            <img 
-               src={imgErr ? PLACEHOLDER : (product.image || PLACEHOLDER)} 
-               alt={product.name}
-               onError={() => setImgErr(true)}
-               className="w-full h-full object-cover group-hover/detail:scale-105 transition-transform duration-1000" 
-            />
-             {product.badge && (
-              <span className="absolute top-8 left-8 bg-blue-700 text-white text-[11px] font-black px-4 py-1.5 rounded-sm uppercase tracking-widest shadow-sm">
-                {product.badge}
-              </span>
+          {/* ===== IMAGE SLIDESHOW GALLERY ===== */}
+          <div className="relative group/gallery">
+            <div className="bg-slate-50 border border-slate-200 rounded-sm aspect-[4/3] max-w-[340px] mx-auto md:max-w-none shadow-sm overflow-hidden relative w-full">
+              
+              {/* Slides */}
+              {productImages.map((imgSrc, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+                    index === currentSlide 
+                      ? 'opacity-100 scale-100 z-10' 
+                      : 'opacity-0 scale-105 z-0'
+                  }`}
+                >
+                  <img
+                    src={imgErr[index] ? PLACEHOLDER : (imgSrc || PLACEHOLDER)}
+                    alt={`${product.name} - Image ${index + 1}`}
+                    onError={() => setImgErr(prev => ({ ...prev, [index]: true }))}
+                    className="w-full h-full object-contain transition-transform duration-700 group-hover/gallery:scale-[1.03] p-2 md:p-4"
+                  />
+                </div>
+              ))}
+
+              {/* Badge */}
+              {product.badge && (
+                <span className="absolute top-4 left-4 md:top-8 md:left-8 bg-blue-700 text-white text-[10px] md:text-[11px] font-black px-3 py-1 md:px-4 md:py-1.5 rounded-sm uppercase tracking-widest shadow-sm z-20">
+                  {product.badge}
+                </span>
+              )}
+
+              {/* Navigation Arrows (only if multiple images) */}
+              {hasMultiple && (
+                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-20 px-2 md:px-4 flex justify-between pointer-events-none opacity-0 group-hover/gallery:opacity-100 transition-opacity duration-300">
+                  <button
+                    onClick={(e) => { e.stopPropagation(); prevSlide(); }}
+                    className="w-9 h-9 md:w-11 md:h-11 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all pointer-events-auto shadow-lg active:scale-95"
+                    aria-label="Previous image"
+                  >
+                    <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
+                  </button>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); nextSlide(); }}
+                    className="w-9 h-9 md:w-11 md:h-11 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all pointer-events-auto shadow-lg active:scale-95"
+                    aria-label="Next image"
+                  >
+                    <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
+                  </button>
+                </div>
+              )}
+
+              {/* Image Counter */}
+              {hasMultiple && (
+                <div className="absolute top-4 right-4 md:top-6 md:right-6 z-20 bg-black/50 backdrop-blur-sm text-white text-[10px] font-black px-2.5 py-1 rounded-full tracking-wider">
+                  {currentSlide + 1} / {productImages.length}
+                </div>
+              )}
+            </div>
+
+            {/* Thumbnail Dots / Strip */}
+            {hasMultiple && (
+              <div className="flex items-center justify-center gap-2 mt-4">
+                {productImages.map((imgSrc, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`transition-all duration-300 rounded-sm overflow-hidden border-2 ${
+                      currentSlide === index 
+                        ? 'border-blue-600 shadow-md scale-105' 
+                        : 'border-slate-200 opacity-60 hover:opacity-100 hover:border-slate-400'
+                    }`}
+                    aria-label={`View image ${index + 1}`}
+                  >
+                    <img
+                      src={imgErr[index] ? PLACEHOLDER : (imgSrc || PLACEHOLDER)}
+                      alt={`Thumbnail ${index + 1}`}
+                      onError={() => setImgErr(prev => ({ ...prev, [index]: true }))}
+                      className="w-12 h-12 md:w-14 md:h-14 object-contain bg-slate-50 p-1"
+                    />
+                  </button>
+                ))}
+              </div>
             )}
           </div>
 
@@ -143,7 +234,7 @@ export default function ProductDetail() {
               {product.name}
             </h1>
             <p className="text-sm md:text-lg text-blue-600 font-bold mb-6 md:mb-8 uppercase tracking-widest text-[11px] md:text-[13px]">
-              {product.category === 'shutter-motors' ? '⚙️ Shutter Motor' : '🏭 Roll Forming Line'}
+              {(product.category === 'shutter-motors' || product.category === 'motor-accessories') ? '⚙️ Shutter Motor' : '🏭 Roll Forming Line'}
             </p>
 
             <div className="flex flex-row items-center gap-3 mb-10 w-full">

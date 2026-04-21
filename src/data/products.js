@@ -7,6 +7,21 @@ import keySelectorImg from '../assets/key_selector.jpg'
 import pushButtonImg from '../assets/push_button.png'
 import ezrunControllerImg from '../assets/ezrun_controller.jpeg'
 
+// Import Roll Forming Machine Images
+import cpurlinImg1 from '../assets/cpurlin_1.png'
+import cpurlinImg2 from '../assets/cpurlin_2.png'
+import cpurlinImg3 from '../assets/cpurlin_3.png'
+import decoilerImg from '../assets/decoiler.png'
+import punchingMachineImg from '../assets/punching_machine.png'
+import punchingMachine2Img from '../assets/punching_machine_2.png'
+import hatSection1Img from '../assets/hat_section_1.png'
+import hatSection2Img from '../assets/hat_section_2.png'
+import hatSection3Img from '../assets/hat_4.png'
+import hatSection4Img from '../assets/hat_5.png'
+import cuttingSystemImg from '../assets/cutting_system.png'
+import controlPanelImg from '../assets/control_panel.png'
+import hydraulicPowerPackImg from '../assets/hydraulic-power-pack.png'
+
 const BASE = 'https://5.imimg.com/data5'
 
 export const PRODUCT_IMAGES = {
@@ -32,7 +47,22 @@ export const PRODUCT_IMAGES = {
   'remote-controller':       remoteControllerImg,
   'key-lock-controller':     keySelectorImg,
   'push-buttons':            pushButtonImg,
-  'keypad-controller':       ezrunControllerImg
+  'keypad-controller':       ezrunControllerImg,
+
+  // Roll Forming Machine Images
+  'cpurlin-1':               cpurlinImg1,
+  'cpurlin-2':               cpurlinImg2,
+  'cpurlin-3':               cpurlinImg3,
+  'decoiler':                decoilerImg,
+  'punching-machine':        punchingMachineImg,
+  'punching-machine-2':      punchingMachine2Img,
+  'hat-section-1':           hatSection1Img,
+  'hat-section-2':           hatSection2Img,
+  'hat-section-3':           hatSection3Img,
+  'hat-section-4':           hatSection4Img,
+  'cutting-system':          cuttingSystemImg,
+  'control-panel':           controlPanelImg,
+  'hydraulic-power-pack':    hydraulicPowerPackImg,
 }
 
 export const PLACEHOLDER = machineVector
@@ -55,6 +85,7 @@ export const PRODUCTS = [
     tagline: 'High-efficiency motor for rolling shutters',
     badge: 'Popular',
     image: PRODUCT_IMAGES['single-phase-motor'],
+    images: [PRODUCT_IMAGES['single-phase-motor']],
     description: 'Reliable and efficient single-phase rolling Rolling Shutter Gear Motor. Perfect for standard commercial and residential rolling shutters. Built with robust materials for extended lifespan.',
     specs: [
       { label: 'Capacity', value: '750 kg.' },
@@ -83,6 +114,7 @@ export const PRODUCTS = [
     tagline: 'Heavy-duty industrial motor',
     badge: 'Heavy Duty',
     image: PRODUCT_IMAGES['three-phase-motor'],
+    images: [PRODUCT_IMAGES['three-phase-motor'],PRODUCT_IMAGES['remote-controller']],
     description: 'Powerful three-phase motor designed for large industrial and heavy commercial rolling shutters. Delivers superior torque and continuous operational capacity.',
     specs: [
       { label: 'Capacity', value: '1500 kg.' },
@@ -106,234 +138,165 @@ export const PRODUCTS = [
 
   // ─── ROLL FORMING MACHINES ──────────────────────────────────────────
   {
-    id: 'rolling-shutter-guide',
-    slug: 'rolling-shutter-guide-machine',
-    category: 'roll-forming',
-    name: 'Rolling Shutter Guide Machine',
-    tagline: 'Semi-automatic guide rail forming for rolling shutters',
-    badge: 'Best Seller',
-    image: PRODUCT_IMAGES['rolling-shutter-guide'],
-    description: 'Our Rolling Shutter Guide Machine is engineered for high-speed, precision roll forming of shutter guide channels. Built with heavy-duty steel frames and hardened rollers, ensuring consistent profiles with minimal material waste.',
-    specs: [
-      { label: 'Material', value: 'Galvanised Steel' },
-      { label: 'Automatic Grade', value: 'Semi-Automatic' },
-    ],
-    features: ['Heavy-duty MS fabricated body', 'Automatic cutting with servo motor', 'Hardened & ground rollers']
-  },
-  {
-    id: 'corrugated-sheet',
-    slug: 'corrugated-sheet-roll-forming-machine',
-    category: 'roll-forming',
-    name: 'Corrugated Sheet Roll Forming Machine',
-    tagline: 'Heavy-duty corrugated sheets for roofing and cladding',
-    badge: '',
-    image: PRODUCT_IMAGES['corrugated-sheet'],
-    description: 'High-performance machine for producing corrugated metal sheets used in roofing and wall cladding. Features robust construction with precision-machined rollers for consistent corrugation profiles.',
-    specs: [
-      { label: 'Material', value: 'Galvanised Steel' },
-      { label: 'Automatic Grade', value: 'Semi-Automatic' },
-    ],
-    features: ['Multiple corrugation profiles', 'Servo-controlled auto cutting', 'Precision-ground hardened rollers']
-  },
-  {
     id: 'c-purlin',
     slug: 'c-purlin-roll-forming-machine',
     category: 'roll-forming',
     name: 'C Purlin Roll Forming Machine',
-    tagline: 'Structural C-purlins for steel frame construction',
+    tagline: 'Auto-adjustable C-purlins for steel frame construction',
     badge: 'Popular',
-    image: PRODUCT_IMAGES['c-purlin'],
-    description: 'Designed for manufacturing C-purlins for pre-engineered buildings and industrial sheds. Features PLC-controlled operation, hydraulic cutting, and adjustable profile sizes from C100–C300mm.',
+    image: PRODUCT_IMAGES['cpurlin-1'],
+    images: [PRODUCT_IMAGES['cpurlin-1'], PRODUCT_IMAGES['cpurlin-2'], PRODUCT_IMAGES['cpurlin-3']],
+    description: 'High-performance C Purlin Roll Forming Machine with auto size adjustment for PEB buildings, industrial sheds and solar structures. Features 19-station forming, servo motor drive, and PLC-controlled automatic cutting.',
     specs: [
-      { label: 'Material', value: 'High-grade Steel' },
-      { label: 'Control System', value: 'PLC Control' },
+      { label: 'Suitable Material', value: 'M.S., G.P., H.R., Galvanium' },
+      { label: 'Thickness', value: '1.60 mm to 2.50 mm' },
+      { label: 'Web (A) Size', value: '60 to 250 mm (Auto Adjust)' },
+      { label: 'Flange (B) Size', value: '40 to 80 mm (Auto Adjust)' },
+      { label: 'Lip (C) Size', value: '10 to 20 mm' },
+      { label: 'Max Coil Input', value: '450 mm (max width 250 mm)' },
+      { label: 'Min Coil Input', value: '130 mm (min width 50 mm)' },
+      { label: 'Roller Material', value: 'EN-31 (Hard with hard chrome)' },
+      { label: 'Productivity', value: '41 mtr/min (without punching)' },
+      { label: 'With Punching', value: '6 to 12 mtr/min' },
+      { label: 'Forming Station', value: '19 Station' },
+      { label: 'Transmission', value: 'Chain drive + 9 Gear box' },
+      { label: 'Motor Power', value: '22 KW Servo' },
+      { label: 'Cutting System', value: 'Automatic on PLC' },
+      { label: 'Section Tolerance', value: '± 1 to 2 mm' },
     ],
-    features: ['Adjustable C100–C300 profiles', 'Hydraulic servo cutting', 'H-Beam welded main frame']
+    features: ['Auto size adjustment for web & flange', '19-station precision forming', '22 KW Servo motor drive', 'Hardened EN-31 rollers with hard chrome', 'PLC automatic cutting system', 'Chain drive + 9 gear box transmission']
   },
   {
-    id: 'auto-shutter-patti',
-    slug: 'automatic-shutter-patti-roll-forming-machine',
+    id: 'manual-hydraulic-decoiler',
+    slug: 'manual-hydraulic-decoiler',
     category: 'roll-forming',
-    name: 'Auto Shutter Patti Roll Forming Machine',
-    tagline: 'High-speed shutter lath forming for mass production',
-    badge: 'Best Seller',
-    image: PRODUCT_IMAGES['auto-shutter-patti'],
-    description: 'Produces interlocking shutter laths (patti) at high speed with exceptional dimensional accuracy. Designed for large-scale rolling shutter manufacturers with PLC automation and automatic cut-to-length.',
+    name: 'Manual Hydraulic De-coiler',
+    tagline: 'Heavy-duty unpowered coil feeding system',
+    badge: '',
+    image: PRODUCT_IMAGES['decoiler'],
+    images: [PRODUCT_IMAGES['decoiler']],
+    description: 'Robust manual hydraulic de-coiler with 5-ton capacity and hydraulic mandrel expansion. Designed for reliable coil feeding in roll forming production lines with adjustable drum expansion range.',
     specs: [
-      { label: 'Material', value: 'GI / Aluminium Sheet' },
-      { label: 'Control System', value: 'HMI' },
+      { label: 'Type', value: 'Unpowered' },
+      { label: 'Weight Capacity', value: 'Max. 5 Ton' },
+      { label: 'Max Feeding Width', value: '600 mm' },
+      { label: 'Mandrel Expansion', value: 'Hydraulic Cylinder' },
+      { label: 'Drum Nominal Dia', value: '500 mm' },
+      { label: 'Drum Expansion Range', value: '425 mm to 525 mm' },
     ],
-    features: ['Auto feed & straightener', 'High-speed hydraulic cutting', 'Touch screen HMI']
+    features: ['5-ton weight capacity', 'Hydraulic cylinder mandrel expansion', '600 mm max feeding width', 'Adjustable drum expansion range', 'Heavy-duty construction']
   },
   {
-    id: 'elevator-door',
-    slug: 'elevator-door-section-machine',
+    id: 'punching-straightening-machine',
+    slug: 'punching-and-straightening-machine',
     category: 'roll-forming',
-    name: 'Elevator Door Section Machine',
-    tagline: 'Precision door frame sections for elevator cabins',
+    name: 'Punching Machine & Straightening Machine',
+    tagline: 'Multi-cylinder CNC punching with integrated straightening',
     badge: '',
-    image: PRODUCT_IMAGES['elevator-door'],
-    description: 'Engineered for producing elevator door frame sections with high dimensional precision. Features hardened forming rollers ensuring burr-free edges and consistent cross-sections.',
+    image: PRODUCT_IMAGES['punching-machine'],
+    images: [PRODUCT_IMAGES['punching-machine'], PRODUCT_IMAGES['punching-machine-2']],
+    description: 'Advanced 4-cylinder punching machine with integrated 7-roller straightening system. Features WPS punch & die material, multiple punch size configurations, and hard chrome EN-31 straightening rollers.',
     specs: [
-      { label: 'Automatic Grade', value: 'Automatic' },
-      { label: 'Control System', value: 'PLC Control' },
+      { label: 'Punch & Die Material', value: 'WPS' },
+      { label: 'No. of Cylinders', value: '4 Nos' },
+      { label: 'Cyl A (2 Holes)', value: '10 × 40 mm' },
+      { label: 'Cyl B (2 Holes)', value: '12 × 35 mm' },
+      { label: 'Cyl C (2 Holes)', value: '10 × 35 mm' },
+      { label: 'Cyl D (2 Holes)', value: '12 × 40 mm' },
+      { label: 'Straightening Rollers', value: '7 Nos' },
+      { label: 'Roller Dia', value: '80 mm (Hard Chrome)' },
+      { label: 'Roller Material', value: 'EN-31 (Hard)' },
+      { label: 'Punch Set', value: 'Extra (interchangeable)' },
     ],
-    features: ['Burr-free precision cutting', 'PLC-controlled', 'Servo-driven cut-to-length']
+    features: ['4-cylinder multi-punch system', 'WPS grade punch & die', '7-roller integrated straightening', '80 mm hard chrome EN-31 rollers', 'Multiple interchangeable punch sets', 'Precise hole positioning']
   },
   {
-    id: 'corrugated-silo',
-    slug: 'corrugated-silo-tank-roll-forming-machine',
+    id: 'hat-section-machine',
+    slug: 'hat-section-roll-forming-machine',
     category: 'roll-forming',
-    name: 'Corrugated Silo Tank Roll Forming Machine',
-    tagline: 'Corrugated panels for grain silo and storage tanks',
-    badge: '',
-    image: PRODUCT_IMAGES['corrugated-silo'],
-    description: 'Specialised machine for roll forming corrugated panels used in grain silos, water tanks, and industrial storage containers. Produces high-strength corrugated panels with precise curvature.',
+    name: 'Hat Section Roll Forming Machine',
+    tagline: 'Solar mounting hat profiles with auto PLC cutting',
+    badge: 'Popular',
+    image: PRODUCT_IMAGES['hat-section-1'],
+    images: [PRODUCT_IMAGES['hat-section-1'], PRODUCT_IMAGES['hat-section-2'], PRODUCT_IMAGES['hat-section-3'], PRODUCT_IMAGES['hat-section-4']],
+    description: 'High-productivity Hat Section Roll Forming Machine for solar mounting structures. Features 16-station forming, servo motor drive, and automatic PLC cutting. Produces 8-10 tons per day with punching.',
     specs: [
-      { label: 'Material', value: 'Galvanised Steel' },
-      { label: 'Control System', value: 'HMI' },
+      { label: 'Suitable Material', value: 'G.I. Sheet' },
+      { label: 'Thickness', value: '0.80 to 1.20 mm' },
+      { label: 'Lip of Material', value: 'Max. 25 mm' },
+      { label: 'Web of Material', value: '40 mm (Fixed)' },
+      { label: 'Height', value: '60 to 120 mm (Manual Change)' },
+      { label: 'Shaft Diameter', value: '75 mm' },
+      { label: 'Roller Material', value: 'EN-31 (Hard)' },
+      { label: 'Productivity', value: '8 to 10 Ton/Day (With Punching)' },
+      { label: 'Forming Station', value: '16 Station' },
+      { label: 'Transmission', value: 'Chain / Gear Drive' },
+      { label: 'Motor Power', value: '11 to 15 KW Servo Motor' },
+      { label: 'Cutting System', value: 'Automatic on PLC' },
+      { label: 'Tolerance', value: '± 1 to 2 mm' },
     ],
-    features: ['Arc and straight corrugation', 'Consistent profile accuracy', 'Export-quality construction']
+    features: ['16-station precision forming', '8-10 ton/day productivity', 'Servo motor 11-15 KW drive', 'EN-31 hardened rollers', 'PLC automatic cutting', 'Manually adjustable height 60-120 mm']
   },
   {
-    id: 'c-channel',
-    slug: 'c-channel-roll-forming-machine',
+    id: 'automatic-cutting-system',
+    slug: 'automatic-cutting-system',
     category: 'roll-forming',
-    name: 'C Channel Roll Forming Machine',
-    tagline: 'Standard C-channels for structural and framing use',
+    name: 'Automatic Cutting System',
+    tagline: 'Hydraulic high-speed precision cutting press',
     badge: '',
-    image: PRODUCT_IMAGES['c-channel'],
-    description: 'Produces standard C-channels used in rack framing, cable trays, and structural support systems. Available in multiple sizes with auto cutting and PLC control.',
+    image: PRODUCT_IMAGES['cutting-system'],
+    images: [PRODUCT_IMAGES['cutting-system']],
+    description: 'Heavy-duty automatic cutting system with hydraulic-operated cutting press and anti-friction guide way. Features high-speed operation with sensor-controlled precision for roll forming production lines.',
     specs: [
-      { label: 'Material', value: 'Galvanised Steel' },
-      { label: 'Automatic Grade', value: 'Semi-Automatic' },
+      { label: 'Base Frame', value: 'Fabricated Heavy Duty' },
+      { label: 'Operation', value: 'High Speed Hydraulic' },
+      { label: 'Guide Way', value: 'Anti-friction' },
+      { label: 'Hydraulic Cylinders', value: '01 No' },
+      { label: 'Sensors', value: '02 Nos' },
+      { label: 'Solenoid Valve', value: '01 No' },
+      { label: 'Pressure Control Switch', value: '01 No' },
     ],
-    features: ['Multiple size range', 'Servo-driven auto cut', 'Precision hardened rollers']
+    features: ['Heavy-duty fabricated base frame', 'High-speed hydraulic operation', 'Anti-friction guide way', 'Dual sensor precision', 'Solenoid valve control']
   },
   {
-    id: 'customised',
-    slug: 'customised-roll-forming-machine',
+    id: 'control-panel',
+    slug: 'plc-control-panel-system',
     category: 'roll-forming',
-    name: 'Customised Roll Forming Machine',
-    tagline: 'Bespoke machines engineered to your exact profile',
-    badge: 'Custom Order',
-    image: PRODUCT_IMAGES['customised'],
-    description: 'Fully customised roll forming machines for unique and non-standard profile requirements. Provide your cross-section drawing — our engineers design, build, and test the perfect machine.',
-    specs: [
-      { label: 'Profile', value: 'Any custom section' },
-      { label: 'Automatic Grade', value: 'Auto / Semi-Auto' },
-    ],
-    features: ['Custom profile engineering', 'Full turnkey solution', 'CAD/CAM design']
-  },
-
-  // ─── MCB CHANNEL ──────────────────────────────────────────
-  {
-    id: 'mcb-channel-machine',
-    slug: 'mcb-channel-roll-forming-machine',
-    category: 'mcb-channel',
-    name: 'MCB Channel Roll Forming Machine',
-    tagline: 'Precision MCB mounting channels for electrical panels',
+    name: 'Control Panel',
+    tagline: 'PLC-controlled precision length management system',
     badge: '',
-    image: PRODUCT_IMAGES['mcb-channel-machine'],
-    description: 'Manufactures standardised MCB mounting channels used in electrical distribution boards and control panels. High-speed operation ensures compatibility with all major MCB brands.',
+    image: PRODUCT_IMAGES['control-panel'],
+    images: [PRODUCT_IMAGES['control-panel']],
+    description: 'Advanced PLC control panel with high-accuracy length control in both MM and inch. Features auto single piece system, auto braking, and automatic machine length counting from front to back shear.',
     specs: [
-      { label: 'Material', value: 'MS / GI Sheet' },
-      { label: 'Channel Width', value: '35 mm (DIN standard)' },
+      { label: 'Control Type', value: 'PLC Control Mechanism' },
+      { label: 'Length Unit', value: 'MM & Inch' },
+      { label: 'Operation Mode', value: 'Auto Single Piece System' },
+      { label: 'Braking', value: 'Auto Braking System' },
+      { label: 'Length Counting', value: 'Front Shear to Back Shear' },
+      { label: 'DC Supply', value: '24VDC, SMPS (AC-DC)' },
     ],
-    features: ['DIN 35 standard profile', 'High-speed production', 'Servo auto cutting']
+    features: ['PLC high-accuracy length control', 'MM & inch measurement', 'Auto single piece system', 'Auto braking system', 'Auto machine length counting', '24VDC SMPS power supply']
   },
   {
-    id: 'din-rail',
-    slug: 'din-rail-channel-machines',
-    category: 'mcb-channel',
-    name: 'DIN Rail Channel Machine',
-    tagline: 'Standard DIN rail channels for panel board manufacturing',
+    id: 'hydraulic-power-pack',
+    slug: 'hydraulic-power-pack-system',
+    category: 'roll-forming',
+    name: 'Hydraulic Power Pack System',
+    tagline: 'Multi-function hydraulic power for complete production line',
     badge: '',
-    image: PRODUCT_IMAGES['din-rail'],
-    description: 'Produces both DIN 35 and DIN 15 standard rail channels used in electrical panel construction. Manufactured with high-precision hardened rollers meeting international standards.',
+    image: hydraulicPowerPackImg,
+    images: [hydraulicPowerPackImg],
+    description: 'Complete hydraulic power pack system powering 4 punches, 2 shearing units and 1 de-coiler. Features 150-litre tank capacity with solenoid direction control valves and 7.5 HP motor.',
     specs: [
-      { label: 'Profile', value: 'DIN 35 / DIN 15' },
-      { label: 'Control', value: 'PLC Automatic' },
+      { label: 'Working', value: '4 Punches, 2 Shearing, 1 De-coiler' },
+      { label: 'Tank Capacity', value: '150 Litres' },
+      { label: 'Direction Control', value: 'Solenoid Valves' },
+      { label: 'Motor', value: '7.5 HP' },
     ],
-    features: ['DIN 35 and DIN 15 profiles', 'Stainless steel option', 'Auto cut-to-length']
+    features: ['Powers complete production line', '150-litre hydraulic tank', 'Solenoid direction control valves', '7.5 HP heavy-duty motor', 'Supports 4 punches + 2 shearing + de-coiler']
   },
-
-  // ─── SPECIAL MACHINES ──────────────────────────────────────────
-  {
-    id: 'ladder-strip',
-    slug: 'ladder-strip-roll-forming-machine',
-    category: 'special',
-    name: 'Ladder Strip Roll Forming Machine',
-    tagline: 'Cable tray ladder strips for electrical cable management',
-    badge: '',
-    image: PRODUCT_IMAGES['ladder-strip'],
-    description: 'Produces perforated and solid ladder strip sections used in cable tray systems for electrical cable management in industrial facilities.',
-    specs: [
-      { label: 'Material', value: 'MS / GI Sheet' },
-      { label: 'Control', value: 'PLC Automatic' },
-    ],
-    features: ['Perforated & solid variants', 'Multiple width options', 'Servo-driven cut']
-  },
-  {
-    id: 'metal-door-frame',
-    slug: 'metal-door-frame-roll-forming-machine',
-    category: 'special',
-    name: 'Metal Door Frame Roll Forming Machine',
-    tagline: 'Rolled steel door frames for commercial construction',
-    badge: '',
-    image: PRODUCT_IMAGES['metal-door-frame'],
-    description: 'Manufactures steel door frames used in commercial and residential construction. Produces consistent profiles with precise corner angles and smooth surface finish.',
-    specs: [
-      { label: 'Material', value: 'MS Sheet' },
-      { label: 'Automatic Grade', value: 'Automatic' },
-    ],
-    features: ['Consistent 90° corner angles', 'Smooth surface profile', 'Custom frame size tooling']
-  },
-  {
-    id: 'roofing-sheet',
-    slug: 'automatic-roofing-sheet-machine',
-    category: 'special',
-    name: 'Automatic Roofing Sheet Machine',
-    tagline: 'High-speed trapezoidal and corrugated roofing sheets',
-    badge: 'High Speed',
-    image: PRODUCT_IMAGES['roofing-sheet'],
-    description: 'Produces trapezoidal and corrugated roofing sheets at high speed for residential and industrial roofing applications. Heavy-duty construction with automatic servo cutting.',
-    specs: [
-      { label: 'Speed', value: '20–25 m/min' },
-      { label: 'Control', value: 'PLC + Touch Screen' },
-    ],
-    features: ['Multiple profile options', 'High-speed servo cutting', 'Touch screen HMI']
-  },
-  {
-    id: 'elevator-header',
-    slug: 'cold-rollformed-metal-header-track-for-elevator',
-    category: 'special',
-    name: 'Elevator Door Header Track Machine',
-    tagline: 'Cold roll-formed header tracks for elevator cabin doors',
-    badge: '',
-    image: PRODUCT_IMAGES['elevator-header'],
-    description: 'Cold roll-formed metal header tracks used in elevator door openings. Produced with tight tolerances to ensure smooth door sliding and long service life.',
-    specs: [
-      { label: 'Material', value: 'MS / SS 304' },
-      { label: 'Control', value: 'PLC Automatic' },
-    ],
-    features: ['Tight dimensional tolerances', 'Stainless steel option', 'Custom profile engineering']
-  },
-  {
-    id: 'roofing-crimping',
-    slug: 'roofing-sheets-crimping-machine',
-    category: 'special',
-    name: 'Roofing Sheets Crimping Machine',
-    tagline: 'Crimp and curve roofing sheets with precision',
-    badge: '',
-    image: PRODUCT_IMAGES['roofing-crimping'],
-    description: 'Used to crimp or curve metal roofing sheets to create arched or curved roof profiles. Widely used for curved industrial roofing, canopies, and architectural roof elements.',
-    specs: [
-      { label: 'Sheet Width', value: 'Up to 1000 mm' },
-      { label: 'Radius', value: 'Adjustable' },
-    ],
-    features: ['Adjustable crimp radius', 'Works with pre-coated sheets', 'Low power consumption']
-  },
+  
   {
     id: 'remote-controller',
     slug: 'motor-remote-controller',
@@ -342,6 +305,7 @@ export const PRODUCTS = [
     tagline: 'Wireless access for your Rolling Shutter Gear Motors',
     badge: '',
     image: PRODUCT_IMAGES['remote-controller'],
+    images: [PRODUCT_IMAGES['remote-controller']],
     description: 'Convenient wireless remote control system compatible with our single and three-phase motors. Provides secure and long-range operational control.',
     specs: [
       { label: 'Type', value: 'Wireless Remote' },
@@ -357,6 +321,7 @@ export const PRODUCTS = [
     tagline: 'Next-gen smart IoT internet control',
     badge: 'Smart IoT',
     image: PRODUCT_IMAGES['keypad-controller'],
+    images: [PRODUCT_IMAGES['keypad-controller']],
     externalLink: 'https://www.ezrun.in/product/shutter',
     description: 'EzRun Smart Keypad Controller. Integrate your rolling shutter into a modern smart building ecosystem. Control directly via mobile app from anywhere in the world.',
     specs: [
@@ -373,6 +338,7 @@ export const PRODUCTS = [
     tagline: 'Secure physical access control',
     badge: '',
     image: PRODUCT_IMAGES['key-lock-controller'],
+    images: [PRODUCT_IMAGES['key-lock-controller']],
     description: 'High-security physical key lock selector for manual operation override. Ensures only authorized personnel can open or close the automated shutter.',
     specs: [
       { label: 'Type', value: 'Physical Key Access' },
@@ -388,6 +354,7 @@ export const PRODUCTS = [
     tagline: 'Wall mounted control station',
     badge: '',
     image: PRODUCT_IMAGES['push-buttons'],
+    images: [PRODUCT_IMAGES['push-buttons']],
     description: 'Standard Up/Down/Stop push button station for hardwired manual control of rolling Rolling Shutter Gear Motors. Highly durable industrial enclosure.',
     specs: [
       { label: 'Type', value: 'Wired Control' },
