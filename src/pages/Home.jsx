@@ -34,6 +34,10 @@ export default function Home() {
               <span className="mx-10 w-2 h-2 rounded-full bg-blue-500/20" />
               <span className="text-slate-800">Special Purpose Machines</span>
               <span className="mx-10 w-2 h-2 rounded-full bg-blue-500/20" />
+              <span className="text-slate-800">Custom Steel Sections</span>
+              <span className="mx-10 w-2 h-2 rounded-full bg-blue-500/20" />
+              <span className="text-slate-800">Solar Structure</span>
+              <span className="mx-10 w-2 h-2 rounded-full bg-blue-500/20" />
             </div>
           ))}
         </div>

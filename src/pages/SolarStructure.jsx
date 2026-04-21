@@ -1,12 +1,15 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Phone, MessageCircle, Mail, MapPin, Check, ArrowRight, Factory, Users, Zap, Shield, Clock, Ruler, Target, Box, CreditCard, Scissors, Truck, ClipboardCheck, Cog, Layers } from 'lucide-react'
 import solarHero from '../assets/solar_hero.png'
+import IndiaNetworkMap from '../components/IndiaNetworkMap'
 
 export default function SolarStructure() {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+  const [activeCard, setActiveCard] = useState(null)
 
   const detailedProducts = [
     {
@@ -163,7 +166,7 @@ export default function SolarStructure() {
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-slate-200/40 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/3 pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-24">
+          <div className="text-center mb-8 md:mb-24">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white text-blue-600 text-[10px] font-black tracking-[0.2em] uppercase mb-4 rounded-full border border-blue-100 shadow-sm">
               <span className="w-2 h-2 bg-blue-600 block rounded-full" />
               Precision Engineering
@@ -176,10 +179,38 @@ export default function SolarStructure() {
           
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
             {detailedProducts.map((product, index) => (
-              <div key={index} className="flex flex-col bg-white rounded-3xl shadow-sm hover:shadow-xl border border-slate-100 overflow-hidden relative group transition-all duration-300">
-                
+              <div
+                key={index}
+                className="flex flex-col bg-white rounded-xl md:rounded-3xl shadow-sm hover:shadow-xl border border-slate-100 overflow-hidden relative group transition-all duration-300 cursor-pointer md:cursor-default"
+                onClick={() => setActiveCard(activeCard === index ? null : index)}
+              >
+                {/* Mobile tap-to-reveal overlay */}
+                <div
+                  className={`md:hidden absolute inset-0 z-30 transition-opacity duration-300 ${
+                    activeCard === index ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                  }`}
+                  style={{ background: 'rgba(0,0,0,0.78)' }}
+                >
+                  <button
+                    className="absolute top-2.5 right-2.5 w-6 h-6 bg-white/20 rounded-full flex items-center justify-center text-white text-[10px] font-bold z-10"
+                    onClick={(e) => { e.stopPropagation(); setActiveCard(null); }}
+                  >✕</button>
+                  <div className="absolute inset-0 flex flex-col justify-end p-3 overflow-y-auto">
+                    <h4 className="text-white font-black text-sm mb-1.5 leading-tight">{product.title}</h4>
+                    {/* <p className="text-white/75 text-[10px] font-medium mb-3 leading-relaxed">{product.desc}</p> */}
+                    <div className="flex flex-col gap-1 border-t border-white/20 pt-2">
+                      {product.specs.map((spec, i) => (
+                        <div key={i} className="flex flex-col pb-1 border-b border-white/10 last:border-0 last:pb-0">
+                          <p className="text-[7px] font-black text-white/50 uppercase tracking-widest">{spec.label}</p>
+                          <p className="text-[10px] font-bold text-white">{spec.value}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
                 {/* Visuals Feature */}
-                <div className="w-full flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 border-b border-slate-100/50 relative h-48 sm:h-56 overflow-hidden">
+                <div className="w-full flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 border-b border-slate-100/50 relative h-40 sm:h-52 md:h-60 overflow-hidden">
                   <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03] pointer-events-none" />
                   <div className="absolute inset-0 bg-gradient-to-tr from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   
@@ -190,14 +221,14 @@ export default function SolarStructure() {
                 </div>
 
                 {/* Content Area */}
-                <div className="flex flex-col flex-1 p-5 sm:p-6 relative bg-white">
+                <div className="flex flex-col flex-1 p-2 sm:p-4 md:p-6 relative bg-white">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50/50 rounded-full blur-2xl pointer-events-none" />
                   
                   <div className="relative z-10 flex flex-col h-full">
-                    <h4 className="text-xl md:text-2xl font-black text-slate-900 mb-2 tracking-tight">{product.title}</h4>
+                    <h4 className="text-[11px] sm:text-lg md:text-2xl font-black text-slate-900 mb-1 md:mb-2 tracking-tight leading-tight">{product.title}</h4>
                     <p className="hidden md:block text-[13px] text-slate-500 font-medium mb-5 leading-relaxed flex-1">{product.desc}</p>
                     
-                    <div className="flex flex-col gap-2 pt-4 border-t border-slate-100 mt-auto">
+                    <div className="hidden md:flex flex-col gap-2 pt-4 border-t border-slate-100 mt-auto">
                       {product.specs.map((spec, i) => (
                         <div key={i} className="flex justify-between items-end border-b border-slate-50 last:border-0 pb-1.5 last:pb-0">
                           <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{spec.label}</p>
@@ -217,7 +248,7 @@ export default function SolarStructure() {
       <section className="py-20 md:py-32 px-6 bg-slate-50 relative overflow-hidden">
         <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-100/50 rounded-full blur-[100px] pointer-events-none" />
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-20 animate-fade-in-up">
+          <div className="text-center mb-8 md:mb-20 animate-fade-in-up">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white text-blue-600 text-[10px] font-black tracking-[0.2em] uppercase mb-4 rounded-full shadow-sm border border-blue-50">
               <span className="w-2 h-2 bg-blue-600 block rounded-full" />
               Target Markets
@@ -225,23 +256,52 @@ export default function SolarStructure() {
             <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Industries We Serve</h3>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
             {[
               { icon: Factory, title: 'Solar Structure Manufacturers', desc: 'Primary focus on solar mounting system fabricators with exact precision.' },
               { icon: Users, title: 'Solar EPC Companies', desc: 'Engineering, procurement, and construction partners for large solar farms.' },
               { icon: Zap, title: 'Fabricators', desc: 'Custom steel fabrication and ready-to-assemble units.' },
               { icon: Shield, title: 'Infrastructure', desc: 'Large-scale industrial, railway, and telecom infrastructure projects.' }
             ].map((industry, index) => (
-              <div key={index} className="group relative bg-white rounded-[2rem] p-8 border border-slate-100 hover:border-blue-500/30 transition-all duration-500 shadow-sm hover:shadow-[0_20px_40px_-10px_rgba(37,99,235,0.15)] hover:-translate-y-2 overflow-hidden">
+              <div key={index} className="group relative bg-white rounded-xl md:rounded-[2rem] p-4 md:p-8 border border-slate-100 hover:border-blue-500/30 transition-all duration-500 shadow-sm hover:shadow-[0_20px_40px_-10px_rgba(37,99,235,0.15)] hover:-translate-y-1 overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-slate-100 group-hover:bg-blue-600 transition-colors duration-500" />
-                <div className="w-20 h-20 bg-slate-50 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-blue-600 transition-all duration-500 relative">
-                  <div className="absolute inset-0 bg-blue-400/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <industry.icon className="w-10 h-10 text-slate-400 group-hover:text-white transition-colors duration-500 relative z-10" strokeWidth={1.5} />
+                <div className="w-10 h-10 md:w-20 md:h-20 bg-slate-50 rounded-xl md:rounded-2xl flex items-center justify-center mb-3 md:mb-8 group-hover:scale-110 group-hover:bg-blue-600 transition-all duration-500 relative">
+                  <div className="absolute inset-0 bg-blue-400/20 rounded-xl md:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <industry.icon className="w-5 h-5 md:w-10 md:h-10 text-slate-400 group-hover:text-white transition-colors duration-500 relative z-10" strokeWidth={1.5} />
                 </div>
-                <h4 className="text-xl font-black text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">{industry.title}</h4>
-                <p className="text-slate-500 text-sm font-medium leading-relaxed">{industry.desc}</p>
+                <h4 className="text-xs md:text-xl font-black text-slate-900 mb-1 md:mb-4 group-hover:text-blue-600 transition-colors leading-snug">{industry.title}</h4>
+                <p className="text-slate-500 text-[10px] md:text-sm font-medium leading-relaxed">{industry.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+            {/* NATIONAL FOOTPRINT */}
+      <section className="py-20 md:py-32 px-6 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
+            <div>
+              <h2 className="text-blue-600 text-[11px] font-black tracking-[0.2em] uppercase mb-4">Nationwide Presence</h2>
+              <p className="text-3xl md:text-5xl font-black text-slate-900 mb-8 leading-tight">Delivering Solar-Grade Steel Sections Across India</p>
+              <div className="space-y-5 text-slate-600 font-medium text-base md:text-lg leading-relaxed mb-10">
+                <p>From Gujarat's manufacturing belt to solar farms in Rajasthan, Tamil Nadu, and beyond — our precision roll-formed sections power solar projects in 20+ states.</p>
+                <p>Each point on the map represents a delivered project where our C Channels, Z Purlins, Hat Sections and Solar Rails are holding up real solar capacity.</p>
+              </div>
+              <div className="grid grid-cols-2 gap-8 border-t border-slate-100 pt-10">
+                {/* <div>
+                  <p className="text-2xl font-black text-slate-900 leading-none">500+</p>
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">Solar Projects Served</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-black text-slate-900 leading-none">Pan-India</p>
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">Fast Logistics</p>
+                </div> */}
+              </div>
+            </div>
+            <div className="relative min-w-0 overflow-hidden rounded-2xl">
+              <div className="absolute inset-0 bg-blue-50/20 rounded-full blur-3xl -z-10" />
+              <IndiaNetworkMap />
+            </div>
           </div>
         </div>
       </section>
@@ -253,7 +313,7 @@ export default function SolarStructure() {
         <div className="absolute -bottom-[300px] -left-[300px] w-[800px] h-[800px] bg-blue-900/40 rounded-full blur-[120px] pointer-events-none" />
         
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-20">
+          <div className="text-center mb-8 md:mb-20">
             <h2 className="text-blue-400 text-[11px] font-black tracking-[0.2em] uppercase mb-4">Competitive Edge</h2>
             <h3 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Why Choose Us</h3>
             <p className="text-slate-400 text-lg md:text-xl font-medium max-w-2xl mx-auto">
@@ -261,7 +321,7 @@ export default function SolarStructure() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
             {[
               { icon: Clock, title: 'Fast Delivery', desc: 'Quick turnaround time with efficient production scheduling and nationwide logistics.' },
               { icon: Ruler, title: 'Custom Sections', desc: 'Manufacture profiles as per your specific CAD drawings with extreme precision.' },
@@ -270,15 +330,15 @@ export default function SolarStructure() {
               { icon: CreditCard, title: 'Cost Effective', desc: 'Highly competitive pricing structure without compromising on quality or timelines.' },
               { icon: Scissors, title: 'Precision Punching', desc: 'In-line automated CNC punching and notching for ready-to-assemble parts.' }
             ].map((feature, index) => (
-              <div key={index} className="group p-8 bg-slate-800/40 backdrop-blur-md rounded-3xl border border-slate-700/50 hover:border-blue-500/50 transition-all duration-500 hover:bg-slate-800/80 hover:shadow-[0_10px_30px_rgba(37,99,235,0.1)] transform hover:-translate-y-1">
-                <div className="flex items-start gap-5">
-                  <div className="w-16 h-16 rounded-2xl bg-slate-900/50 border border-slate-700 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 group-hover:border-blue-500 transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] relative overflow-hidden">
+              <div key={index} className="group p-3 md:p-8 bg-slate-800/40 backdrop-blur-md rounded-2xl md:rounded-3xl border border-slate-700/50 hover:border-blue-500/50 transition-all duration-500 hover:bg-slate-800/80 hover:shadow-[0_10px_30px_rgba(37,99,235,0.1)] transform hover:-translate-y-1">
+                <div className="flex flex-col md:flex-row md:items-start gap-2 md:gap-5">
+                  <div className="w-9 h-9 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-slate-900/50 border border-slate-700 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 group-hover:border-blue-500 transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] relative overflow-hidden">
                     <div className="absolute inset-0 bg-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <feature.icon className="w-8 h-8 text-blue-400 group-hover:text-white transition-colors relative z-10" strokeWidth={1.5} />
+                    <feature.icon className="w-5 h-5 md:w-8 md:h-8 text-blue-400 group-hover:text-white transition-colors relative z-10" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">{feature.title}</h4>
-                    <p className="text-slate-400 text-sm leading-relaxed">{feature.desc}</p>
+                    <h4 className="text-xs md:text-xl font-bold text-white mb-1 md:mb-3 group-hover:text-blue-400 transition-colors leading-snug">{feature.title}</h4>
+                    <p className="text-slate-400 text-[10px] md:text-sm leading-relaxed">{feature.desc}</p>
                   </div>
                 </div>
               </div>
@@ -293,7 +353,7 @@ export default function SolarStructure() {
       <section className="py-20 md:py-32 px-6 bg-[#f8fafc] border-y border-slate-100 relative overflow-hidden">
         <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[600px] bg-gradient-to-r from-transparent via-blue-50 to-transparent opacity-50 blur-3xl pointer-events-none" />
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-24">
+          <div className="text-center mb-8 md:mb-24">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white text-blue-600 text-[10px] font-black tracking-[0.2em] uppercase mb-4 rounded-full shadow-sm border border-blue-100">
               <span className="w-2 h-2 bg-blue-600 block rounded-full" />
               A to Z Work Flow
@@ -308,7 +368,7 @@ export default function SolarStructure() {
             {/* Connecting Line Desktop */}
             <div className="hidden lg:block absolute top-[60px] left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-blue-100 via-blue-300 to-blue-100" />
             
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 lg:gap-6 relative z-10">
+            <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-8 lg:gap-6 relative z-10">
               {[
                 { icon: Layers, step: '01', title: 'Raw Material', desc: 'High-grade steel coil verification & slitting process.' },
                 { icon: Cog, step: '02', title: 'Roll Forming', desc: 'Precision continuous 3D contour shaping machinery.' },
@@ -317,14 +377,14 @@ export default function SolarStructure() {
                 { icon: Truck, step: '05', title: 'Dispatch', desc: 'Secure packaging and fast pan-India logistics.' }
               ].map((process, index) => (
                 <div key={index} className="relative group text-center">
-                  <div className="w-32 h-32 mx-auto bg-white rounded-full border-[8px] border-[#f8fafc] shadow-[0_10px_30px_rgba(0,0,0,0.08)] flex items-center justify-center mb-8 relative group-hover:scale-110 transition-transform duration-500 group-hover:border-blue-50 group-hover:shadow-[0_20px_40px_rgba(37,99,235,0.15)] z-10">
-                    <process.icon className="w-12 h-12 text-slate-400 group-hover:text-blue-600 transition-colors duration-500" strokeWidth={1.2} />
-                    <div className="absolute -top-2 -right-2 w-10 h-10 bg-blue-600 text-white font-black rounded-full flex items-center justify-center border-4 border-white shadow-lg">
+                  <div className="w-14 h-14 md:w-32 md:h-32 mx-auto bg-white rounded-full border-4 md:border-[8px] border-[#f8fafc] shadow-[0_10px_30px_rgba(0,0,0,0.08)] flex items-center justify-center mb-2 md:mb-8 relative group-hover:scale-110 transition-transform duration-500 group-hover:border-blue-50 group-hover:shadow-[0_20px_40px_rgba(37,99,235,0.15)] z-10">
+                    <process.icon className="w-6 h-6 md:w-12 md:h-12 text-slate-400 group-hover:text-blue-600 transition-colors duration-500" strokeWidth={1.2} />
+                    <div className="absolute -top-1 -right-1 md:-top-2 md:-right-2 w-5 h-5 md:w-10 md:h-10 bg-blue-600 text-white font-black rounded-full flex items-center justify-center border-2 md:border-4 border-white shadow-lg text-[8px] md:text-xs">
                       {process.step}
                     </div>
                   </div>
-                  <h4 className="text-xl font-black text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">{process.title}</h4>
-                  <p className="text-slate-500 text-sm font-medium leading-relaxed max-w-[200px] mx-auto">{process.desc}</p>
+                  <h4 className="text-[10px] md:text-xl font-black text-slate-900 mb-1 md:mb-3 group-hover:text-blue-600 transition-colors leading-tight">{process.title}</h4>
+                  <p className="hidden md:block text-slate-500 text-sm font-medium leading-relaxed max-w-[200px] mx-auto">{process.desc}</p>
                 </div>
               ))}
             </div>
@@ -335,22 +395,23 @@ export default function SolarStructure() {
       {/* TRUST / CLIENT SECTION */}
       <section className="py-20 md:py-32 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
-            <div className="pt-8 md:pt-0 group px-6">
-              <div className="text-6xl md:text-7xl font-black text-slate-900 tracking-tighter mb-4 group-hover:text-blue-600 group-hover:scale-110 transition-all duration-500 transform-gpu">20+</div>
-              <p className="text-slate-500 font-black uppercase tracking-[0.2em] text-sm">States Served</p>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12 text-center">
+            <div className="group px-3 md:px-6">
+              <div className="text-4xl md:text-7xl font-black text-slate-900 tracking-tighter mb-2 md:mb-4 group-hover:text-blue-600 group-hover:scale-110 transition-all duration-500 transform-gpu">20+</div>
+              <p className="text-slate-500 font-black uppercase tracking-[0.2em] text-[10px] md:text-sm">States Served</p>
             </div>
-            <div className="pt-8 md:pt-0 group px-6">
-              <div className="text-6xl md:text-7xl font-black text-slate-900 tracking-tighter mb-4 group-hover:text-blue-600 group-hover:scale-110 transition-all duration-500 transform-gpu">500+</div>
-              <p className="text-slate-500 font-black uppercase tracking-[0.2em] text-sm">Solar Projects Powered</p>
+            <div className="group px-3 md:px-6">
+              <div className="text-4xl md:text-7xl font-black text-slate-900 tracking-tighter mb-2 md:mb-4 group-hover:text-blue-600 group-hover:scale-110 transition-all duration-500 transform-gpu">500+</div>
+              <p className="text-slate-500 font-black uppercase tracking-[0.2em] text-[10px] md:text-sm">Solar Projects Powered</p>
             </div>
-            <div className="pt-8 md:pt-0 group px-6">
-              <div className="text-6xl md:text-7xl font-black text-slate-900 tracking-tighter mb-4 group-hover:text-blue-600 group-hover:scale-110 transition-all duration-500 transform-gpu">10+</div>
-              <p className="text-slate-500 font-black uppercase tracking-[0.2em] text-sm">Years of Engineering</p>
+            <div className="col-span-2 md:col-span-1 group px-3 md:px-6">
+              <div className="text-4xl md:text-7xl font-black text-slate-900 tracking-tighter mb-2 md:mb-4 group-hover:text-blue-600 group-hover:scale-110 transition-all duration-500 transform-gpu">10+</div>
+              <p className="text-slate-500 font-black uppercase tracking-[0.2em] text-[10px] md:text-sm">Years of Engineering</p>
             </div>
           </div>
         </div>
       </section>
+
 
       {/* STRONG CALL TO ACTION */}
       <section className="py-24 md:py-32 px-6 bg-blue-600 relative overflow-hidden">

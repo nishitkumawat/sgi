@@ -2,6 +2,7 @@ import machineVector from '../assets/machine_vector.png'
 
 // Import new Motor & Accessory Images
 import shutterMotorImg from '../assets/shutter_motor.png'
+import shutterMotor1Img from '../assets/shutter_motor1.jpeg'
 import remoteControllerImg from '../assets/remote_controller.jpeg'
 import keySelectorImg from '../assets/key_selector.jpg'
 import pushButtonImg from '../assets/push_button.png'
@@ -44,6 +45,8 @@ export const PRODUCT_IMAGES = {
   // New Motors & Accessories
   'single-phase-motor':      shutterMotorImg,
   'three-phase-motor':       shutterMotorImg,
+  'single-phase-motor1':     shutterMotor1Img,
+  'three-phase-motor1':      shutterMotor1Img,
   'remote-controller':       remoteControllerImg,
   'key-lock-controller':     keySelectorImg,
   'push-buttons':            pushButtonImg,
@@ -245,7 +248,7 @@ export const PRODUCTS = [
     tagline: 'High-efficiency motor for rolling shutters',
     badge: 'Popular',
     image: PRODUCT_IMAGES['single-phase-motor'],
-    images: [PRODUCT_IMAGES['single-phase-motor']],
+    images: [PRODUCT_IMAGES['single-phase-motor'],PRODUCT_IMAGES['single-phase-motor1']],
     description: 'Reliable and efficient single-phase rolling Rolling Shutter Gear Motor. Perfect for standard commercial and residential rolling shutters. Built with robust materials for extended lifespan.',
     specs: [
       { label: 'Capacity', value: '750 kg.' },
@@ -274,7 +277,7 @@ export const PRODUCTS = [
     tagline: 'Heavy-duty industrial motor',
     badge: 'Heavy Duty',
     image: PRODUCT_IMAGES['three-phase-motor'],
-    images: [PRODUCT_IMAGES['three-phase-motor'],PRODUCT_IMAGES['remote-controller']],
+    images: [PRODUCT_IMAGES['three-phase-motor'],PRODUCT_IMAGES['three-phase-motor1']],
     description: 'Powerful three-phase motor designed for large industrial and heavy commercial rolling shutters. Delivers superior torque and continuous operational capacity.',
     specs: [
       { label: 'Capacity', value: '1500 kg.' },

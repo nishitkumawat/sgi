@@ -280,7 +280,7 @@ export default function IndiaNetworkMap() {
             transition={{ delay: 0.2 }}
             className="bg-blue-600 p-3 md:p-5 border border-blue-500 shadow-2xl rounded-lg md:rounded-xl"
          >
-            <p className="text-3xl md:text-5xl font-black text-white leading-none tracking-tighter">1000+</p>
+            <p className="text-3xl md:text-5xl font-black text-white leading-none tracking-tighter">100+</p>
             <p className="text-[11px] font-black text-blue-100 uppercase tracking-[0.2em] mt-2">Installations</p>
          </motion.div>
       </div>
