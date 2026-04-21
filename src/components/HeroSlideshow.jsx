@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import rollFormingBg from '../assets/roll-forming-machines.jpg';
+import rollFormingBg from '../assets/machine.jpeg';
 import solarStructureImg from '../assets/solar-strucutre.jpg';
 import motorImg from '../assets/motor.jpeg';
 import { ChevronLeft, ChevronRight } from 'lucide-react';

@@ -1,16 +1,22 @@
-import { useEffect } from 'react'
+import { useEffect,useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getProductsByCategory } from '../data/products'
+import { Phone, MessageCircle, Mail, MapPin, Check, ArrowRight, Factory, Users, Zap, Shield, Clock, Ruler, Target, Box, CreditCard, Scissors, Truck, ClipboardCheck, Cog, Layers, ChevronLeft, ChevronRight } from 'lucide-react'
 import ProductCard from '../components/ProductCard'
 import HeroSlideshow from '../components/HeroSlideshow'
 import IndiaNetworkMap from '../components/IndiaNetworkMap'
 import logo from '../assets/SGI logo.png'
 import indiamartLogo from '../assets/indiamart.png'
 import tradeindiaLogo from '../assets/tradeindia.png'
+import factory1 from '../assets/factory.jpeg'
+import factory2 from '../assets/factory2.jpeg'
+import factory3 from '../assets/factory3.jpeg'
 
 export default function Home() {
   const topProducts = getProductsByCategory('roll-forming').slice(0, 4)
   const motors = getProductsByCategory('shutter-motors').slice(0, 4)
+  const [currentFactorySlide, setCurrentFactorySlide] = useState(0)
+  const [currentOutcomeSlide, setCurrentOutcomeSlide] = useState(0)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -118,7 +124,118 @@ export default function Home() {
             </div>
         </div>
       </section>
-
+      {/* FACTORY SHOWCASE */}
+      <section className="py-20 md:py-24 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-blue-600 text-[11px] font-black tracking-[0.2em] uppercase mb-4">Our Facilities</h2>
+            <h3 className="text-3xl md:text-4xl font-black text-slate-900 mb-6">Manufacturing Excellence</h3>
+            <p className="text-slate-600 text-lg font-medium max-w-2xl mx-auto">
+              State-of-the-art production facility equipped with advanced roll forming technology and quality control systems
+            </p>
+          </div>
+          
+          <div className="md:hidden relative h-80 overflow-hidden rounded-2xl bg-slate-900">
+            {/* Mobile Slide Show */}
+            <div className="relative h-full">
+              {[
+                { img: factory1, title: 'Production Line 1', desc: 'C Channel & Z Purlin Manufacturing' },
+                { img: factory2, title: 'Production Line 2', desc: 'Custom Profile & Hat Section Production' },
+                { img: factory3, title: 'Quality Control', desc: 'Precision Testing & Inspection' }
+              ].map((slide, index) => (
+                <div 
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-500 ${
+                    currentFactorySlide === index ? 'opacity-100' : 'opacity-0'
+                  }`}
+                >
+                  <img 
+                    src={slide.img} 
+                    alt={slide.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <h4 className="text-sm font-black mb-1">{slide.title}</h4>
+                    <p className="text-xs font-medium opacity-90">{slide.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            {/* Navigation Arrows */}
+            <button
+              onClick={() => setCurrentFactorySlide(prev => Math.max(0, prev - 1))}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-slate-800 hover:bg-white hover:text-slate-900 transition-all duration-300 z-20"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => setCurrentFactorySlide(prev => (prev + 1) % 3)}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-slate-800 hover:bg-white hover:text-slate-900 transition-all duration-300 z-20"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+            
+            {/* Slide Indicators */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+              {[factory1, factory2, factory3].map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentFactorySlide(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    currentFactorySlide === index 
+                      ? 'bg-white' 
+                      : 'bg-white/50 hover:bg-white/70'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+          
+          {/* Desktop Grid */}
+          <div className="hidden md:grid md:grid-cols-3 gap-6">
+            <div className="relative overflow-hidden rounded-2xl shadow-lg group">
+              <img 
+                src={factory1} 
+                alt="Production Line 1" 
+                className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <h4 className="text-lg font-black mb-2">Production Line 1</h4>
+                <p className="text-sm font-medium opacity-90">C Channel & Z Purlin Manufacturing</p>
+              </div>
+            </div>
+            
+            <div className="relative overflow-hidden rounded-2xl shadow-lg group">
+              <img 
+                src={factory2} 
+                alt="Production Line 2" 
+                className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <h4 className="text-lg font-black mb-2">Production Line 2</h4>
+                <p className="text-sm font-medium opacity-90">Custom Profile & Hat Section Production</p>
+              </div>
+            </div>
+            
+            <div className="relative overflow-hidden rounded-2xl shadow-lg group">
+              <img 
+                src={factory3} 
+                alt="Quality Control" 
+                className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <h4 className="text-lg font-black mb-2">Quality Control</h4>
+                <p className="text-sm font-medium opacity-90">Precision Testing & Inspection</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* ─── NATIONAL FOOTPRINT ───────────────────────────────────── */}
       <section className="py-24 px-6 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto">

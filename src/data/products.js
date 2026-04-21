@@ -21,7 +21,11 @@ import hatSection3Img from '../assets/hat_4.png'
 import hatSection4Img from '../assets/hat_5.png'
 import cuttingSystemImg from '../assets/cutting_system.png'
 import controlPanelImg from '../assets/control_panel.png'
+import controlPanel2Img from '../assets/plc2.jpeg'
 import hydraulicPowerPackImg from '../assets/hydraulic-power-pack.png'
+import machine1Img from '../assets/machine.jpeg'
+import machine2Img from '../assets/machine2.jpeg'
+
 
 const BASE = 'https://5.imimg.com/data5'
 
@@ -63,8 +67,11 @@ export const PRODUCT_IMAGES = {
   'hat-section-2':           hatSection2Img,
   'hat-section-3':           hatSection3Img,
   'hat-section-4':           hatSection4Img,
+  'machine1':                machine1Img,
+  'machine2':                machine2Img,
   'cutting-system':          cuttingSystemImg,
   'control-panel':           controlPanelImg,
+  'control-panel2':           controlPanel2Img,
   'hydraulic-power-pack':    hydraulicPowerPackImg,
 }
 
@@ -86,8 +93,8 @@ export const PRODUCTS = [
     name: 'C Purlin Roll Forming Machine',
     tagline: 'Auto-adjustable C-purlins for steel frame construction',
     badge: 'Popular',
-    image: PRODUCT_IMAGES['cpurlin-1'],
-    images: [PRODUCT_IMAGES['cpurlin-1'], PRODUCT_IMAGES['cpurlin-2'], PRODUCT_IMAGES['cpurlin-3']],
+    image: PRODUCT_IMAGES['machine1'],
+    images: [PRODUCT_IMAGES['cpurlin-1'], PRODUCT_IMAGES['cpurlin-2'],PRODUCT_IMAGES['machine1'], PRODUCT_IMAGES['cpurlin-3']],
     description: 'High-performance C Purlin Roll Forming Machine with auto size adjustment for PEB buildings, industrial sheds and solar structures. Features 19-station forming, servo motor drive, and PLC-controlled automatic cutting.',
     specs: [
       { label: 'Suitable Material', value: 'M.S., G.P., H.R., Galvanium' },
@@ -116,7 +123,7 @@ export const PRODUCTS = [
     tagline: 'Solar mounting hat profiles with auto PLC cutting',
     badge: 'Popular',
     image: PRODUCT_IMAGES['hat-section-2'],
-    images: [PRODUCT_IMAGES['hat-section-1'], PRODUCT_IMAGES['hat-section-2'], PRODUCT_IMAGES['hat-section-3'], PRODUCT_IMAGES['hat-section-4']],
+    images: [PRODUCT_IMAGES['hat-section-1'], PRODUCT_IMAGES['hat-section-2'],PRODUCT_IMAGES['machine1'], PRODUCT_IMAGES['hat-section-3'], PRODUCT_IMAGES['hat-section-4']],
     description: 'High-productivity Hat Section Roll Forming Machine for solar mounting structures. Features 16-station forming, servo motor drive, and automatic PLC cutting. Produces 8-10 tons per day with punching.',
     specs: [
       { label: 'Suitable Material', value: 'G.I. Sheet' },
@@ -188,7 +195,7 @@ export const PRODUCTS = [
     tagline: 'Hydraulic high-speed precision cutting press',
     badge: '',
     image: PRODUCT_IMAGES['cutting-system'],
-    images: [PRODUCT_IMAGES['cutting-system']],
+    images: [PRODUCT_IMAGES['cutting-system'], PRODUCT_IMAGES['machine2']],
     description: 'Heavy-duty automatic cutting system with hydraulic-operated cutting press and anti-friction guide way. Features high-speed operation with sensor-controlled precision for roll forming production lines.',
     specs: [
       { label: 'Base Frame', value: 'Fabricated Heavy Duty' },
@@ -208,8 +215,8 @@ export const PRODUCTS = [
     name: 'Control Panel',
     tagline: 'PLC-controlled precision length management system',
     badge: '',
-    image: PRODUCT_IMAGES['control-panel'],
-    images: [PRODUCT_IMAGES['control-panel']],
+    image: PRODUCT_IMAGES['control-panel2'],
+    images: [PRODUCT_IMAGES['control-panel'], PRODUCT_IMAGES['control-panel2']],
     description: 'Advanced PLC control panel with high-accuracy length control in both MM and inch. Features auto single piece system, auto braking, and automatic machine length counting from front to back shear.',
     specs: [
       { label: 'Control Type', value: 'PLC Control Mechanism' },
