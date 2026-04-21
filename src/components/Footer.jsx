@@ -2,13 +2,8 @@ import { Link } from 'react-router-dom'
 import logo from '../assets/SGI logo.png'
 
 const FOOTER_PRODUCTS = [
-  { name: 'Rolling Shutter Guide Machine',          slug: 'rolling-shutter-guide-machine' },
-  { name: 'Corrugated Sheet Roll Forming Machine',  slug: 'corrugated-sheet-roll-forming-machine' },
   { name: 'C Purlin Roll Forming Machine',          slug: 'c-purlin-roll-forming-machine' },
-  { name: 'Auto Shutter Patti Machine',             slug: 'automatic-shutter-patti-roll-forming-machine' },
-  { name: 'Corrugated Silo Tank Machine',           slug: 'corrugated-silo-tank-roll-forming-machine' },
-  { name: 'Automatic Rolling Shutter Gear Motor',   slug: 'automatic-rolling-shutter-gear-motor' },
-  { name: 'MCB Channel Roll Forming Machine',       slug: 'mcb-channel-roll-forming-machine' },
+  { name: 'Hat Section Roll Forming Machine',          slug: 'hat-section-roll-forming-machine' },
 ]
 
 export default function Footer() {

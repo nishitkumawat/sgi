@@ -13,6 +13,7 @@ export default function Products() {
   }, [])
 
   const filtered = PRODUCTS.filter(p => {
+    if (p.category === 'motor-accessories') return false
     const matchesCat = categoryId === 'all' || p.category === categoryId
     const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase())
     return matchesCat && matchesSearch
@@ -42,7 +43,7 @@ export default function Products() {
             >
               All Machines
             </button>
-            {CATEGORIES.map(cat => (
+            {CATEGORIES.filter(cat => cat.id !== 'motor-accessories').map(cat => (
               <button
                 key={cat.id}
                 onClick={() => setSearchParams({ category: cat.id })}

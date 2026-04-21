@@ -45,7 +45,7 @@ const navItems = [
   { label: 'Home',     to: '/' },
   { label: <CategoriesDropdown />, to: '#categories' },
   { label: 'Products', to: '/products' },
-  { label: 'Blog',     to: '/blog' },
+  // { label: 'Blog',     to: '/blog' },
   { label: 'About',    to: '/about' },
   { label: 'Contact',  to: '/contact' },
 ]
