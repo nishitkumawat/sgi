@@ -4,7 +4,7 @@ const OG_IMAGE = `${SITE_URL}/og-image.jpg`
 const PHONE_CEO = '+91 98254 35437'
 const PHONE_SALES = '+91 81549 35437'
 const PHONE_SUPPORT = '+91 97129 05437'
-const EMAIL = 'info@shreegayatriindustries.co.in'
+const EMAIL = 'shreegayatriindustries2099@gmail.com'
 
 export const SEO_CONFIG = {
   siteUrl: SITE_URL,

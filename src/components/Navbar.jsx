@@ -82,7 +82,7 @@ export default function Navbar() {
     }`}>
       {/* Top info bar */}
       <div className="bg-[#1e3a8a] text-blue-50 text-[11px] py-1.5 px-6 text-center hidden md:block font-medium">
-        &nbsp; ✉️ info@shreegayatriindustries.co.in &nbsp;|&nbsp; 📍 Bakrol, Ahmedabad – 382 430, Gujarat
+        &nbsp; ✉️ shreegayatriindustries2099@gmail.com &nbsp;|&nbsp; 📍 Bakrol, Ahmedabad – 382 430, Gujarat
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
