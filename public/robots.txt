@@ -1,0 +1,16 @@
+# robots.txt – Shree Gayatri Industries
+# https://www.shreegayatri-industries.com
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemaps
+Sitemap: https://www.shreegayatri-industries.com/sitemap.xml
+
+# Crawl-delay
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10

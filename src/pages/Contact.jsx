@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react'
+import SEO from '../components/SEO'
+import { SEO_CONFIG, getBreadcrumbSchema } from '../data/seoConfig'
 
 export default function Contact() {
   const [loading, setLoading] = useState(false);
+  const seo = SEO_CONFIG.pages.contact
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -44,6 +47,18 @@ export default function Contact() {
 
   return (
     <div className="bg-white min-h-screen pt-32 pb-24">
+      <SEO
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        canonical={seo.canonical}
+        schemas={[
+          getBreadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Contact Us', url: '/contact' },
+          ]),
+        ]}
+      />
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="mb-20">

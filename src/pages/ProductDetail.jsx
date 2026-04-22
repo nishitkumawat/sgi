@@ -2,6 +2,8 @@ import { useState, useEffect, useCallback } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getProductBySlug, PRODUCTS, PLACEHOLDER } from '../data/products'
 import ProductCard from '../components/ProductCard'
+import SEO from '../components/SEO'
+import { SEO_CONFIG, getBreadcrumbSchema, getProductSchema } from '../data/seoConfig'
 
 // Modal Component
 function InquiryModal({ product, isOpen, onClose }) {
@@ -127,10 +129,30 @@ export default function ProductDetail() {
     setImgErr({})
   }, [slug])
 
-  if (!product) return <div className="py-40 text-center font-black text-2xl text-slate-900">Product not found</div>
+  if (!product) return (
+    <div className="py-40 text-center font-black text-2xl text-slate-900">
+      <SEO title={`Product Not Found | ${SEO_CONFIG.brandName}`} description="The requested product was not found." noindex={true} />
+      Product not found
+    </div>
+  )
 
   return (
     <div className="bg-white min-h-screen pt-24 md:pt-32 pb-16 md:pb-24">
+      <SEO
+        title={`${product.name} – ${product.tagline} | ${SEO_CONFIG.brandName}`}
+        description={product.description}
+        keywords={`${product.name.toLowerCase()}, ${product.category === 'roll-forming' ? 'roll forming machine' : product.category === 'shutter-motors' ? 'rolling shutter motor' : 'motor accessories'}, ${product.tagline?.toLowerCase()}, shree gayatri industries, ahmedabad, india`}
+        canonical={`${SEO_CONFIG.siteUrl}/product/${product.slug}`}
+        ogImage={typeof product.image === 'string' && product.image.startsWith('http') ? product.image : SEO_CONFIG.ogImage}
+        schemas={[
+          getProductSchema(product),
+          getBreadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Products', url: '/products' },
+            { name: product.name },
+          ]),
+        ]}
+      />
       <InquiryModal product={product} isOpen={isInquiryOpen} onClose={() => setIsInquiryOpen(false)} />
       
       <div className="max-w-7xl mx-auto px-4 md:px-6">

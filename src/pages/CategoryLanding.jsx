@@ -9,6 +9,8 @@ import SubsectionGrid from '../components/category/SubsectionGrid'
 import FacilityShowcase from '../components/category/FacilityShowcase'
 import TechnicalFAQs from '../components/category/TechnicalFAQs'
 import { Download, ShieldCheck, Trophy, Users, Zap } from 'lucide-react'
+import SEO from '../components/SEO'
+import { SEO_CONFIG, getBreadcrumbSchema, getFAQSchema } from '../data/seoConfig'
 
 export default function CategoryLanding({ title, description, filterType, filterValue, image }) {
   useEffect(() => { window.scrollTo(0, 0) }, [filterValue])
@@ -39,8 +41,27 @@ export default function CategoryLanding({ title, description, filterType, filter
 
   const content = CATEGORY_CONTENT[getCategoryKey()]
 
+  const categoryKey = getCategoryKey()
+  const seo = categoryKey === 'shutter-motors' || categoryKey === 'motor-accessories' 
+    ? SEO_CONFIG.pages.motors 
+    : SEO_CONFIG.pages.machines
+  const slug = categoryKey === 'shutter-motors' || categoryKey === 'motor-accessories' ? '/motors' : '/machines'
+
   return (
     <div className="bg-white min-h-screen pt-28 pb-24">
+      <SEO
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        canonical={seo.canonical}
+        schemas={[
+          getBreadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: title, url: slug },
+          ]),
+          ...(content?.faqs ? [getFAQSchema(content.faqs)].filter(Boolean) : []),
+        ]}
+      />
       {/* Category Header */}
       <div className="bg-slate-900 py-32 px-6 relative overflow-hidden group">
         {image && (

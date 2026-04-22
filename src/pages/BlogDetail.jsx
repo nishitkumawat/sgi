@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { getBlogBySlug, BLOGS } from '../data/blogs'
+import SEO from '../components/SEO'
+import { SEO_CONFIG, getBreadcrumbSchema, getArticleSchema } from '../data/seoConfig'
 
 export default function BlogDetail() {
   const { slug } = useParams()
@@ -12,6 +14,7 @@ export default function BlogDetail() {
   if (!blog) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-white pt-24 text-center px-6">
+        <SEO title={`Blog Not Found | ${SEO_CONFIG.brandName}`} description="The requested blog article was not found." noindex={true} />
         <p className="text-8xl mb-6">📰</p>
         <h1 className="text-4xl font-extrabold text-slate-800 mb-3">Blog Not Found</h1>
         <p className="text-slate-500 mb-8">This article doesn't exist or has been removed.</p>
@@ -27,6 +30,22 @@ export default function BlogDetail() {
 
   return (
     <div className="bg-white min-h-screen pt-28 pb-24">
+      <SEO
+        title={`${blog.title} | ${SEO_CONFIG.brandName}`}
+        description={blog.excerpt}
+        keywords={`${blog.title.toLowerCase()}, roll forming, industrial machinery, shree gayatri industries`}
+        canonical={`${SEO_CONFIG.siteUrl}/blog/${blog.slug}`}
+        ogType="article"
+        ogImage={blog.image}
+        schemas={[
+          getArticleSchema(blog),
+          getBreadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Blog', url: '/blog' },
+            { name: blog.title },
+          ]),
+        ]}
+      />
       {/* Hero */}
       <div className="relative h-[40vh] md:h-[50vh] overflow-hidden bg-slate-900">
         <img

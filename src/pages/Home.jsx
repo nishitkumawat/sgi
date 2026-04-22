@@ -5,6 +5,8 @@ import { Phone, MessageCircle, Mail, MapPin, Check, ArrowRight, Factory, Users, 
 import ProductCard from '../components/ProductCard'
 import HeroSlideshow from '../components/HeroSlideshow'
 import IndiaNetworkMap from '../components/IndiaNetworkMap'
+import SEO from '../components/SEO'
+import { SEO_CONFIG, getBreadcrumbSchema } from '../data/seoConfig'
 import logo from '../assets/SGI logo.png'
 import indiamartLogo from '../assets/indiamart.png'
 import tradeindiaLogo from '../assets/tradeindia.png'
@@ -17,6 +19,7 @@ export default function Home() {
   const motors = getProductsByCategory('shutter-motors').slice(0, 4)
   const [currentFactorySlide, setCurrentFactorySlide] = useState(0)
   const [currentOutcomeSlide, setCurrentOutcomeSlide] = useState(0)
+  const seo = SEO_CONFIG.pages.home
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -24,6 +27,15 @@ export default function Home() {
 
   return (
     <div className="bg-white min-h-screen">
+      <SEO
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        canonical={seo.canonical}
+        schemas={[
+          getBreadcrumbSchema([{ name: 'Home', url: '/' }]),
+        ]}
+      />
       {/* ─── HERO SECTION ────────────────────────────────────────── */}
       <HeroSlideshow />
 

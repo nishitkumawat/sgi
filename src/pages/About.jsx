@@ -2,14 +2,30 @@ import { useEffect } from 'react'
 import logo from '../assets/SGI logo.png'
 import IndiaNetworkMap from '../components/IndiaNetworkMap'
 import { PricingCard } from '../components/blocks/pricing-card'
+import SEO from '../components/SEO'
+import { SEO_CONFIG, getBreadcrumbSchema } from '../data/seoConfig'
 
 export default function About() {
+  const seo = SEO_CONFIG.pages.about
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
 
   return (
     <div className="bg-white min-h-screen pt-32 pb-24">
+      <SEO
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        canonical={seo.canonical}
+        schemas={[
+          getBreadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'About Us', url: '/about' },
+          ]),
+        ]}
+      />
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="mb-12 md:mb-20 text-center max-w-3xl mx-auto">

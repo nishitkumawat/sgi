@@ -2,11 +2,14 @@ import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { CATEGORIES, PRODUCTS } from '../data/products'
 import ProductCard from '../components/ProductCard'
+import SEO from '../components/SEO'
+import { SEO_CONFIG, getBreadcrumbSchema } from '../data/seoConfig'
 
 export default function Products() {
   const [searchParams, setSearchParams] = useSearchParams()
   const categoryId = searchParams.get('category') || 'all'
   const [search, setSearch] = useState('')
+  const seo = SEO_CONFIG.pages.products
 
   useEffect(() => {
      window.scrollTo(0, 0)
@@ -21,6 +24,18 @@ export default function Products() {
 
   return (
     <div className="bg-white min-h-screen pt-32 pb-24">
+      <SEO
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        canonical={seo.canonical}
+        schemas={[
+          getBreadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Products', url: '/products' },
+          ]),
+        ]}
+      />
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="mb-16">

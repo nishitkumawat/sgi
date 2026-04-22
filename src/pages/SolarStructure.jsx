@@ -7,8 +7,12 @@ import factory1 from '../assets/factory.jpeg'
 import factory2 from '../assets/factory2.jpeg'
 import factory3 from '../assets/factory3.jpeg'
 import IndiaNetworkMap from '../components/IndiaNetworkMap'
+import SEO from '../components/SEO'
+import { SEO_CONFIG, getBreadcrumbSchema } from '../data/seoConfig'
 
 export default function SolarStructure() {
+  const seo = SEO_CONFIG.pages.solarStructure
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -129,6 +133,18 @@ export default function SolarStructure() {
 
   return (
     <div className="bg-white min-h-screen">
+      <SEO
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        canonical={seo.canonical}
+        schemas={[
+          getBreadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Solar Structure', url: '/solar-structure' },
+          ]),
+        ]}
+      />
       {/* HERO SECTION */}
       <section className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat px-6 overflow-hidden" style={{ backgroundImage: `url(${section2})` }}>
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-blue-900/90 to-slate-900/90" />

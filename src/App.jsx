@@ -14,6 +14,8 @@ import machinesImg from './assets/machines_hero.png'
 import solarImg from './assets/solar_hero.png'
 import motorImg from './assets/motors_hero.png'
 import FloatingContact from './components/FloatingContact'
+import SEO from './components/SEO'
+import { SEO_CONFIG } from './data/seoConfig'
 import './index.css'
 
 function App() {
@@ -65,6 +67,11 @@ function App() {
 function NotFound() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white pt-24 text-center px-6">
+      <SEO 
+        title={`Page Not Found | ${SEO_CONFIG.brandName}`} 
+        description="The page you're looking for doesn't exist." 
+        noindex={true} 
+      />
       <p className="text-8xl mb-6">🔧</p>
       <h1 className="text-4xl font-extrabold text-slate-800 mb-3">Page Not Found</h1>
       <p className="text-slate-500 mb-8 max-w-md">The page you're looking for doesn't exist. Let's get you back on track.</p>

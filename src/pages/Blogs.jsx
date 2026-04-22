@@ -1,12 +1,27 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { BLOGS } from '../data/blogs'
+import SEO from '../components/SEO'
+import { SEO_CONFIG, getBreadcrumbSchema } from '../data/seoConfig'
 
 export default function Blogs() {
+  const seo = SEO_CONFIG.pages.blog
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
   return (
     <div className="bg-white min-h-screen pt-28 pb-24">
+      <SEO
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        canonical={seo.canonical}
+        schemas={[
+          getBreadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Blog', url: '/blog' },
+          ]),
+        ]}
+      />
       {/* Page Header */}
       <div className="bg-[#f8fafc] border-b border-slate-200 py-16 px-6 mb-16">
         <div className="max-w-7xl mx-auto">
