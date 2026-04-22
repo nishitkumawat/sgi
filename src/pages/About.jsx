@@ -77,7 +77,7 @@ export default function About() {
                 items: [
                   { label: "Lead Executive", value: "Mr. Ketan Dodiya" },
                   { label: "Role", value: "CEO & Proprietor" },
-                  { label: "Direct Inquiries", value: "08045802320" },
+                  { label: "Direct Inquiries", value: "+91 98254 35437" },
                   { label: "Compliance", value: "Standard Industrial Movers" },
                 ],
               },

@@ -267,8 +267,8 @@ export default function SolarStructure() {
             {/* Mobile Slide Show */}
             <div className="relative h-full">
               {[
-                { img: section1, title: 'Commercial Solar Project', desc: '50MW Solar Farm Installation' },
-                { img: section2, title: 'Industrial Mounting System', desc: 'Custom C Channel Installation' }
+                { img: section1, title: 'Commercial Solar Project', desc: '' },
+                { img: section2, title: 'Industrial Mounting System', desc: '' }
               ].map((slide, index) => (
                 <div 
                   key={index}

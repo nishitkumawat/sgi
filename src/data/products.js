@@ -3,7 +3,7 @@ import machineVector from '../assets/machine_vector.png'
 // Import new Motor & Accessory Images
 import shutterMotorImg from '../assets/shutter_motor.png'
 import shutterMotor1Img from '../assets/shutter_motor1.jpeg'
-import remoteControllerImg from '../assets/remote_controller.jpeg'
+import remoteControllerImg from '../assets/remote_controller_2.png'
 import keySelectorImg from '../assets/key_selector.jpg'
 import pushButtonImg from '../assets/push_button.png'
 import ezrunControllerImg from '../assets/ezrun_controller.jpeg'

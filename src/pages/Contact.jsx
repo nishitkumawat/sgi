@@ -71,6 +71,10 @@ export default function Contact() {
               <h4 className="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-6">Call / WhatsApp</h4>
               <div className="space-y-6">
                  <div className="flex flex-col">
+                    <span className="text-xs text-slate-400 font-bold uppercase tracking-tighter mb-1">CEO</span>
+                    <a href="tel:+919825435437" className="text-xl font-black text-slate-900 hover:text-blue-600 transition-colors tracking-tight">+91 98254 35437</a>
+                 </div>
+                 <div className="flex flex-col">
                     <span className="text-xs text-slate-400 font-bold uppercase tracking-tighter mb-1">Sales Inquiry</span>
                     <a href="tel:+918154935437" className="text-xl font-black text-slate-900 hover:text-blue-600 transition-colors tracking-tight">+91 81549 35437</a>
                  </div>

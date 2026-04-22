@@ -82,7 +82,7 @@ export default function Navbar() {
     }`}>
       {/* Top info bar */}
       <div className="bg-[#1e3a8a] text-blue-50 text-[11px] py-1.5 px-6 text-center hidden md:block font-medium">
-        📞 +91 81549 35437 &nbsp;|&nbsp; ✉️ info@shreegayatriindustries.co.in &nbsp;|&nbsp; 📍 Bakrol, Ahmedabad – 382 430, Gujarat
+        &nbsp; ✉️ info@shreegayatriindustries.co.in &nbsp;|&nbsp; 📍 Bakrol, Ahmedabad – 382 430, Gujarat
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
@@ -110,12 +110,12 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <a
+          {/* <a
             href="tel:+918154935437"
             className="text-xs text-slate-500 hover:text-blue-700 transition-colors font-bold uppercase tracking-wider"
           >
             📞 +91 81549 35437
-          </a>
+          </a> */}
           <Link
             to="/contact"
             className="px-6 py-2.5 rounded-full text-sm font-bold bg-blue-700 text-white transition-all duration-300 hover:scale-105 shadow-md hover:shadow-xl uppercase tracking-widest"
