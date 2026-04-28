@@ -25,8 +25,8 @@ export default function CategoryLanding({ title, description, filterType, filter
     return true
   })
 
-  const equipmentProducts = filteredProducts.filter(p => p.category !== 'motor-accessories')
-  const accessoryProducts = filteredProducts.filter(p => p.category === 'motor-accessories')
+  const equipmentProducts = filteredProducts.filter(p => !p.category.includes('accessories'))
+  const accessoryProducts = filteredProducts.filter(p => p.category.includes('accessories'))
 
   const getCategoryKey = () => {
     if (filterType === 'solar') return 'solar'

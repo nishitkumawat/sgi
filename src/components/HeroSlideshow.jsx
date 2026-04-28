@@ -20,7 +20,7 @@ const slides = [
     title: 'Solar Structure',
     subtitle: 'State-of-the-art facilities for robust manufacturing.',
     ctaText: 'Solar Solutions',
-    ctaLink: '/solar-structure'
+    ctaLink: 'https://www.shreegayatri-industries.com/'
   },
   {
     type: 'image',
@@ -113,12 +113,21 @@ export default function HeroSlideshow() {
             {slides[currentSlide].subtitle}
           </p>
           <div className="flex flex-wrap items-center gap-4">
-            <Link 
-              to={slides[currentSlide].ctaLink} 
-              className="px-4 py-2 md:px-8 md:py-4 bg-blue-700 text-white font-black hover:bg-blue-800 transition-all duration-300 hover:scale-105 rounded-full uppercase tracking-widest text-[9px] md:text-[11px] shadow-xl shadow-blue-200"
-            >
-              {slides[currentSlide].ctaText}
-            </Link>
+            {slides[currentSlide].ctaLink.startsWith('http') ? (
+              <a 
+                href={slides[currentSlide].ctaLink} 
+                className="px-4 py-2 md:px-8 md:py-4 bg-blue-700 text-white font-black hover:bg-blue-800 transition-all duration-300 hover:scale-105 rounded-full uppercase tracking-widest text-[9px] md:text-[11px] shadow-xl shadow-blue-200"
+              >
+                {slides[currentSlide].ctaText}
+              </a>
+            ) : (
+              <Link 
+                to={slides[currentSlide].ctaLink} 
+                className="px-4 py-2 md:px-8 md:py-4 bg-blue-700 text-white font-black hover:bg-blue-800 transition-all duration-300 hover:scale-105 rounded-full uppercase tracking-widest text-[9px] md:text-[11px] shadow-xl shadow-blue-200"
+              >
+                {slides[currentSlide].ctaText}
+              </Link>
+            )}
             <Link 
               to="/contact" 
               className="px-4 py-2 md:px-8 md:py-4 bg-white border-2 border-slate-200 text-slate-800 font-black hover:border-blue-700 hover:text-blue-700 transition-all duration-300 hover:scale-105 rounded-full uppercase tracking-widest text-[9px] md:text-[11px] shadow-lg"

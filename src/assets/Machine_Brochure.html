@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shree Gayatri Industries - Roll Forming Machines Brochure</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+
+        :root {
+            --primary: #0066cc; /* Deep Corporate Blue */
+            --primary-light: #0099ff; /* Accent Blue */
+            --primary-dark: #003380; /* Darker Blue for BG */
+            --dark: #0f172a; /* Slate 900 */
+            --gray-dark: #334155; /* Slate 700 */
+            --gray-med: #64748b; /* Slate 500 */
+            --gray-light: #f1f5f9; /* Slate 100 */
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #cbd5e1;
+            color: var(--gray-dark);
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            line-height: 1.6;
+        }
+
+        /* Page Setup */
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: var(--white);
+            margin: 10mm auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            page-break-after: always;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media print {
+            body { background: white; margin: 0; }
+            .page { margin: 0; box-shadow: none; border: none; }
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+
+        .text-primary { color: var(--primary); }
+        .text-white { color: var(--white); }
+        
+        .tagline {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .tagline::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        /* Shared Components */
+        .header {
+            padding: 40px 50px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            z-index: 10;
+        }
+        .header img {
+            height: 45px;
+        }
+        .header-meta {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray-med);
+            text-align: right;
+        }
+
+        .footer {
+            margin-top: auto;
+            padding: 20px 50px;
+            border-top: 1px solid var(--gray-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray-med);
+            background: var(--white);
+            z-index: 10;
+        }
+        .page-num {
+            width: 30px;
+            height: 30px;
+            background: var(--gray-light);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: 800;
+            font-size: 12px;
+        }
+
+        /* Content Blocks */
+        .content {
+            padding: 20px 50px 40px;
+            flex-grow: 1;
+            z-index: 10;
+        }
+
+        /* Geometric Background Accents */
+        .bg-gear {
+            position: absolute;
+            opacity: 0.03;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .bg-geo-pattern {
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background-image: radial-gradient(var(--gray-light) 2px, transparent 2px);
+            background-size: 30px 30px;
+            opacity: 0.5;
+            z-index: 1;
+        }
+
+        /* Base shape styling */
+        .page-shape {
+            position: absolute;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        /* Page 2 Shapes */
+        .shape-2-1 {
+            top: -50px; left: -50px;
+            width: 200px; height: 200px;
+            background: var(--dark);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+        .shape-2-2 {
+            bottom: 150px; right: -80px;
+            width: 150px; height: 150px;
+            background: var(--primary-dark);
+            transform: rotate(45deg);
+            border-radius: 15px;
+        }
+        .shape-2-3 {
+            bottom: -30px; left: 40%;
+            width: 120px; height: 120px;
+            background: var(--gray-dark);
+            border-radius: 50%;
+        }
+
+        /* Page 3 Shapes */
+        .shape-3-1 {
+            top: 80px; right: -60px;
+            width: 250px; height: 250px;
+            background: var(--dark);
+            border-radius: 50%;
+        }
+        .shape-3-2 {
+            bottom: -60px; left: -60px;
+            width: 280px; height: 280px;
+            background: var(--primary-dark);
+            clip-path: polygon(0 0, 100% 100%, 0 100%);
+        }
+        .shape-3-3 {
+            top: 40%; left: -30px;
+            width: 100px; height: 100px;
+            background: var(--gray-dark);
+            transform: rotate(15deg);
+        }
+
+        /* Page 4 Shapes */
+        .shape-4-1 {
+            top: -100px; left: 30%;
+            width: 400px; height: 200px;
+            background: var(--dark);
+            border-radius: 0 0 200px 200px;
+        }
+        .shape-4-2 {
+            bottom: 80px; right: -40px;
+            width: 180px; height: 180px;
+            background: var(--primary-dark);
+            border-radius: 20px;
+            transform: rotate(30deg);
+        }
+        .shape-4-3 {
+            bottom: -50px; left: 15%;
+            width: 140px; height: 140px;
+            background: var(--gray-dark);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+
+        /* Page 5 Shapes */
+        .shape-5-1 {
+            top: 250px; left: -80px;
+            width: 220px; height: 220px;
+            background: var(--dark);
+            border-radius: 50%;
+        }
+        .shape-5-2 {
+            top: -60px; right: -60px;
+            width: 240px; height: 240px;
+            background: var(--primary-dark);
+            clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+        }
+        .shape-5-3 {
+            bottom: -40px; right: 25%;
+            width: 160px; height: 160px;
+            background: var(--gray-dark);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        }
+
+        /* === PAGE 1: COVER === */
+        .page-cover {
+            background: #f4f5f7;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .hero-bg-circle-tr {
+            position: absolute;
+            top: 100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .hero-bg-circle-tr::after {
+            content: '';
+            position: absolute;
+            top: 40px; left: 40px; right: -40px; bottom: -40px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .hero-bg-circle-bl {
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 450px;
+            height: 450px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .hero-bg-circle-bl::after {
+            content: '';
+            position: absolute;
+            top: 60px; left: 60px; right: 60px; bottom: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        
+        .hero-bg-circle-bl::before {
+            content: '';
+            position: absolute;
+            top: 160px; left: 160px; right: 160px; bottom: 160px;
+            background: var(--primary-dark);
+            border-radius: 50%;
+            z-index: 2;
+        }
+        
+        .hero-abstract-lines {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath d='M10,50 L80,20 L150,60 L120,130 L40,110 Z' fill='none' stroke='%230066cc' stroke-width='1' stroke-dasharray='3 3'/%3E%3Ccircle cx='10' cy='50' r='3' fill='%230066cc'/%3E%3Ccircle cx='80' cy='20' r='3' fill='%230066cc'/%3E%3Ccircle cx='150' cy='60' r='3' fill='%230066cc'/%3E%3Ccircle cx='120' cy='130' r='3' fill='%230066cc'/%3E%3Ccircle cx='40' cy='110' r='3' fill='%230066cc'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.5;
+            z-index: 1;
+        }
+        .hero-lines-1 { top: -20px; right: 150px; }
+        .hero-lines-2 { bottom: 250px; left: 20px; transform: rotate(60deg) scale(0.8); }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            margin-left: 160px; /* Increased to align text blocks and outdent dot */
+            margin-top: -100px;
+        }
+        
+        .hero-location {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-bottom: 80px;
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--dark);
+        }
+        .hero-loc-dot {
+            position: absolute;
+            left: -65px; /* Pull dot to the left of the aligned text */
+            width: 45px;
+            height: 45px;
+            background: var(--primary-light);
+            border-radius: 50%;
+        }
+
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 64px;
+            font-weight: 900;
+            color: var(--primary-light);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--gray-dark);
+            letter-spacing: 0.5px;
+        }
+
+        .hero-image-container {
+            position: absolute;
+            bottom: -80px;
+            right: -80px;
+            width: 650px;
+            height: 650px;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-image-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #e2e8f0;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .hero-image-img {
+            position: relative;
+            z-index: 2;
+            width: 95%;
+            height: 95%;
+            transform: translate(-30px, 40px);
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* === PAGE 2: ABOUT US === */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .about-text p {
+            font-size: 13px;
+            color: var(--gray-dark);
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .stat-box {
+            background: var(--primary);
+            color: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-box::after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            bottom: -20px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 20px solid rgba(255,255,255,0.1);
+        }
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+        .stat-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        /* === PRODUCT PAGES === */
+        .product-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .product-image-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .product-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .product-desc {
+            font-size: 13px;
+            color: var(--gray-dark);
+            margin-bottom: 20px;
+            max-width: 800px;
+            line-height: 1.5;
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .specs-table th, .specs-table td {
+            padding: 8px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-light);
+            font-size: 12px;
+        }
+        .specs-table th {
+            width: 40%;
+            font-weight: 700;
+            color: var(--dark);
+            background: rgba(241, 245, 249, 0.5);
+        }
+        .specs-table td {
+            font-weight: 500;
+            color: var(--gray-dark);
+        }
+        .specs-table tr:first-child th, .specs-table tr:first-child td {
+            border-top: 2px solid var(--primary);
+        }
+
+        /* Layout Variations */
+        .layout-horizontal {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .layout-horizontal-reverse {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* Accessories Row Style */
+        .acc-row {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            background: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--gray-light);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            height: 180px; /* fixed height for rows */
+        }
+        .acc-img-box {
+            width: 180px;
+            height: 100%;
+            flex-shrink: 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .acc-img-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .acc-content h3 {
+            font-size: 18px;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .acc-content p {
+            font-size: 13px;
+            color: var(--gray-dark);
+            margin-bottom: 12px;
+        }
+        .acc-specs {
+            font-size: 12px;
+            color: var(--gray-med);
+        }
+
+        /* === PAGE 6: BACK COVER === */
+        .back-cover {
+            background: var(--dark);
+            color: var(--white);
+        }
+        .back-cover .bg-geo-pattern {
+            opacity: 0.1;
+        }
+        .back-cover .header {
+            background: transparent;
+        }
+        .back-cover .header-meta {
+            color: var(--gray-med);
+        }
+        
+        .contact-wrap {
+            margin-top: 100px;
+            position: relative;
+            z-index: 10;
+        }
+        .contact-wrap h1 {
+            color: var(--white);
+            font-size: 48px;
+            margin-bottom: 60px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        .contact-block {
+            margin-bottom: 30px;
+        }
+        .contact-block h4 {
+            color: var(--primary-light);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+        .contact-block p {
+            font-size: 15px;
+            color: #cbd5e1;
+            font-weight: 500;
+            line-height: 1.8;
+        }
+        .contact-block p strong {
+            color: var(--white);
+            display: inline-block;
+            width: 80px;
+        }
+
+        .big-circle-bg {
+            position: absolute;
+            bottom: -200px;
+            right: -200px;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.05);
+            z-index: 1;
+        }
+        .big-circle-bg::before {
+            content: '';
+            position: absolute;
+            inset: 100px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.05);
+        }
+        .big-circle-bg::after {
+            content: '';
+            position: absolute;
+            inset: 200px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1: COVER -->
+    <section class="page page-cover">
+        <div class="hero-bg-circle-tr"></div>
+        <div class="hero-bg-circle-bl"></div>
+        
+        <div class="hero-abstract-lines hero-lines-1"></div>
+        <div class="hero-abstract-lines hero-lines-2"></div>
+        
+        <div class="hero-image-container">
+            <div class="hero-image-bg"></div>
+            <img src="machine.jpeg" alt="Roll Forming Machines" class="hero-image-img">
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-location">
+                <div class="hero-loc-dot"></div>
+                Ahmedabad, GJ
+            </div>
+            
+            <h1 class="hero-title">SHREE GAYATRI<br>INDUSTRIES</h1>
+            <div class="hero-subtitle">ROLL FORMING MACHINES</div>
+        </div>
+    </section>
+
+    <!-- PAGE 2: ABOUT US -->
+    <section class="page">
+        <div class="bg-geo-pattern"></div>
+        <div class="page-shape shape-2-1"></div>
+        <div class="page-shape shape-2-2"></div>
+        <div class="page-shape shape-2-3"></div>
+        <div class="header">
+            <img src="logo_wo_bg.png" alt="SGI">
+            <div class="header-meta">Company Profile</div>
+        </div>
+
+        <div class="content">
+            <div class="tagline">About Us</div>
+            <h1 style="font-size: 36px; margin-bottom: 40px;">Pioneering Roll Forming<br>Technology Since 2007</h1>
+            
+            <div class="about-grid">
+                <div class="about-text">
+                    <p><strong>Shree Gayatri Industries</strong> was incepted in 2007, in Ahmedabad, Gujarat, India. Our expertise lies in the manufacturing and supply of high-quality Roll Forming Machines, C Purlin Machines, Hat Section Machines, and custom industrial machinery.</p>
+                    <p>In order to fully satisfy our clients, we offer these goods and services in a variety of specifications. Additionally, the prompt delivery of these products is ensured by our robust pan-India support network.</p>
+                    <p>Under the strategic direction of <strong>Mr. Ketan Dodiya (CEO & Proprietor)</strong>, we have greatly expanded our clientele within the nation, maintaining a reputation for reliability, structural integrity, and engineering precision.</p>
+                </div>
+                
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div class="stat-box">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Years of Experience</div>
+                    </div>
+                    <div class="stat-box" style="background: var(--dark);">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">States Covered</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Removed the missing partner images and just kept the certifications -->
+            <div class="trust-section" style="background: transparent; border: 1px solid var(--gray-light);">
+                <h4 style="font-size: 13px; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">Trust & Certifications</h4>
+                <div style="display: flex; gap: 40px;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <img src="indiamart.png" alt="IndiaMart" style="width: 50px; height: 50px; object-fit: contain;">
+                        <div>
+                            <h4 style="font-size: 14px; margin-bottom: 2px;">IndiaMART Trusted</h4>
+                            <p style="font-size: 12px; color: var(--gray-med);">Top Rated Supplier ⭐⭐⭐⭐⭐</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <img src="tradeindia.png" alt="TradeIndia" style="width: 50px; height: 50px; object-fit: contain;">
+                        <div>
+                            <h4 style="font-size: 14px; margin-bottom: 2px;">TradeIndia Verified</h4>
+                            <p style="font-size: 12px; color: var(--gray-med);">Premium Member ⭐⭐⭐⭐⭐</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>SHREE GAYATRI INDUSTRIES</div>
+            <div class="page-num">02</div>
+        </div>
+    </section>
+
+    <!-- PAGE 3: C PURLIN MACHINE -->
+    <section class="page">
+        <div class="bg-geo-pattern"></div>
+        <div class="page-shape shape-3-1"></div>
+        <div class="page-shape shape-3-2"></div>
+        <div class="page-shape shape-3-3"></div>
+        <div class="header">
+            <img src="logo_wo_bg.png" alt="SGI">
+            <div class="header-meta">Main Machinery</div>
+        </div>
+
+        <div class="content layout-horizontal">
+            <div class="machine-images" style="display: flex; flex-direction: column; gap: 30px;">
+                <!-- Put image randomly on side or up. Here, left side. -->
+                <div class="product-image-box" style="height: 300px;">
+                    <img src="machine.jpeg" alt="C Purlin Machine">
+                </div>
+                <div class="product-image-box" style="height: 250px;">
+                    <img src="cpurlin_4.jpeg" alt="C Purlin Machine Details">
+                </div>
+            </div>
+            
+            <div class="machine-details">
+                <div class="tagline">Auto-Adjustable Precision</div>
+                <h1 style="font-size: 32px; margin-bottom: 20px;">C Purlin Roll Forming Machine</h1>
+                <p class="product-desc">High-performance C Purlin Roll Forming Machine with auto size adjustment for PEB buildings, industrial sheds and solar structures. Features 19-station forming, servo motor drive, and PLC-controlled automatic cutting.</p>
+                
+                <table class="specs-table">
+                    <tbody>
+                        <tr><th>Suitable Material</th><td>M.S., G.P., H.R., GALVANIUM</td></tr>
+                        <tr><th>Thickness of Raw Material</th><td>1.60 mm to 2.50 mm</td></tr>
+                        <tr><th>Section Web (A) Size</th><td>60 to 250 mm (Auto Size Adjustment)</td></tr>
+                        <tr><th>Section Flange (B) Size</th><td>40 to 80 mm (Auto Size Adjustment)</td></tr>
+                        <tr><th>Section Lip (C) Size</th><td>10 to 20 mm</td></tr>
+                        <tr><th>Max Coil Input Size</th><td>450 mm (max width 250 mm)</td></tr>
+                        <tr><th>Min Coil Input Size</th><td>130 mm (min width 50 mm)</td></tr>
+                        <tr><th>Roller Material</th><td>EN-31 (Hard with hard crome)</td></tr>
+                        <tr><th>Productivity</th><td>41 mtr/min (without punching) ; 6 to 12 mtr/min (with punching)</td></tr>
+                        <tr><th>Forming station</th><td>19 Station</td></tr>
+                        <tr><th>Transmission</th><td>Chain drive and 9 no Gear box</td></tr>
+                        <tr><th>Motor Power</th><td>22 KW Servo</td></tr>
+                        <tr><th>Cutting System</th><td>Automatic on PLC</td></tr>
+                        <tr><th>Section Tolerance</th><td>± 1 to 2 mm on length, bending & Twisting</td></tr>
+                        <tr><th>Tolerance</th><td>± 1 to 2 mm on length, bending & Twisting</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>PRODUCT CATALOG</div>
+            <div class="page-num">03</div>
+        </div>
+    </section>
+
+    <!-- PAGE 4: HAT SECTION MACHINE -->
+    <section class="page">
+        <div class="bg-geo-pattern"></div>
+        <div class="page-shape shape-4-1"></div>
+        <div class="page-shape shape-4-2"></div>
+        <div class="page-shape shape-4-3"></div>
+        <div class="header">
+            <img src="logo_wo_bg.png" alt="SGI">
+            <div class="header-meta">Main Machinery</div>
+        </div>
+
+        <div class="content layout-horizontal-reverse">
+            <div class="machine-details">
+                <div class="tagline">Solar Mounting Focus</div>
+                <h1 style="font-size: 32px; margin-bottom: 20px;">Hat Section Roll Forming Machine</h1>
+                <p class="product-desc">High-productivity Hat Section Roll Forming Machine for solar mounting structures. Features 16-station forming, servo motor drive, and automatic PLC cutting. Produces 8-10 tons per day with punching.</p>
+                
+                <table class="specs-table">
+                    <tbody>
+                        <tr><th>Suitable Material</th><td>G.I. SHEET</td></tr>
+                        <tr><th>Thickness of Material</th><td>0.80 to 1.20 mm</td></tr>
+                        <tr><th>Lip of Material</th><td>Max. 25 mm</td></tr>
+                        <tr><th>Web of Material</th><td>40 mm fixed size</td></tr>
+                        <tr><th>Height of Material</th><td>60 to 120 mm (Manually Changeable)</td></tr>
+                        <tr><th>Roller Material</th><td>EN-31 (Hard)</td></tr>
+                        <tr><th>Productivity</th><td>8 to 10 Ton Per Day (With Punching)</td></tr>
+                        <tr><th>Forming Station</th><td>16 Station</td></tr>
+                        <tr><th>Transmission</th><td>Chain / Gear drive</td></tr>
+                        <tr><th>Motor Power</th><td>11 to 15 KW Servo Motor</td></tr>
+                        <tr><th>Cutting System</th><td>Automatic on PLC</td></tr>
+                        <tr><th>Tolerance</th><td>± 1 to 2 mm on length, Bending & Twisting</td></tr>
+                        <tr><th>Section Tolerance</th><td>± 1 to 2 mm on length, Bending & Twisting</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="machine-images" style="display: flex; flex-direction: column; gap: 30px;">
+                <!-- Image on the right side -->
+                <div class="product-image-box" style="height: 300px;">
+                    <img src="hat_6.jpeg" alt="Hat Section Machine">
+                </div>
+                <div class="product-image-box" style="height: 250px;">
+                    <img src="hat_section_1.png" alt="Hat Section Machine Details">
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>PRODUCT CATALOG</div>
+            <div class="page-num">04</div>
+        </div>
+    </section>
+
+    <!-- PAGE 5: STRUT CHANNEL MACHINE -->
+    <section class="page">
+        <div class="bg-geo-pattern"></div>
+        <div class="page-shape shape-5-1"></div>
+        <div class="page-shape shape-5-2"></div>
+        <div class="page-shape shape-5-3"></div>
+        <div class="header">
+            <img src="logo_wo_bg.png" alt="SGI">
+            <div class="header-meta">Main Machinery</div>
+        </div>
+
+        <div class="content">
+            <!-- Put two images UP (Side by side) -->
+            <div class="machine-images" style="display: flex; gap: 30px; margin-bottom: 40px;">
+                <div class="product-image-box" style="flex: 1; height: 300px;">
+                    <img src="strut_machine.png" alt="Strut Channel Machine">
+                </div>
+                <div class="product-image-box" style="flex: 1; height: 300px;">
+                    <img src="machine.jpeg" alt="Strut Channel Secondary">
+                </div>
+            </div>
+
+            <div class="machine-details">
+                <div class="tagline">High-Precision Manufacturing</div>
+                <h1 style="font-size: 32px; margin-bottom: 20px;">Strut Channel Section Machine</h1>
+                <p class="product-desc" style="max-width: 100%;">High-performance Strut Channel Roll Forming Machine designed for manufacturing robust strut channels. Features 15-station forming, chain drive transmission, and automatic cutting systems.</p>
+                
+                <table class="specs-table">
+                    <tbody>
+                        <tr><th>Suitable Material</th><td>MS. G.I.</td></tr>
+                        <tr><th>Thickness of Material</th><td>1.60 mm To 2.50 mm</td></tr>
+                        <tr><th>Profile Size</th><td>41 x 21, 41, 61, 81 mm</td></tr>
+                        <tr><th>Roller Material</th><td>EN31(Hard)</td></tr>
+                        <tr><th>Productivity</th><td>5 mtr/min (With Punching)</td></tr>
+                        <tr><th>Forming station</th><td>15 Station</td></tr>
+                        <tr><th>Auto-size Changer Station</th><td>01 to 07 Station</td></tr>
+                        <tr><th>Transmission</th><td>Chain Drive</td></tr>
+                        <tr><th>Motor Power</th><td>15 HP (3phase)</td></tr>
+                        <tr><th>Cutting Systems</th><td>Automatic</td></tr>
+                        <tr><th>Tolerance</th><td>± 1 to 2 mm</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>PRODUCT CATALOG</div>
+            <div class="page-num">05</div>
+        </div>
+    </section>
+
+    <!-- PAGE 6: EXTRA MACHINES (3 Rows) -->
+    <section class="page">
+        <div class="bg-geo-pattern"></div>
+        <div class="page-shape shape-2-1"></div>
+        <div class="page-shape shape-2-2"></div>
+        <div class="header">
+            <img src="logo_wo_bg.png" alt="SGI">
+            <div class="header-meta">Machine Accessories & Systems</div>
+        </div>
+
+        <div class="content">
+            <div class="tagline">Production Enhancements</div>
+            <h1 style="font-size: 32px; margin-bottom: 30px;">Comes Along</h1>
+            
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                
+                <!-- Row 1: Decoiler -->
+                <div class="acc-row">
+                    <div class="acc-img-box">
+                        <img src="decoiler.png" alt="Decoiler">
+                    </div>
+                    <div class="acc-content">
+                        <h3>Manual Hydraulic De-coiler</h3>
+                        <p>Robust manual hydraulic de-coiler with 5-ton capacity and hydraulic mandrel expansion for reliable coil feeding.</p>
+                        <div class="acc-specs">
+                            <strong>Capacity:</strong> Max. 5 Ton &nbsp;|&nbsp; 
+                            <strong>Feeding Width:</strong> 600 mm &nbsp;|&nbsp; 
+                            <strong>Mandrel Expansion:</strong> Hydraulic Cylinder
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2: Punching -->
+                <div class="acc-row" style="flex-direction: row-reverse; text-align: right;">
+                    <div class="acc-img-box">
+                        <img src="punching_machine.png" alt="Punching Machine">
+                    </div>
+                    <div class="acc-content" style="flex-grow: 1;">
+                        <h3>Punching & Straightening Machine</h3>
+                        <p>Advanced 4-cylinder punching machine with integrated 7-roller straightening system (EN-31 hard chrome rollers).</p>
+                        <div class="acc-specs">
+                            <strong>Cylinders:</strong> 4 Nos &nbsp;|&nbsp; 
+                            <strong>Rollers:</strong> 7 Nos (EN-31) &nbsp;|&nbsp; 
+                            <strong>Material:</strong> WPS
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 3: Cutting System -->
+                <div class="acc-row">
+                    <div class="acc-img-box">
+                        <img src="cutting_system.png" alt="Cutting System">
+                    </div>
+                    <div class="acc-content">
+                        <h3>Automatic Cutting System</h3>
+                        <p>Heavy-duty automatic cutting system with hydraulic-operated cutting press and anti-friction guide way.</p>
+                        <div class="acc-specs">
+                            <strong>Operation:</strong> High Speed Hydraulic &nbsp;|&nbsp; 
+                            <strong>Guide Way:</strong> Anti-friction &nbsp;|&nbsp; 
+                            <strong>Cylinders:</strong> 01 No
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>PRODUCT CATALOG</div>
+            <div class="page-num">06</div>
+        </div>
+    </section>
+
+    <!-- PAGE 7: EXTRA MACHINES (2 Rows) -->
+    <section class="page">
+        <div class="bg-geo-pattern"></div>
+        <div class="page-shape shape-3-1"></div>
+        <div class="page-shape shape-3-3"></div>
+        <div class="header">
+            <img src="logo_wo_bg.png" alt="SGI">
+            <div class="header-meta">Machine Accessories & Systems</div>
+        </div>
+
+        <div class="content">
+            <div class="tagline">Production Enhancements</div>
+            <h1 style="font-size: 32px; margin-bottom: 40px;">Comes Along</h1>
+            
+            <div style="display: flex; flex-direction: column; gap: 30px;">
+                
+                <!-- Row 1: Control Panel -->
+                <div class="acc-row" style="height: 200px;">
+                    <div class="acc-img-box" style="width: 250px;">
+                        <img src="control_panel.png" alt="Control Panel">
+                    </div>
+                    <div class="acc-content">
+                        <h3>PLC Control Panel</h3>
+                        <p>Advanced PLC control panel with high-accuracy length control in MM and inch. Features auto single piece system, auto braking, and automatic machine length counting.</p>
+                        <div class="acc-specs">
+                            <strong>Control Type:</strong> PLC &nbsp;|&nbsp; 
+                            <strong>Operation Mode:</strong> Auto Single Piece &nbsp;|&nbsp; 
+                            <strong>Supply:</strong> 24VDC, SMPS
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2: Power Pack -->
+                <div class="acc-row" style="height: 200px; flex-direction: row-reverse; text-align: right;">
+                    <div class="acc-img-box" style="width: 250px;">
+                        <img src="hydraulic-power-pack.png" alt="Power Pack">
+                    </div>
+                    <div class="acc-content" style="flex-grow: 1;">
+                        <h3>Hydraulic Power Pack System</h3>
+                        <p>Complete hydraulic power pack system powering 4 punches, 2 shearing units and 1 de-coiler. Features 150-litre tank capacity with solenoid direction control valves.</p>
+                        <div class="acc-specs">
+                            <strong>Tank Capacity:</strong> 150 Litres &nbsp;|&nbsp; 
+                            <strong>Motor:</strong> 7.5 HP &nbsp;|&nbsp; 
+                            <strong>Valves:</strong> Solenoid Control
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>PRODUCT CATALOG</div>
+            <div class="page-num">07</div>
+        </div>
+    </section>
+
+    <!-- PAGE 8: BACK COVER (CONTACT) -->
+    <section class="page back-cover">
+        <div class="bg-geo-pattern"></div>
+        <div class="big-circle-bg"></div>
+        
+        <div class="header">
+            <img src="logo_wo_bg.png" alt="SGI" style="filter: brightness(0) invert(1);">
+            <div class="header-meta">Contact Information</div>
+        </div>
+
+        <div class="content contact-wrap">
+            <div class="tagline" style="color: var(--primary-light);">Get In Touch</div>
+            <h1>Let's Discuss<br>Your Project</h1>
+            
+            <div class="contact-grid">
+                <div>
+                    <div class="contact-block">
+                        <h4>Corporate Headquarters</h4>
+                        <p>Plot No. 43, Satvabhumi Industrial Estate,<br>
+                        Near Kathvada G.I.D.C., Bakrol,<br>
+                        Ahmedabad – 382 430,<br>
+                        Gujarat, India</p>
+                    </div>
+                    
+                    <div class="contact-block" style="margin-top: 50px;">
+                        <h4>Business Compliance</h4>
+                        <p><strong>GSTIN:</strong> 24BDMPM9420Q1ZV<br>
+                        <strong>Type:</strong> Standard Industrial Movers</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="contact-block">
+                        <h4>Direct Inquiries</h4>
+                        <p><strong>CEO:</strong> +91 98254 35437<br>
+                           <strong>Sales:</strong> +91 81549 35437<br>
+                           <strong>Support:</strong> +91 97129 05437</p>
+                    </div>
+                    
+                    <div class="contact-block" style="margin-top: 50px;">
+                        <h4>Digital Contact</h4>
+                        <p><strong>Email:</strong> <br>contact@shreegayatri-industries.com<br>
+                           <strong>Website:</strong> <br>www.shreegayatri-industries.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer" style="border-top-color: rgba(255,255,255,0.1); background: transparent; justify-content: center;">
+            <div style="color: var(--white); font-size: 11px; letter-spacing: 2px;">© 2026 SHREE GAYATRI INDUSTRIES. ALL RIGHTS RESERVED.</div>
+        </div>
+    </section>
+
+</body>
+</html>

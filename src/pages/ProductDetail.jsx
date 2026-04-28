@@ -343,12 +343,20 @@ export default function ProductDetail() {
       </div>
 
       {/* Compatible Accessories Section */}
-      {product.category === 'shutter-motors' && (
+      {(product.category === 'shutter-motors' || product.category === 'roll-forming') && (
         <div className="max-w-7xl mx-auto px-4 md:px-6 mt-16 md:mt-24 border-t border-slate-100 pt-12 md:pt-20 mb-12 md:mb-20">
-          <h2 className="text-2xl font-black text-slate-900 uppercase tracking-tight mb-2">Motor Accessories</h2>
-          <p className="text-slate-500 font-medium mb-10">Compatible controllers and modular add-ons for this motor system.</p>
+          <h2 className="text-2xl font-black text-slate-900 uppercase tracking-tight mb-2">
+            {product.category === 'shutter-motors' ? 'Motor Accessories' : 'Comes along with the machine'}
+          </h2>
+          <p className="text-slate-500 font-medium mb-10">
+            {product.category === 'shutter-motors' 
+              ? 'Compatible controllers and modular add-ons for this motor system.'
+              : 'Compatible equipment and modular add-ons for this roll forming line.'}
+          </p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-            {PRODUCTS.filter(p => p.category === 'motor-accessories').map(accessory => (
+            {PRODUCTS.filter(p => 
+              p.category === (product.category === 'shutter-motors' ? 'motor-accessories' : 'machine-accessories')
+            ).map(accessory => (
               <ProductCard key={accessory.id} product={accessory} />
             ))}
           </div>

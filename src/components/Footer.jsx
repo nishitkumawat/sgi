@@ -72,13 +72,13 @@ export default function Footer() {
               </div>
               <div>
                 <p className="text-xs text-blue-300 font-semibold mb-1">Email</p>
-                <a href="mailto:shreegayatriindustries2099@gmail.com" className="text-sm hover:text-white transition-colors break-all">
-                  shreegayatriindustries2099@gmail.com
+                <a href="mailto:contact@shreegayatri-industries.com" className="text-sm hover:text-white transition-colors break-all">
+                  contact@shreegayatri-industries.com
                 </a>
               </div>
               <div>
                 <p className="text-xs text-blue-300 font-semibold mb-1">Hours</p>
-                <p className="text-sm">Mon – Sat: 9:00 AM – 7:00 PM</p>
+                <p className="text-sm">Mon – Sat: 10:00 AM – 06:00 PM</p>
               </div>
             </div>
           </div>

@@ -39,7 +39,7 @@ function App() {
                 title="Roll Forming Machines" 
                 description="Heavy-duty profile engineering and custom machinery designed for high-throughput industrial manufacturing."
                 filterType="category"
-                filterValue="roll-forming"
+                filterValue={['roll-forming', 'machine-accessories']}
                 image={machinesImg}
               />
             } />

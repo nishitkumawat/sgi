@@ -150,7 +150,7 @@ export default function BlogDetail() {
           <div className="mt-10 bg-slate-900 p-6 text-white">
             <p className="text-[10px] font-black uppercase tracking-widest text-blue-400 mb-3">Get in touch</p>
             <p className="text-sm font-bold mb-1">📞 +91 81549 35437</p>
-            <p className="text-sm font-bold mb-5">✉️ shreegayatriindustries2099@gmail.com</p>
+            <p className="text-sm font-bold mb-5">✉️ contact@shreegayatri-industries.com</p>
             <a
               href="tel:+918154935437"
               className="block text-center px-6 py-3 rounded-full bg-blue-700 text-white font-black uppercase tracking-widest text-xs hover:scale-105 transition-all duration-300 shadow-md hover:shadow-xl"

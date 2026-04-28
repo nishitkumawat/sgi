@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Phone, MessageCircle, Mail, MapPin, Check, ArrowRight, Factory, Users, Zap, Shield, Clock, Ruler, Target, Box, CreditCard, Scissors, Truck, ClipboardCheck, Cog, Layers, ChevronLeft, ChevronRight } from 'lucide-react'
-import section2 from '../assets/section2.jpeg'
-import section1 from '../assets/section1.jpeg'
+import section2 from '../assets/motor.jpeg'
+import section1 from '../assets/motor.jpeg'
 import factory1 from '../assets/factory.jpeg'
 import factory2 from '../assets/factory2.jpeg'
 import factory3 from '../assets/factory3.jpeg'
@@ -40,23 +40,6 @@ export default function SolarStructure() {
       )
     },
     {
-      title: 'Z Purlins',
-      subtitle: 'Various Thickness Options',
-      desc: 'Seamless overlapping Z-profiles designed to span long distances, minimizing weight while maximizing structural strength.',
-      specs: [
-        { label: 'Thickness', value: '1.2mm to 2.5mm' },
-        { label: 'Yield Strength', value: 'Up to 350 MPa' },
-        { label: 'Flange Width', value: 'Custom engineered' }
-      ],
-      icon: (
-        <svg viewBox="0 0 120 120" className="w-full h-full max-w-[350px] group-hover:scale-[1.15] transition-transform duration-700 drop-shadow-[0_30px_40px_rgba(0,0,0,0.25)] relative z-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M40 25 L65 25 L65 35 L50 35 L50 65 L70 65 L70 75 L40 75 L40 65 L42 65 L42 35 L40 35 Z" fill="#94a3b8" stroke="#475569" strokeWidth="1"/>
-          <path d="M40 25 L20 45 M65 25 L45 45 M65 35 L45 55 M50 35 L30 55 M50 65 L30 85 M70 65 L50 85 M70 75 L50 95 M40 75 L20 95 M40 65 L20 85 M42 65 L22 85 M42 35 L22 55" stroke="#64748b" strokeWidth="1.5"/>
-          <path d="M20 45 L45 45 L45 55 L30 55 L30 85 L50 85 L50 95 L20 95 L20 85 L22 85 L22 55 L20 55 Z" stroke="#334155" strokeWidth="2" fill="#f1f5f9" strokeLinejoin="round"/>
-        </svg>
-      )
-    },
-    {
       title: 'Hat Sections',
       subtitle: 'Solar Mounting Systems',
       desc: 'Outstanding strength-to-weight track profiles enabling rapid installation and maximum base stability for PV modules.',
@@ -73,62 +56,6 @@ export default function SolarStructure() {
         </svg>
       )
     },
-    {
-      title: 'Solar Mounting Rails',
-      subtitle: 'Precision Profile',
-      desc: 'Precision grooved channels for universal clamps and T-bolts, radically speeding up solar panel installation times.',
-      specs: [
-        { label: 'Compatibility', value: 'Universal Module Clamps' },
-        { label: 'Material', value: 'Extruded Al / Steel' },
-        { label: 'Resistance', value: '25+ Years Design' }
-      ],
-      icon: (
-        <svg viewBox="0 0 120 120" className="w-full h-full max-w-[350px] group-hover:scale-[1.15] transition-transform duration-700 drop-shadow-[0_30px_40px_rgba(0,0,0,0.25)] relative z-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M40 25 L75 25 L75 35 L50 35 L50 45 L65 45 L65 55 L50 55 L50 75 L75 75 L75 85 L40 85 Z" fill="#94a3b8" stroke="#475569" strokeWidth="1"/>
-          <path d="M40 25 L20 45 M75 25 L55 45 M75 35 L55 55 M50 35 L30 55 M50 45 L30 65 M65 45 L45 65 M65 55 L45 75 M50 55 L30 75 M50 75 L30 95 M75 75 L55 95 M75 85 L55 105 M40 85 L20 105" stroke="#64748b" strokeWidth="1.5"/>
-          <path d="M20 45 L55 45 L55 55 L30 55 L30 65 L45 65 L45 75 L30 75 L30 95 L55 95 L55 105 L20 105 Z" stroke="#334155" strokeWidth="2" fill="#f1f5f9" strokeLinejoin="round"/>
-        </svg>
-      )
-    },
-    {
-      title: 'Custom Roll-Formed Profiles',
-      subtitle: 'As per Drawing',
-      desc: 'Fully automated roll forming processing to deliver complex bends and extreme tolerances directly from your CAD designs.',
-      specs: [
-        { label: 'Precision', value: 'Micrometric Tolerances' },
-        { label: 'Development', value: 'Fast Turnaround' },
-        { label: 'Punching', value: 'In-line Automated' }
-      ],
-      icon: (
-        <svg viewBox="0 0 120 120" className="w-full h-full max-w-[350px] group-hover:scale-[1.15] transition-transform duration-700 drop-shadow-[0_30px_40px_rgba(0,0,0,0.25)] relative z-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M40 25 L75 25 L65 40 L50 40 L50 70 L75 70 L75 80 L40 80 Z" fill="#94a3b8" stroke="#475569" strokeWidth="1"/>
-          <path d="M40 25 L20 45 M75 25 L55 45 M65 40 L45 60 M50 40 L30 60 M50 70 L30 90 M75 70 L55 90 M75 80 L55 100 M40 80 L20 100" stroke="#64748b" strokeWidth="1.5"/>
-          <path d="M20 45 L55 45 L45 60 L30 60 L30 90 L55 90 L55 100 L20 100 Z" stroke="#334155" strokeWidth="2" fill="#f1f5f9" strokeLinejoin="round"/>
-        </svg>
-      )
-    },
-    {
-      title: 'Structural Steel Components',
-      subtitle: 'High Strength',
-      desc: 'Rigorously inspected base plates and anchoring frames built to secure MW-scale solar networks against extreme wind loads.',
-      specs: [
-        { label: 'Component Type', value: 'Base Plates & Angles' },
-        { label: 'Treatment', value: 'Hot Dip Galvanized HDG' },
-        { label: 'Application', value: 'Sub-structure anchoring' }
-      ],
-      icon: (
-        <svg viewBox="0 0 120 120" className="w-full h-full max-w-[350px] group-hover:scale-[1.15] transition-transform duration-700 drop-shadow-[0_30px_40px_rgba(0,0,0,0.25)] relative z-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M40 25 L50 25 L50 65 L80 65 L80 75 L40 75 Z" fill="#94a3b8" stroke="#475569" strokeWidth="1"/>
-          <path d="M40 25 L20 45 M50 25 L30 45 M50 65 L30 85 M80 65 L60 85 M80 75 L60 95 M40 75 L20 95" stroke="#64748b" strokeWidth="1.5"/>
-          <path d="M20 45 L30 45 L30 85 L60 85 L60 95 L20 95 Z" stroke="#334155" strokeWidth="2" fill="#f1f5f9" strokeLinejoin="round"/>
-          <circle cx="25" cy="55" r="2.5" fill="#1e293b"/>
-          <circle cx="25" cy="65" r="2.5" fill="#1e293b"/>
-          <circle cx="25" cy="75" r="2.5" fill="#1e293b"/>
-          <circle cx="40" cy="90" r="2.5" fill="#1e293b"/>
-          <circle cx="50" cy="90" r="2.5" fill="#1e293b"/>
-        </svg>
-      )
-    }
   ];
 
   return (

@@ -22,13 +22,13 @@ const CategoriesDropdown = () => (
             <div className="text-[11px] text-slate-500 font-medium mt-0.5">Industrial Machinery</div>
           </div>
         </Link>
-        <Link to="/solar-structure" className="px-5 py-4 text-slate-600 hover:bg-slate-50 hover:text-orange-600 flex items-center gap-4 border-b border-slate-50 last:border-0 transition-all">
+        <a href="https://www.shreegayatri-industries.com/" className="px-5 py-4 text-slate-600 hover:bg-slate-50 hover:text-orange-600 flex items-center gap-4 border-b border-slate-50 last:border-0 transition-all">
           <div className="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-xl shrink-0">☀️</div>
           <div>
             <div className="font-bold text-sm text-slate-800">Solar Structure</div>
             <div className="text-[11px] text-slate-500 font-medium mt-0.5">Mounting Solutions</div>
           </div>
-        </Link>
+        </a>
         <Link to="/motors" className="px-5 py-4 text-slate-600 hover:bg-slate-50 hover:text-amber-600 flex items-center gap-4 transition-all">
           <div className="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-xl shrink-0">⚡</div>
           <div>
@@ -82,7 +82,7 @@ export default function Navbar() {
     }`}>
       {/* Top info bar */}
       <div className="bg-[#1e3a8a] text-blue-50 text-[11px] py-1.5 px-6 text-center hidden md:block font-medium">
-        &nbsp; ✉️ shreegayatriindustries2099@gmail.com &nbsp;|&nbsp; 📍 Bakrol, Ahmedabad – 382 430, Gujarat
+        &nbsp; ✉️ contact@shreegayatri-industries.com &nbsp;|&nbsp; 📍 Bakrol, Ahmedabad – 382 430, Gujarat
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
@@ -149,9 +149,9 @@ export default function Navbar() {
                     <Link to="/machines" className="text-xs text-slate-500 font-medium py-2 pl-3 hover:text-blue-600 hover:bg-blue-50 rounded-lg flex items-center gap-3 transition-colors">
                       <span className="text-lg">⚙️</span> Roll Forming Machines
                     </Link>
-                    <Link to="/solar-structure" className="text-xs text-slate-500 font-medium py-2 pl-3 hover:text-orange-600 hover:bg-orange-50 rounded-lg flex items-center gap-3 transition-colors">
+                    <a href="https://www.shreegayatri-industries.com/" className="text-xs text-slate-500 font-medium py-2 pl-3 hover:text-orange-600 hover:bg-orange-50 rounded-lg flex items-center gap-3 transition-colors">
                       <span className="text-lg">☀️</span> Solar Structure
-                    </Link>
+                    </a>
                     <Link to="/motors" className="text-xs text-slate-500 font-medium py-2 pl-3 hover:text-amber-600 hover:bg-amber-50 rounded-lg flex items-center gap-3 transition-colors">
                       <span className="text-lg">⚡</span> Shutter Motors
                     </Link>

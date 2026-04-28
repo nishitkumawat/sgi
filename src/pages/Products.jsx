@@ -16,11 +16,14 @@ export default function Products() {
   }, [])
 
   const filtered = PRODUCTS.filter(p => {
-    if (p.category === 'motor-accessories') return false
+    if (p.category.includes('accessories')) return false
     const matchesCat = categoryId === 'all' || p.category === categoryId
     const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase())
     return matchesCat && matchesSearch
   })
+
+  const machines = filtered.filter(p => p.category === 'roll-forming')
+  const motors = filtered.filter(p => p.category === 'shutter-motors')
 
   return (
     <div className="bg-white min-h-screen pt-32 pb-24">
@@ -58,7 +61,7 @@ export default function Products() {
             >
               All Machines
             </button>
-            {CATEGORIES.filter(cat => cat.id !== 'motor-accessories').map(cat => (
+            {CATEGORIES.filter(cat => !cat.id.includes('accessories')).map(cat => (
               <button
                 key={cat.id}
                 onClick={() => setSearchParams({ category: cat.id })}
@@ -89,10 +92,34 @@ export default function Products() {
 
         {/* Grid */}
         {filtered.length > 0 ? (
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-            {filtered.map(p => (
-              <ProductCard key={p.id} product={p} />
-            ))}
+          <div className="space-y-16">
+            {machines.length > 0 && (
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-xl shrink-0">⚙️</div>
+                  <h2 className="text-2xl font-black text-slate-900 uppercase tracking-tight">Roll Forming Machines</h2>
+                </div>
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+                  {machines.map(p => (
+                    <ProductCard key={p.id} product={p} />
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            {motors.length > 0 && (
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-xl shrink-0">⚡</div>
+                  <h2 className="text-2xl font-black text-slate-900 uppercase tracking-tight">Shutter Motors</h2>
+                </div>
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+                  {motors.map(p => (
+                    <ProductCard key={p.id} product={p} />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         ) : (
           <div className="py-32 text-center rounded-sm bg-slate-50 border border-dashed border-slate-200">

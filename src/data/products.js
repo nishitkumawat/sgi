@@ -9,22 +9,23 @@ import pushButtonImg from '../assets/push_button.png'
 import ezrunControllerImg from '../assets/ezrun_controller.jpeg'
 
 // Import Roll Forming Machine Images
-import cpurlinImg1 from '../assets/cpurlin_1.png'
+import cpurlinImg1 from '../assets/cpurlin_4.jpeg'
 import cpurlinImg2 from '../assets/cpurlin_2.png'
 import cpurlinImg3 from '../assets/cpurlin_3.png'
 import decoilerImg from '../assets/decoiler.png'
 import punchingMachineImg from '../assets/punching_machine.png'
 import punchingMachine2Img from '../assets/punching_machine_2.png'
 import hatSection1Img from '../assets/hat_section_1.png'
-import hatSection2Img from '../assets/hat_section_2.png'
+import hatSection2Img from '../assets/hat_6.jpeg'
 import hatSection3Img from '../assets/hat_4.png'
-import hatSection4Img from '../assets/hat_5.png'
+import hatSection4Img from '../assets/hat_5.jpeg'
 import cuttingSystemImg from '../assets/cutting_system.png'
 import controlPanelImg from '../assets/control_panel.png'
 import controlPanel2Img from '../assets/plc2.jpeg'
 import hydraulicPowerPackImg from '../assets/hydraulic-power-pack.png'
 import machine1Img from '../assets/machine.jpeg'
 import machine2Img from '../assets/machine2.jpeg'
+import strutMachineImg from '../assets/strut_machine.png'
 
 
 const BASE = 'https://5.imimg.com/data5'
@@ -67,6 +68,7 @@ export const PRODUCT_IMAGES = {
   'hat-section-2':           hatSection2Img,
   'hat-section-3':           hatSection3Img,
   'hat-section-4':           hatSection4Img,
+  'strut-machine':           strutMachineImg,
   'machine1':                machine1Img,
   'machine2':                machine2Img,
   'cutting-system':          cuttingSystemImg,
@@ -81,6 +83,7 @@ export const CATEGORIES = [
   { id: 'shutter-motors', label: 'Motors',  icon: '⚡',  color: '#1e3a8a' },
   { id: 'motor-accessories', label: 'Motor Accessories', icon: '🎛️', color: '#1e40af' },
   { id: 'roll-forming',   label: 'Roll Forming Machines', icon: '⚙️',  color: '#1e40af' },  
+  { id: 'machine-accessories', label: 'Machine Accessories', icon: '🔧', color: '#1e40af' },
 ]
 
 export const PRODUCTS = [
@@ -93,25 +96,25 @@ export const PRODUCTS = [
     name: 'C Purlin Roll Forming Machine',
     tagline: 'Auto-adjustable C-purlins for steel frame construction',
     badge: 'Popular',
-    image: PRODUCT_IMAGES['machine1'],
+    image: PRODUCT_IMAGES['cpurlin-1'],
     images: [PRODUCT_IMAGES['cpurlin-1'], PRODUCT_IMAGES['cpurlin-2'],PRODUCT_IMAGES['machine1'], PRODUCT_IMAGES['cpurlin-3']],
     description: 'High-performance C Purlin Roll Forming Machine with auto size adjustment for PEB buildings, industrial sheds and solar structures. Features 19-station forming, servo motor drive, and PLC-controlled automatic cutting.',
     specs: [
-      { label: 'Suitable Material', value: 'M.S., G.P., H.R., Galvanium' },
-      { label: 'Thickness', value: '1.60 mm to 2.50 mm' },
-      { label: 'Web (A) Size', value: '60 to 250 mm (Auto Adjust)' },
-      { label: 'Flange (B) Size', value: '40 to 80 mm (Auto Adjust)' },
-      { label: 'Lip (C) Size', value: '10 to 20 mm' },
-      { label: 'Max Coil Input', value: '450 mm (max width 250 mm)' },
-      { label: 'Min Coil Input', value: '130 mm (min width 50 mm)' },
-      { label: 'Roller Material', value: 'EN-31 (Hard with hard chrome)' },
-      { label: 'Productivity', value: '41 mtr/min (without punching)' },
-      { label: 'With Punching', value: '6 to 12 mtr/min' },
-      { label: 'Forming Station', value: '19 Station' },
-      { label: 'Transmission', value: 'Chain drive + 9 Gear box' },
+      { label: 'Suitable Material', value: 'M.S., G.P., H.R., GALVANIUM' },
+      { label: 'Thickness of Raw Material', value: '1.60 mm to 2.50 mm' },
+      { label: 'Section Web (A) Size', value: '60 to 250 mm (Auto Size Adjustment)' },
+      { label: 'Section Flange (B) Size', value: '40 to 80 mm (Auto Size Adjustment)' },
+      { label: 'Section Lip (C) Size', value: '10 to 20 mm' },
+      { label: 'Max Coil Input Size', value: '450 mm (max width 250 mm)' },
+      { label: 'Min Coil Input Size', value: '130 mm (min width 50 mm)' },
+      { label: 'Roller Material', value: 'EN-31 (Hard with hard crome)' },
+      { label: 'Productivity', value: '41 mtr/min (without punching) ; 6 to 12 mtr/min (with punching)' },
+      { label: 'Forming station', value: '19 Station' },
+      { label: 'Transmission', value: 'Chain drive and 9 no Gear box' },
       { label: 'Motor Power', value: '22 KW Servo' },
       { label: 'Cutting System', value: 'Automatic on PLC' },
-      { label: 'Section Tolerance', value: '± 1 to 2 mm' },
+      { label: 'Section Tolerance', value: '± 1 to 2 mm on length, bending & Twisting' },
+      { label: 'Tolerance', value: '± 1 to 2 mm on length, bending & Twisting' },
     ],
     features: ['Auto size adjustment for web & flange', '19-station precision forming', '22 KW Servo motor drive', 'Hardened EN-31 rollers with hard chrome', 'PLC automatic cutting system', 'Chain drive + 9 gear box transmission']
   },
@@ -126,26 +129,51 @@ export const PRODUCTS = [
     images: [PRODUCT_IMAGES['hat-section-1'], PRODUCT_IMAGES['hat-section-2'],PRODUCT_IMAGES['machine1'], PRODUCT_IMAGES['hat-section-3'], PRODUCT_IMAGES['hat-section-4']],
     description: 'High-productivity Hat Section Roll Forming Machine for solar mounting structures. Features 16-station forming, servo motor drive, and automatic PLC cutting. Produces 8-10 tons per day with punching.',
     specs: [
-      { label: 'Suitable Material', value: 'G.I. Sheet' },
-      { label: 'Thickness', value: '0.80 to 1.20 mm' },
+      { label: 'Suitable Material', value: 'G.I. SHEET' },
+      { label: 'Thickness of Material', value: '0.80 to 1.20 mm' },
       { label: 'Lip of Material', value: 'Max. 25 mm' },
-      { label: 'Web of Material', value: '40 mm (Fixed)' },
-      { label: 'Height', value: '60 to 120 mm (Manual Change)' },
-      { label: 'Shaft Diameter', value: '75 mm' },
+      { label: 'Web of Material', value: '40 mm fixed size' },
+      { label: 'Height of Material', value: '60 to 120 mm (Manually Changeable)' },
       { label: 'Roller Material', value: 'EN-31 (Hard)' },
-      { label: 'Productivity', value: '8 to 10 Ton/Day (With Punching)' },
+      { label: 'Productivity', value: '8 to 10 Ton Per Day (With Punching)' },
       { label: 'Forming Station', value: '16 Station' },
-      { label: 'Transmission', value: 'Chain / Gear Drive' },
+      { label: 'Transmission', value: 'Chain / Gear drive' },
       { label: 'Motor Power', value: '11 to 15 KW Servo Motor' },
       { label: 'Cutting System', value: 'Automatic on PLC' },
-      { label: 'Tolerance', value: '± 1 to 2 mm' },
+      { label: 'Tolerance', value: '± 1 to 2 mm on length, Bending & Twisting' },
+      { label: 'Section Tolerance', value: '± 1 to 2 mm on length, Bending & Twisting' },
     ],
     features: ['16-station precision forming', '8-10 ton/day productivity', 'Servo motor 11-15 KW drive', 'EN-31 hardened rollers', 'PLC automatic cutting', 'Manually adjustable height 60-120 mm']
   },
   {
+    id: 'strut-channel-machine',
+    slug: 'strut-channel-roll-forming-machine',
+    category: 'roll-forming',
+    name: 'Strut Channel Section',
+    tagline: 'High-precision strut channel manufacturing',
+    badge: 'New',
+    image: PRODUCT_IMAGES['machine1'],
+    images: [PRODUCT_IMAGES['machine1'],PRODUCT_IMAGES['strut-machine'],PRODUCT_IMAGES['hat-section-1']],
+    description: 'High-performance Strut Channel Roll Forming Machine designed for manufacturing robust strut channels. Features 15-station forming, chain drive transmission, and automatic cutting systems.',
+    specs: [
+      { label: 'Suitable Material', value: 'MS. G.I.' },
+      { label: 'Thickness of Material', value: '1.60 mm To 2.50 mm' },
+      { label: 'Profile Size', value: '41 x 21, 41, 61, 81 mm' },
+      { label: 'Roller Material', value: 'EN31(Hard)' },
+      { label: 'Productivity', value: '5 mtr/min (With Punching)' },
+      { label: 'Forming station', value: '15 Station' },
+      { label: 'Auto-size Changer Station', value: '01 to 07 Station' },
+      { label: 'Transmission', value: 'Chain Drive' },
+      { label: 'Motor Power', value: '15 HP (3phase)' },
+      { label: 'Cutting Systems', value: 'Automatic' },
+      { label: 'Tolerance', value: '± 1 to 2 mm' }
+    ],
+    features: ['15-station precision forming', 'Auto-size changer (01-07 stations)', '15 HP 3-phase motor power', 'EN31 hardened rollers', 'Automatic cutting systems', 'Chain drive transmission']
+  },
+  {
     id: 'manual-hydraulic-decoiler',
     slug: 'manual-hydraulic-decoiler',
-    category: 'roll-forming',
+    category: 'machine-accessories',
     name: 'Manual Hydraulic De-coiler',
     tagline: 'Heavy-duty unpowered coil feeding system',
     badge: '',
@@ -165,7 +193,7 @@ export const PRODUCTS = [
   {
     id: 'punching-straightening-machine',
     slug: 'punching-and-straightening-machine',
-    category: 'roll-forming',
+    category: 'machine-accessories',
     name: 'Punching Machine & Straightening Machine',
     tagline: 'Multi-cylinder CNC punching with integrated straightening',
     badge: '',
@@ -190,7 +218,7 @@ export const PRODUCTS = [
   {
     id: 'automatic-cutting-system',
     slug: 'automatic-cutting-system',
-    category: 'roll-forming',
+    category: 'machine-accessories',
     name: 'Automatic Cutting System',
     tagline: 'Hydraulic high-speed precision cutting press',
     badge: '',
@@ -211,7 +239,7 @@ export const PRODUCTS = [
   {
     id: 'control-panel',
     slug: 'plc-control-panel-system',
-    category: 'roll-forming',
+    category: 'machine-accessories',
     name: 'Control Panel',
     tagline: 'PLC-controlled precision length management system',
     badge: '',
@@ -231,7 +259,7 @@ export const PRODUCTS = [
   {
     id: 'hydraulic-power-pack',
     slug: 'hydraulic-power-pack-system',
-    category: 'roll-forming',
+    category: 'machine-accessories',
     name: 'Hydraulic Power Pack System',
     tagline: 'Multi-function hydraulic power for complete production line',
     badge: '',
@@ -306,12 +334,44 @@ export const PRODUCTS = [
     features: ['Industrial grade', 'High torque output', 'Thermal overload protection', 'Built for heavy shutters']
   },
   {
+    id: 'push-buttons',
+    slug: 'push-button-station',
+    category: 'motor-accessories',
+    name: 'Push Buttons',
+    tagline: 'Wall mounted control station',
+    badge: 'Free Choice w/ Motor',
+    image: PRODUCT_IMAGES['push-buttons'],
+    images: [PRODUCT_IMAGES['push-buttons']],
+    description: 'Standard Up/Down/Stop push button station for hardwired manual control of rolling Rolling Shutter Gear Motors. Highly durable industrial enclosure.',
+    specs: [
+      { label: 'Type', value: 'Wired Control' },
+      { label: 'Buttons', value: 'UP / STOP / DOWN' },
+    ],
+    features: ['Highly tactile buttons', 'Clear visual indicators', 'Rugged housing']
+  },
+  {
+    id: 'key-lock-controller',
+    slug: 'key-lock-selector',
+    category: 'motor-accessories',
+    name: 'Key Lock Controller',
+    tagline: 'Secure physical access control',
+    badge: 'Free Choice w/ Motor',
+    image: PRODUCT_IMAGES['key-lock-controller'],
+    images: [PRODUCT_IMAGES['key-lock-controller']],
+    description: 'High-security physical key lock selector for manual operation override. Ensures only authorized personnel can open or close the automated shutter.',
+    specs: [
+      { label: 'Type', value: 'Physical Key Access' },
+      { label: 'Install', value: 'Wall Mounted' },
+    ],
+    features: ['Anti-tamper design', 'Industrial key cylinder', 'Weather resistant cover']
+  },
+  {
     id: 'remote-controller',
     slug: 'motor-remote-controller',
     category: 'motor-accessories',
     name: 'Remote Controller',
     tagline: 'Wireless access for your Rolling Shutter Gear Motors',
-    badge: '',
+    badge: 'Premium Add-on',
     image: PRODUCT_IMAGES['remote-controller'],
     images: [PRODUCT_IMAGES['remote-controller']],
     description: 'Convenient wireless remote control system compatible with our single and three-phase motors. Provides secure and long-range operational control.',
@@ -327,7 +387,7 @@ export const PRODUCTS = [
     category: 'motor-accessories',
     name: 'Keypad Integrated mobile controller',
     tagline: 'Next-gen smart IoT internet control',
-    badge: 'Smart IoT',
+    badge: 'Premium Add-on',
     image: PRODUCT_IMAGES['keypad-controller'],
     images: [PRODUCT_IMAGES['keypad-controller']],
     externalLink: 'https://www.ezrun.in/product/shutter',
@@ -337,38 +397,6 @@ export const PRODUCTS = [
       { label: 'Features', value: 'Mobile App Control' },
     ],
     features: ['EzRun App Integration', 'Global remote access', 'Pin code access', 'Access Logs']
-  },
-  {
-    id: 'key-lock-controller',
-    slug: 'key-lock-selector',
-    category: 'motor-accessories',
-    name: 'Key Lock Controller',
-    tagline: 'Secure physical access control',
-    badge: '',
-    image: PRODUCT_IMAGES['key-lock-controller'],
-    images: [PRODUCT_IMAGES['key-lock-controller']],
-    description: 'High-security physical key lock selector for manual operation override. Ensures only authorized personnel can open or close the automated shutter.',
-    specs: [
-      { label: 'Type', value: 'Physical Key Access' },
-      { label: 'Install', value: 'Wall Mounted' },
-    ],
-    features: ['Anti-tamper design', 'Industrial key cylinder', 'Weather resistant cover']
-  },
-  {
-    id: 'push-buttons',
-    slug: 'push-button-station',
-    category: 'motor-accessories',
-    name: 'Push Buttons',
-    tagline: 'Wall mounted control station',
-    badge: '',
-    image: PRODUCT_IMAGES['push-buttons'],
-    images: [PRODUCT_IMAGES['push-buttons']],
-    description: 'Standard Up/Down/Stop push button station for hardwired manual control of rolling Rolling Shutter Gear Motors. Highly durable industrial enclosure.',
-    specs: [
-      { label: 'Type', value: 'Wired Control' },
-      { label: 'Buttons', value: 'UP / STOP / DOWN' },
-    ],
-    features: ['Highly tactile buttons', 'Clear visual indicators', 'Rugged housing']
   },
 ]
 
