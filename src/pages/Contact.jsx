@@ -155,7 +155,7 @@ export default function Contact() {
             {/* Google Map */}
             <div className="mt-12 w-full h-80 rounded-sm overflow-hidden border border-slate-100 shadow-lg grayscale hover:grayscale-0 transition-all duration-700">
                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1836.258167!2d72.7384789!3d22.9836299!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e62cb2b0421b5%3A0x9f3b1509cea5b998!2sSHREE%20GAYATRI%20AUTOMATION!5e0!3m2!1sen!2sin!4v1713017500000!5m2!1sen!2sin" 
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14692.187838461285!2d72.7159701!3d22.9853006!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e63554a37539b%3A0x87c57ab301859bb9!2sSHREE%20GAYATRI%20INDUSTRIES!5e0!3m2!1sen!2sin!4v1776924305491!5m2!1sen!2sin" 
                   width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade">
                </iframe>
             </div>
